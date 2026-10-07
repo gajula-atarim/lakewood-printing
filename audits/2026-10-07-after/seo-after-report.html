@@ -195,11 +195,11 @@ td.after { font-weight: 600; }
 <!-- 1 -->
 <section id="summary">
   <div class="eyebrow">Executive Summary</div>
-  <h2>Every audit issue is fixed except one that needs your social media links</h2>
-  <p>All issues in the baseline audit have been worked through on the live site. Every high- and medium-priority finding is fixed. The one exception is the placeholder social media icons: they link nowhere or to generic Facebook, Instagram and Pinterest home pages, and they stay as they are until Lakewood Printing supplies its real profile links.</p>
+  <h2>Every issue from the baseline audit is fixed</h2>
+  <p>All issues in the baseline audit have been worked through on the live site, and every finding is fixed. The social media icons stay on the site exactly as they looked. Lakewood Printing has no social profiles, so the icons are now plain icons instead of empty or placeholder links. If profiles are created later, adding their addresses turns the icons back into normal links automatically.</p>
   <p>The site's design, page addresses, navigation and contact form are unchanged. Screenshots taken before and after show the Home and Services pages are pixel-identical apart from one button label. On the other pages, the only visible change is the extra paragraphs of copy.</p>
   <div class="kpis">
-    <div class="kpi"><span class="from">Before 85*</span><span class="num">92</span><span class="lbl">Lighthouse SEO score on every page. The only remaining fail is the social icons.</span></div>
+    <div class="kpi"><span class="from">Before 85*</span><span class="num">100</span><span class="lbl">Lighthouse SEO score on every page</span></div>
     <div class="kpi"><span class="from">Before 0 / 5</span><span class="num">5 / 5</span><span class="lbl">Pages with a written meta description</span></div>
     <div class="kpi"><span class="from">Before 2 / 5</span><span class="num">5 / 5</span><span class="lbl">Pages with 200+ words</span></div>
     <div class="kpi"><span class="from">Before 23 of 24 missing</span><span class="num">0</span><span class="lbl">Images missing alt text</span></div>
@@ -231,7 +231,7 @@ td.after { font-weight: 600; }
         <tr><td class="issue">On-page content</td><td><span class="chip med">Needs work</span></td><td><span class="chip good">Good</span></td><td>About, What We Print and Contact expanded to 209–266 words, using only facts already on the site.</td></tr>
         <tr><td class="issue">Duplicate &amp; thin content</td><td><span class="chip med">Needs work</span></td><td><span class="chip good">Good</span></td><td>The Hello World post is unpublished, the author archive redirects to the home page, and the Uncategorized archive is set to noindex.</td></tr>
         <tr><td class="issue">Heading structure</td><td><span class="chip med">Needs work</span></td><td><span class="chip good">Good</span></td><td>Headings on all 5 pages now step down in order, every page has an H2, and each H1 comes first.</td></tr>
-        <tr><td class="issue">Internal linking</td><td><span class="chip med">Needs work</span></td><td><span class="chip partial">Mostly fixed</span></td><td>Vague link text is reworded, and the logo links and menu button have text. The placeholder social icons are still waiting on your links.</td></tr>
+        <tr><td class="issue">Internal linking</td><td><span class="chip med">Needs work</span></td><td><span class="chip good">Good</span></td><td>Vague link text is reworded, the logo links and menu button have text, and the social icons are no longer empty or placeholder links.</td></tr>
         <tr><td class="issue">Crawlability &amp; indexability</td><td><span class="chip med">Mostly sound</span></td><td><span class="chip good">Good</span></td><td>A new XML sitemap lists exactly the 5 real pages, and robots.txt points to it.</td></tr>
         <tr><td class="issue">Technical &amp; security</td><td><span class="chip low">Low risk</span></td><td><span class="chip good">Good</span></td><td>All 5 security headers are in place across the site, JavaScript is sent with the correct content type, and 350 old staging-server links are replaced.</td></tr>
         <tr><td class="issue">URL structure</td><td><span class="chip good">Good</span></td><td><span class="chip good">Good</span></td><td>No page addresses were changed.</td></tr>
@@ -269,7 +269,7 @@ td.after { font-weight: 600; }
         <tr><td class="n">2</td><td class="issue">Default WordPress content live</td><td class="before n">3 URLs indexable</td><td class="after n">0 indexable</td><td><span class="chip fixed">Fixed</span></td></tr>
         <tr><td class="n">3</td><td class="issue">Thin main pages</td><td class="before n">3 / 5 under 200 words</td><td class="after n">0 / 5</td><td><span class="chip fixed">Fixed</span></td></tr>
         <tr><td class="n">4</td><td class="issue">Short page titles</td><td class="before n">3 / 5 under 30 chars</td><td class="after n">0 / 5 (52–60 chars)</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="n">5</td><td class="issue">Links not crawlable</td><td class="before n">PageSpeed fail</td><td class="after n">Social icons only</td><td><span class="chip client">Needs your links</span></td></tr>
+        <tr><td class="n">5</td><td class="issue">Links not crawlable</td><td class="before n">PageSpeed fail</td><td class="after n">Pass</td><td><span class="chip fixed">Fixed</span></td></tr>
         <tr><td class="n">6</td><td class="issue">Images without alt text</td><td class="before n">23 / 24</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
         <tr><td class="n">7</td><td class="issue">Broken heading order</td><td class="before n">5 / 5 pages</td><td class="after n">0 / 5</td><td><span class="chip fixed">Fixed</span></td></tr>
       </tbody>
@@ -300,7 +300,7 @@ td.after { font-weight: 600; }
         <tr><td class="issue">Referrer-Policy</td><td class="before">Missing on 86 / 86</td><td class="after"><code>strict-origin-when-cross-origin</code></td><td><span class="chip fixed">Fixed</span></td><td class="act">Added site-wide.</td></tr>
         <tr><td class="issue">Content-Security-Policy</td><td class="before">Missing on 86 / 86</td><td class="after">Present</td><td><span class="chip fixed">Fixed</span></td><td class="act"><code>upgrade-insecure-requests; frame-ancestors 'self' https://*.atarim.io; base-uri 'self'; object-src 'none'</code></td></tr>
         <tr><td class="issue">Bad content type</td><td class="before">26 / 86 (30.23%)</td><td class="after">JavaScript sent as <code>application/javascript</code></td><td><span class="chip fixed">Fixed</span></td><td class="act">Corrected the server's content type for <code>.js</code> files. Checked jQuery, Elementor, Elementor Pro and WPForms scripts, a WebP image, an SVG and a stylesheet: all are served correctly.</td></tr>
-        <tr><td class="issue">Unsafe cross-origin links</td><td class="before">5 / 86 (5.81%)</td><td class="after">Flipbook link fixed</td><td><span class="chip partial">Partly fixed</span></td><td class="act">Added <code>rel="noopener"</code> to the flipbook link. The rest are the placeholder social icons in the mobile menu, which will be fixed when you send the real links.</td></tr>
+        <tr><td class="issue">Unsafe cross-origin links</td><td class="before">5 / 86 (5.81%)</td><td class="after">0</td><td><span class="chip fixed">Fixed</span></td><td class="act">Added <code>rel="noopener"</code> to the flipbook link. Removed the placeholder facebook.com, instagram.com and pinterest.com links from the mobile menu and contact page icons.</td></tr>
         <tr><td class="issue">Staging-server dependency</td><td class="before">Not in the CSV</td><td class="after">0 references rendered</td><td><span class="chip fixed">Fixed</span></td><td class="act">Replaced 350 references in page data and settings. The replacement was safe for serialised data.</td></tr>
       </tbody>
     </table>
@@ -323,7 +323,7 @@ td.after { font-weight: 600; }
         <tr><td class="issue">XML sitemap</td><td class="before">WordPress default (contents not measured)</td><td class="after"><code>sitemap_index.xml</code> → <code>page-sitemap.xml</code> with exactly 5 URLs</td><td><span class="chip fixed">Fixed</span></td></tr>
         <tr><td class="issue">robots.txt</td><td class="before">Declared <code>wp-sitemap.xml</code></td><td class="after">Declares <code>sitemap_index.xml</code>; nothing important blocked</td><td><span class="chip fixed">Fixed</span></td></tr>
         <tr><td class="issue">Elementor template pages</td><td class="before">Not measured</td><td class="after">noindex, kept out of the sitemap</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="issue">Links not crawlable</td><td class="before">PageSpeed fail</td><td class="after">Only the social icons remain</td><td><span class="chip client">Needs your links</span></td></tr>
+        <tr><td class="issue">Links not crawlable</td><td class="before">PageSpeed fail</td><td class="after">Lighthouse pass on all 5 pages</td><td><span class="chip fixed">Fixed</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -462,7 +462,7 @@ td.after { font-weight: 600; }
       <tbody>
         <tr><td class="issue">Links with no anchor text</td><td class="before">5 / 5 pages</td><td class="after">Logo links now carry the alt text "Lakewood Printing". The icon-only menu button has the label "Menu" (hidden on screen, read by screen readers and search engines).</td><td><span class="chip fixed">Fixed</span></td></tr>
         <tr><td class="issue">Non-descriptive anchor text</td><td class="before">2 / 5 pages ("find out more")</td><td class="after">"Explore our services" on Home and About</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="issue">Links not crawlable</td><td class="before">PageSpeed fail</td><td class="after">Footer social icons (Facebook has an empty link, Instagram has none) and the contact page Facebook icon</td><td><span class="chip client">Needs your links</span></td></tr>
+        <tr><td class="issue">Links not crawlable</td><td class="before">PageSpeed fail</td><td class="after">Social icons with no profile now render as plain icons, not empty links. They look the same; only the hand cursor on hover is gone. Lighthouse passes on all 5 pages.</td><td><span class="chip fixed">Fixed</span></td></tr>
         <tr><td class="issue">Orphan pages</td><td class="before">2</td><td class="after">0 indexable orphans</td><td><span class="chip fixed">Fixed</span></td></tr>
       </tbody>
     </table>
@@ -525,7 +525,7 @@ td.after { font-weight: 600; }
         <tr><td><span class="chip high">High</span></td><td class="issue">Default WordPress content indexable</td><td class="before n">3</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
         <tr><td><span class="chip high">High</span></td><td class="issue">Thin main pages</td><td class="before n">3 (60%)</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
         <tr><td><span class="chip high">High</span></td><td class="issue">Short page titles</td><td class="before n">3 (60%)</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td><span class="chip high">High</span></td><td class="issue">Links not crawlable</td><td class="before n">Fail</td><td class="after n">Social icons only</td><td><span class="chip client">Needs your links</span></td></tr>
+        <tr><td><span class="chip high">High</span></td><td class="issue">Links not crawlable</td><td class="before n">Fail</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
         <tr><td><span class="chip med">Medium</span></td><td class="issue">Images missing alt text</td><td class="before n">23 (95.83%)</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
         <tr><td><span class="chip med">Medium</span></td><td class="issue">Heading levels skip</td><td class="before n">5 (100%)</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
         <tr><td><span class="chip med">Medium</span></td><td class="issue">H2 missing</td><td class="before n">4 (80%)</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
@@ -536,7 +536,7 @@ td.after { font-weight: 600; }
         <tr><td><span class="chip med">Medium</span></td><td class="issue">Crawl coverage mismatch</td><td class="before n">5 vs 9</td><td class="after n">Sitemap lists the 5 real pages</td><td><span class="chip partial">Re-crawl to confirm</span></td></tr>
         <tr><td><span class="chip low">Low</span></td><td class="issue">5 security headers missing</td><td class="before n">86 (100%)</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
         <tr><td><span class="chip low">Low</span></td><td class="issue">Bad content type</td><td class="before n">26 (30.23%)</td><td class="after n">0†</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td><span class="chip low">Low</span></td><td class="issue">Unsafe cross-origin links</td><td class="before n">5 (5.81%)</td><td class="after n">Mobile-menu social icons only</td><td><span class="chip client">Needs your links</span></td></tr>
+        <tr><td><span class="chip low">Low</span></td><td class="issue">Unsafe cross-origin links</td><td class="before n">5 (5.81%)</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -550,7 +550,7 @@ td.after { font-weight: 600; }
   <div class="callout warn">
     <h3>Needed from Lakewood Printing</h3>
     <ul class="plain">
-      <li><strong>Your Facebook, Instagram and Pinterest page addresses</strong>, or confirmation that any of these don't exist. The icons in the footer, on the contact page and in the mobile menu currently link nowhere or to the generic sites. Once you send the addresses we will link them, or remove the icons you don't use. This clears the last failing Lighthouse SEO check and the remaining unsafe-link findings.</li>
+      <li><strong>Social profiles (optional).</strong> The icons now show without linking anywhere. If you create Facebook, Instagram or Pinterest pages, send us the addresses and the icons become real links. If you don't plan to, consider removing the icons later so visitors don't look for profiles that don't exist.</li>
       <li><strong>Access to Google Search Console</strong>, or a Google account to set it up under, so the new sitemap can be submitted and indexing tracked.</li>
     </ul>
   </div>
@@ -602,8 +602,8 @@ td.after { font-weight: 600; }
     <table>
       <thead><tr><th>Metric</th><th>Before</th><th>Target</th><th>After</th><th>Source (after)</th></tr></thead>
       <tbody>
-        <tr><td class="issue">Lighthouse SEO score</td><td class="before n">85 (mobile, PSI)</td><td class="n">95–100</td><td class="after n">92 on all 5 pages</td><td>Lighthouse via Atarim. The remaining fail is the social links.</td></tr>
-        <tr><td class="issue">Lighthouse SEO failed audits</td><td class="before n">2</td><td class="n">0</td><td class="after n">1</td><td>Lighthouse via Atarim</td></tr>
+        <tr><td class="issue">Lighthouse SEO score</td><td class="before n">85 (mobile, PSI)</td><td class="n">95–100</td><td class="after n">100 on all 5 pages</td><td>Lighthouse via Atarim</td></tr>
+        <tr><td class="issue">Lighthouse SEO failed audits</td><td class="before n">2</td><td class="n">0</td><td class="after n">0</td><td>Lighthouse via Atarim</td></tr>
         <tr><td class="issue">Pages with a meta description</td><td class="before n">0 / 5 (0%)</td><td class="n">5 / 5</td><td class="after n">5 / 5</td><td>Page audit + rendered HTML</td></tr>
         <tr><td class="issue">Titles of 30+ characters</td><td class="before n">2 / 5 (40%)</td><td class="n">5 / 5</td><td class="after n">5 / 5</td><td>Page audit</td></tr>
         <tr><td class="issue">Pages with 200+ words</td><td class="before n">2 / 5 (40%)</td><td class="n">5 / 5</td><td class="after n">5 / 5</td><td>Page audit</td></tr>
@@ -617,7 +617,7 @@ td.after { font-weight: 600; }
         <tr><td class="issue">Orphan URLs (indexable)</td><td class="before n">2</td><td class="n">0</td><td class="after n">0</td><td>Sitemap + robots tags</td></tr>
         <tr><td class="issue">Security headers in place</td><td class="before n">0 of 5</td><td class="n">5 of 5</td><td class="after n">5 of 5</td><td>Response headers</td></tr>
         <tr><td class="issue">URLs with a bad content type</td><td class="before n">26 / 86 (30.23%)</td><td class="n">0</td><td class="after n">0†</td><td>Response headers</td></tr>
-        <tr><td class="issue">Unsafe cross-origin links</td><td class="before n">5 / 86 (5.81%)</td><td class="n">0</td><td class="after n">Social icons only</td><td>Rendered HTML</td></tr>
+        <tr><td class="issue">Unsafe cross-origin links</td><td class="before n">5 / 86 (5.81%)</td><td class="n">0</td><td class="after n">0</td><td>Rendered HTML</td></tr>
         <tr><td class="issue">4xx / 5xx / redirect issues</td><td class="before n">0</td><td class="n">0</td><td class="after n">0 unexpected</td><td>Status codes</td></tr>
         <tr><td class="issue">On-page audit score</td><td class="before n">90.49–92.32</td><td class="n">95+</td><td class="after n">97.44 (all 5)</td><td>Page audit</td></tr>
         <tr><td class="issue">URLs in XML sitemap</td><td class="before n">Not measured</td><td class="n">Real pages only</td><td class="after n">5</td><td>sitemap_index.xml</td></tr>
@@ -652,6 +652,7 @@ td.after { font-weight: 600; }
       <li>Added 8 factual paragraphs across About, What We Print and Contact.</li>
       <li>Replaced 350 staging-domain references (lakewood-printing.stagingsea.com → lakewood.net.au) in page data and settings.</li>
       <li>Added a "Lakewood SEO Security Headers" block to .htaccess: 5 security headers plus the JavaScript content type.</li>
+      <li>Cleared the placeholder social links in the mobile menu and on the contact page. Added a small must-use plugin (<code>mu-plugins/lakewood-linkless-social-icons.php</code>) that renders social icons with no address as plain icons.</li>
       <li>Cleared the page builder and object caches.</li>
     </ul></div>
   </details>
