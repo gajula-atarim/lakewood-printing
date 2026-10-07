@@ -1,668 +1,664 @@
 <title>Lakewood Printing SEO Results</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* Layout: a single-column print proof. A process-colour bar marks the masthead, and severity is shown with ink-style chips. */
+/* Atarim brand, light theme only (deliberate single theme). Single column report, cards on white. */
 :root {
-  --paper: #f6f7f9;
-  --sheet: #ffffff;
-  --ink: #161a22;
-  --muted: #586070;
-  --rule: #dce0e7;
-  --accent: #0a6a8f;
-  --high: #b3164f;
-  --high-bg: #fbe8ef;
-  --med: #8a5a00;
-  --med-bg: #fdf1d8;
-  --low: #3f5f7a;
-  --low-bg: #e7eef5;
-  --good: #23704a;
-  --good-bg: #e3f3ea;
-  --none: #6b7280;
-  --none-bg: #eceef2;
-  --c: #00a3d9; --m: #d4006f; --y: #f2c500; --k: #1b1b1b;
-  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --f-body: "Source Sans 3", "Segoe UI", Roboto, Arial, sans-serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #101318; --sheet: #171b22; --ink: #e6e9ef; --muted: #9ba4b4; --rule: #2a313c;
-    --accent: #52c2ea; --high: #f27aa5; --high-bg: #3a1424; --med: #eab65a; --med-bg: #362810;
-    --low: #9cbcd8; --low-bg: #1c2a38; --good: #66cc95; --good-bg: #13301f; --none: #a2a9b6; --none-bg: #242a33;
-    --k: #e6e9ef; color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #101318; --sheet: #171b22; --ink: #e6e9ef; --muted: #9ba4b4; --rule: #2a313c;
-  --accent: #52c2ea; --high: #f27aa5; --high-bg: #3a1424; --med: #eab65a; --med-bg: #362810;
-  --low: #9cbcd8; --low-bg: #1c2a38; --good: #66cc95; --good-bg: #13301f; --none: #a2a9b6; --none-bg: #242a33;
-  --k: #e6e9ef; color-scheme: dark;
+  --primary: #6d5df3; --primary-deep: #5546d8; --primary-wordmark: #052055;
+  --accent: #17de88; --accent-deep: #0fb86f;
+  --canvas: #ffffff; --subtle: #f6f4ff; --brand-soft: #f1effe;
+  --text-strong: #1a1f2e; --text: #363d4d; --text-dim: #535768;
+  --rule: rgba(54,61,77,0.08); --rule-strong: rgba(54,61,77,0.16);
+  --shadow-tier1: rgba(0,0,51,0.06) 0px 0px 0px 1px, rgba(0,0,0,0.08) 0px 0px 10px 0px, rgba(0,0,85,0.024) 0px 16px 64px 0px;
+  --radius-button: 8px; --radius-card: 18px; --radius-image: 7px; --radius-pill: 999px;
+  --font-body: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  /* status (reserved, always shown with a text label) */
+  --crit: #c62828; --crit-bg: #fdecec;
+  --high: #b35c00; --high-bg: #fff3e3;
+  --med: #2f6fd1; --med-bg: #eaf2fd;
+  --low: #5b6170; --low-bg: #f0f1f4;
+  --ok: #0b8f57; --ok-bg: #e6f8ef;
+  color-scheme: light;
 }
 * { box-sizing: border-box; }
-body { background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 17px; line-height: 1.6; }
-.wrap { max-width: 1040px; margin: 0 auto; padding-inline: 20px; padding-block: 32px 72px; }
-h1, h2, h3 { font-family: var(--f-display); line-height: 1.2; text-wrap: balance; margin: 0; }
-h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.02em; }
-h2 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.01em; }
-h3 { font-size: 1.15rem; font-weight: 700; }
-p { margin: 0; max-width: 68ch; }
-a { color: var(--accent); }
-a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-code, .mono { font-family: var(--f-mono); font-size: 0.86em; }
-.eyebrow { font-family: var(--f-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-
-/* Masthead */
-.masthead { display: grid; gap: 18px; padding-bottom: 28px; border-bottom: 1px solid var(--rule); }
-.colourbar { display: flex; gap: 4px; }
-.colourbar span { width: 22px; height: 10px; }
-.colourbar span:nth-child(1) { background: var(--c); }
-.colourbar span:nth-child(2) { background: var(--m); }
-.colourbar span:nth-child(3) { background: var(--y); }
-.colourbar span:nth-child(4) { background: var(--k); }
-.meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px 28px; margin: 0; }
-.meta-grid div { min-width: 0; }
-.meta-grid dt { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-.meta-grid dd { margin: 2px 0 0; font-weight: 600; overflow-wrap: anywhere; }
-.lede { font-size: 1.15rem; color: var(--muted); }
-
-/* Contents */
-nav.toc { margin-top: 28px; }
-nav.toc ol { list-style: none; padding: 0; margin: 10px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 4px 24px; counter-reset: toc; }
-nav.toc li { counter-increment: toc; }
-nav.toc a { text-decoration: none; color: var(--ink); display: flex; gap: 10px; padding: 3px 0; }
-nav.toc a::before { content: counter(toc, decimal-leading-zero); font-family: var(--f-mono); font-size: 0.8rem; color: var(--muted); padding-top: 3px; }
-nav.toc a:hover { color: var(--accent); }
-
-/* Sections */
-section { padding-top: 48px; display: grid; gap: 16px; counter-increment: sec; }
-main { counter-reset: sec; }
-section > .eyebrow::before { content: "Section " counter(sec, decimal-leading-zero) " · "; }
-.callout { background: var(--sheet); border: 1px solid var(--rule); padding: 18px 20px; display: grid; gap: 8px; }
-.callout.good { border-left: 4px solid var(--good); }
-.callout.info { border-left: 4px solid var(--accent); }
-.callout.warn { border-left: 4px solid var(--med); }
-ul.plain { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; max-width: 72ch; }
-
-/* KPI tiles */
-.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
-.kpi { background: var(--sheet); border: 1px solid var(--rule); padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
-.kpi .num { font-family: var(--f-display); font-size: 2rem; font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1.1; }
-.kpi .lbl { font-size: 0.92rem; color: var(--muted); line-height: 1.35; }
-
-/* Tables */
-.tbl { overflow-x: auto; border: 1px solid var(--rule); background: var(--sheet); }
-table { border-collapse: collapse; width: 100%; font-size: 0.93rem; }
-th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--rule); }
-th { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; background: var(--paper); white-space: nowrap; }
-tbody tr:last-child td { border-bottom: 0; }
-td.n { font-variant-numeric: tabular-nums; white-space: nowrap; font-family: var(--f-mono); font-size: 0.86rem; }
-td.issue { font-weight: 600; min-width: 170px; }
-td.act { min-width: 240px; }
-.wide table { min-width: 860px; }
-
-/* Chips */
-.chip { display: inline-block; font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; white-space: nowrap; font-weight: 500; }
-.chip.high { color: var(--high); background: var(--high-bg); }
-.chip.med { color: var(--med); background: var(--med-bg); }
-.chip.low { color: var(--low); background: var(--low-bg); }
-.chip.good { color: var(--good); background: var(--good-bg); }
-.chip.none { color: var(--none); background: var(--none-bg); }
-
-/* Pass-rate bars */
-.bars { display: grid; gap: 12px; background: var(--sheet); border: 1px solid var(--rule); padding: 18px 20px; }
-.bar { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) 4.5rem; gap: 12px; align-items: center; }
-.bar .name { font-size: 0.93rem; }
-.bar .track { height: 12px; background: var(--paper); border: 1px solid var(--rule); position: relative; }
-.bar .fill { position: absolute; inset: 0 auto 0 0; background: var(--accent); }
-.bar .val { font-family: var(--f-mono); font-size: 0.85rem; text-align: right; font-variant-numeric: tabular-nums; }
-.bars .axis { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) 4.5rem; gap: 12px; font-family: var(--f-mono); font-size: 0.7rem; color: var(--muted); }
-.bars .axis .ticks { display: flex; justify-content: space-between; }
-@media (max-width: 620px) {
-  .bar, .bars .axis { grid-template-columns: minmax(0, 1fr) 4rem; }
-  .bar .name { grid-column: 1 / -1; }
-  .bars .axis span:first-child { display: none; }
-}
-
-/* Details */
-details { background: var(--sheet); border: 1px solid var(--rule); }
-summary { cursor: pointer; padding: 10px 14px; font-weight: 600; font-size: 0.95rem; }
-details > div { padding: 0 14px 14px; display: grid; gap: 8px; }
-details ul { margin: 0; padding-left: 1.2em; font-family: var(--f-mono); font-size: 0.82rem; overflow-wrap: anywhere; }
-
-/* Phases */
-.phases { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
-.phase { background: var(--sheet); border: 1px solid var(--rule); border-top: 4px solid var(--accent); padding: 16px 18px; display: grid; gap: 8px; align-content: start; }
-.phase:nth-child(2) { border-top-color: var(--m); }
-.phase:nth-child(3) { border-top-color: var(--y); }
-.phase:nth-child(4) { border-top-color: var(--k); }
-.phase ul { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; font-size: 0.95rem; }
-.phase .when { font-family: var(--f-mono); font-size: 0.75rem; color: var(--muted); }
-
-footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.9rem; display: grid; gap: 6px; }
-@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
 html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--canvas); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+.container { max-width: 1040px; margin: 0 auto; padding-inline: 20px; }
+code, .mono { font-family: var(--font-mono); font-size: 0.86em; }
+a { color: var(--primary); }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 
-/* After-report additions */
-.chip.fixed { color: var(--good); background: var(--good-bg); }
-.chip.partial { color: var(--med); background: var(--med-bg); }
-.chip.client { color: var(--high); background: var(--high-bg); }
-td.before { color: var(--muted); }
-td.after { font-weight: 600; }
-.delta { font-family: var(--f-mono); font-size: 0.8rem; color: var(--good); white-space: nowrap; }
-.kpi .from { font-family: var(--f-mono); font-size: 0.78rem; color: var(--muted); }
+/* topbar */
+.topbar { border-bottom: 1px solid var(--rule); background: rgba(255,255,255,0.92); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; backdrop-filter: blur(12px); }
+.topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.atarim-logo { height: 26px; width: auto; display: block; }
+.brand-tag, .pill { font-family: var(--font-mono); font-size: 11px; font-weight: 500; color: var(--primary); padding: 4px 10px; border-radius: var(--radius-pill); background: var(--brand-soft); }
+.topmeta { font-family: var(--font-mono); font-size: 12px; color: var(--text-dim); }
+.topmeta b { color: var(--text-strong); font-weight: 500; }
+
+/* hero */
+.hero { position: relative; padding-block: 48px 24px; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; z-index: -1; background: radial-gradient(at 6% 12%, rgba(195,137,245,0.14) 0px, transparent 50%), radial-gradient(at 96% 21%, rgba(127,209,250,0.12) 0px, transparent 50%), radial-gradient(at 71% 76%, rgba(58,42,201,0.05) 0px, transparent 50%), var(--canvas); }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: var(--radius-pill); background: white; box-shadow: var(--shadow-tier1); font-family: var(--font-mono); font-size: 12px; color: var(--primary); font-weight: 500; }
+.eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+h1 { font-weight: 900; font-size: clamp(34px, 6vw, 56px); line-height: 1.02; letter-spacing: -2px; color: var(--text-strong); margin: 22px 0 0; text-wrap: balance; }
+h2 { font-weight: 900; font-size: clamp(26px, 4vw, 36px); line-height: 1.08; letter-spacing: -1.2px; color: var(--text-strong); margin: 0; text-wrap: balance; }
+h3 { font-weight: 700; font-size: 18px; line-height: 1.25; letter-spacing: -0.3px; color: var(--text-strong); margin: 0; }
+p { margin: 0; max-width: 70ch; }
+.grad { background: linear-gradient(135deg, var(--primary) 0%, var(--accent-deep) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.lede { font-size: 19px; color: var(--text-dim); margin-top: 18px; max-width: 64ch; }
+
+/* kpi tiles */
+.kpis { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin-top: 32px; }
+.kpi { background: white; border-radius: var(--radius-card); box-shadow: var(--shadow-tier1); padding: 20px 22px; display: grid; gap: 4px; align-content: start; }
+.kpi .num { font-weight: 900; font-size: 40px; letter-spacing: -1.5px; line-height: 1; font-variant-numeric: tabular-nums; color: var(--text-strong); }
+.kpi .num small { font-size: 20px; letter-spacing: -0.5px; }
+.kpi .num.bad { color: var(--crit); } .kpi .num.good { color: var(--ok); } .kpi .num.warn { color: var(--high); }
+.kpi .k { font-weight: 700; color: var(--text-strong); font-size: 15px; }
+.kpi .d { font-size: 13px; color: var(--text-dim); }
+
+/* contents */
+.toc { background: var(--subtle); border-radius: var(--radius-card); padding: 24px 28px; margin-top: 32px; }
+.toc .label { margin-bottom: 12px; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); grid-template-rows: repeat(8, auto); grid-auto-flow: column; gap: 6px 32px; counter-reset: t; }
+.toc li { counter-increment: t; }
+.toc a { display: flex; gap: 12px; color: var(--text-strong); text-decoration: none; font-size: 15px; }
+.toc a::before { content: counter(t, decimal-leading-zero); font-family: var(--font-mono); font-size: 12px; color: var(--primary); padding-top: 2px; }
+.toc a:hover { color: var(--primary); }
+
+/* sections */
+section.s { padding-block: 56px 8px; border-top: 1px solid var(--rule); margin-top: 48px; display: grid; gap: 20px; }
+.label { font-family: var(--font-mono); font-size: 12px; color: var(--primary); font-weight: 500; display: inline-flex; align-items: center; gap: 8px; }
+.label::before { content: ''; width: 16px; height: 2px; background: var(--primary); border-radius: 2px; }
+.section-lede { font-size: 16px; color: var(--text-dim); }
+.prose { display: grid; gap: 12px; font-size: 15px; }
+
+/* cards */
+.card { background: white; border-radius: var(--radius-card); box-shadow: var(--shadow-tier1); padding: 22px 24px; display: grid; gap: 10px; min-width: 0; }
+.card .tag { font-family: var(--font-mono); font-size: 11px; font-weight: 500; }
+.tag.crit { color: var(--crit); } .tag.high { color: var(--high); } .tag.ok { color: var(--ok); } .tag.med { color: var(--med); }
+.card.edge-crit { border-left: 4px solid var(--crit); } .card.edge-high { border-left: 4px solid #e8902a; }
+.card.edge-med { border-left: 4px solid var(--med); } .card.edge-low { border-left: 4px solid #9aa0ad; } .card.edge-ok { border-left: 4px solid var(--accent-deep); }
+.find-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.find-head h3 { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.fid { font-family: var(--font-mono); font-size: 12px; color: var(--text-dim); font-weight: 500; }
+.urls { font-family: var(--font-mono); font-size: 12.5px; color: var(--text); overflow-wrap: anywhere; }
+.urls b { font-weight: 500; color: var(--text-strong); display: block; margin-bottom: 4px; font-family: var(--font-mono); }
+.action { background: var(--subtle); border-radius: 12px; padding: 14px 16px; display: grid; gap: 4px; }
+.action .t { font-family: var(--font-mono); font-size: 11px; color: var(--primary); font-weight: 500; }
+.action p { font-size: 15px; color: var(--text-strong); }
+.stack { display: grid; gap: 16px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+
+/* chips */
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: var(--radius-pill); font-family: var(--font-mono); font-size: 11px; font-weight: 500; white-space: nowrap; border: 1px solid currentColor; }
+.chip::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.chip.crit { color: var(--crit); background: var(--crit-bg); } .chip.high { color: var(--high); background: var(--high-bg); }
+.chip.med { color: var(--med); background: var(--med-bg); } .chip.low { color: var(--low); background: var(--low-bg); }
+.chip.ok { color: var(--ok); background: var(--ok-bg); } .chip.na { color: var(--low); background: white; }
+
+/* status list rows */
+.rows { background: white; border-radius: var(--radius-card); box-shadow: var(--shadow-tier1); overflow: hidden; }
+.row { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.6fr) auto; gap: 16px; padding: 14px 22px; border-bottom: 1px solid var(--rule); align-items: center; }
+.row:last-child { border-bottom: 0; }
+.row .n { font-weight: 700; color: var(--text-strong); font-size: 15px; }
+.row .v { font-size: 14px; color: var(--text-dim); }
+
+/* tables */
+.tbl { background: white; border-radius: var(--radius-card); box-shadow: var(--shadow-tier1); overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th { text-align: left; font-family: var(--font-mono); font-size: 11px; font-weight: 500; color: var(--text-dim); padding: 12px 14px; border-bottom: 1px solid var(--rule-strong); white-space: nowrap; background: white; }
+td { padding: 11px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td.i { font-weight: 700; color: var(--text-strong); min-width: 150px; }
+td.n, th.n { text-align: right; font-family: var(--font-mono); font-size: 12.5px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.u { font-family: var(--font-mono); font-size: 12.5px; overflow-wrap: anywhere; min-width: 150px; }
+td.a { min-width: 220px; }
+.wide table { min-width: 860px; }
+.note { font-family: var(--font-mono); font-size: 11.5px; color: var(--text-dim); max-width: none; }
+
+/* charts */
+.chart { background: white; border-radius: var(--radius-card); box-shadow: var(--shadow-tier1); padding: 22px 24px; display: grid; gap: 14px; }
+.chart .sub { font-size: 13px; color: var(--text-dim); }
+.hbar { display: grid; grid-template-columns: minmax(0, 9.5rem) minmax(0, 1fr) 5.5rem; gap: 12px; align-items: center; font-size: 13.5px; }
+.hbar .lab { text-align: right; color: var(--text); }
+.hbar .trk { position: relative; height: 20px; }
+.hbar .bar { position: absolute; inset: 0 auto 0 0; border-radius: 0 4px 4px 0; background: #c6bffb; }
+.hbar .bar.hi { background: var(--primary); }
+.hbar .val { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-strong); font-variant-numeric: tabular-nums; }
+.hbar .ref { position: absolute; top: -4px; bottom: -4px; width: 0; border-left: 2px dashed var(--text-dim); }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 12.5px; color: var(--text-dim); padding-top: 10px; border-top: 1px solid var(--rule); }
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.sw { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+.stackbar { display: flex; gap: 2px; height: 26px; }
+.stackbar div { display: flex; align-items: center; justify-content: center; color: white; font-family: var(--font-mono); font-size: 12px; font-weight: 500; }
+.stackbar div:first-child { border-radius: 4px 0 0 4px; } .stackbar div:last-child { border-radius: 0 4px 4px 0; }
+.sb-ok { background: var(--accent-deep); } .sb-warn { background: #e8902a; } .sb-bad { background: var(--crit); }
+svg text { font-family: var(--font-body); }
+
+.outline { font-family: var(--font-mono); font-size: 12px; line-height: 1.9; }
+.outline span { display: inline-block; padding: 0 6px; border-radius: 4px; background: var(--brand-soft); color: var(--primary-deep); margin: 1px 2px; }
+.outline span.bad { background: var(--crit-bg); color: var(--crit); }
+
+.phases { display: grid; gap: 16px; }
+.phase ul { margin: 0; padding-left: 0; list-style: none; display: grid; gap: 8px; font-size: 15px; }
+.phase li { display: flex; gap: 12px; } .phase li::before { content: ''; flex: none; width: 8px; height: 8px; margin-top: 8px; border-radius: 2px; background: #c6bffb; }
+.phase .t { font-family: var(--font-mono); font-size: 12px; color: var(--primary); font-weight: 500; }
+
+footer { margin-top: 56px; padding-block: 24px 48px; border-top: 1px solid var(--rule); font-family: var(--font-mono); font-size: 12px; color: var(--text-dim); display: grid; gap: 4px; }
+
+@media (max-width: 760px) {
+  .kpis, .toc ol, .grid3 { grid-template-columns: 1fr; }
+  .toc ol { grid-template-rows: none; grid-auto-flow: row; }
+  .row { grid-template-columns: minmax(0,1fr) auto; }
+  .row .v { grid-column: 1 / -1; grid-row: 2; }
+  .hbar { grid-template-columns: minmax(0, 1fr) 4.5rem; }
+  .hbar .lab { grid-column: 1 / -1; text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.was { font-family: var(--font-mono); font-size: 12px; color: var(--text-dim); text-decoration: line-through; text-decoration-color: rgba(83,87,104,0.5); }
+.now { font-weight: 700; color: var(--text-strong); }
+td.b { color: var(--text-dim); }
+td.af { font-weight: 700; color: var(--text-strong); }
+.kpi .from { font-family: var(--font-mono); font-size: 12px; color: var(--text-dim); }
+.hbar .bar.before { background: #d9d6e8; }
+.pair { display: grid; gap: 3px; }
+.pair .trk { height: 14px; }
 </style>
 
-<div class="wrap">
-<header class="masthead">
-  <div class="colourbar" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-  <div class="eyebrow">SEO Audit Report · After implementation</div>
-  <h1>Lakewood Printing SEO Results</h1>
-  <p class="lede">This report shows what changed on lakewood.net.au after the issues in the baseline audit were fixed. It also gives the site's current SEO status. It follows the same sections as the Before report so the two can be read side by side.</p>
-  <dl class="meta-grid">
-    <div><dt>Website</dt><dd>https://lakewood.net.au</dd></div>
-    <div><dt>Work completed</dt><dd>7 October 2026</dd></div>
-    <div><dt>Compared against</dt><dd>Baseline of 7 October 2026</dd></div>
-    <div><dt>Report type</dt><dd>After SEO implementation</dd></div>
-  </dl>
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="brand">
+      <svg class="atarim-logo" viewBox="0 0 291 80" xmlns="http://www.w3.org/2000/svg" fill="none" aria-label="Atarim">
+        <path d="M70.038 57.6165L55.7483 62.8644L63.6592 78.1047L80.6972 78.0848L70.038 57.6165Z" fill="#052055"/>
+        <path d="M40.3442 0.381104L0 78.0849H17.0475L40.3391 33.1781L48.7368 49.3569L63.0266 44.1089L40.3442 0.381104Z" fill="#052055"/>
+        <path d="M17.0106 78.1106L27.9428 57.0615L78.8349 37.7051L17.0106 78.1106Z" fill="#6D5DF3"/>
+        <path d="M108.642 68.0594V78.9102H102.13C97.4883 78.9102 93.87 77.7752 91.2747 75.5053C88.6793 73.2359 87.3817 69.5317 87.3821 64.3927V47.7799H82.2915V37.1537H87.3821V26.9763H100.183V37.1537H108.568V47.7799H100.183V64.5425C100.183 65.79 100.483 66.688 101.082 67.2365C101.68 67.7858 102.679 68.0601 104.076 68.0594L108.642 68.0594Z" fill="#052055"/>
+        <path d="M115.641 46.6573C117.262 43.4149 119.471 40.9206 122.266 39.1743C125.071 37.4253 128.318 36.5163 131.624 36.5551C134.568 36.5551 137.151 37.1538 139.372 38.351C141.472 39.4367 143.242 41.0646 144.5 43.0655V37.1538H157.301V78.9103H144.5V72.9986C143.2 74.9913 141.408 76.6151 139.297 77.7131C137.076 78.9103 134.493 79.509 131.549 79.509C128.263 79.5402 125.038 78.6174 122.266 76.8524C119.471 75.0821 117.262 72.5627 115.641 69.2942C114.019 66.0275 113.208 62.2484 113.208 57.957C113.208 53.6671 114.019 49.9005 115.641 46.6573ZM141.842 50.474C141.006 49.6018 140.002 48.9071 138.891 48.4314C137.779 47.9556 136.584 47.7087 135.375 47.7052C134.166 47.7017 132.969 47.9417 131.855 48.411C130.741 48.8803 129.733 49.5692 128.891 50.4366C127.119 52.2581 126.234 54.7649 126.234 57.957C126.234 61.1505 127.12 63.6823 128.891 65.5527C129.722 66.4355 130.724 67.1397 131.836 67.6222C132.948 68.1048 134.147 68.3554 135.359 68.359C136.571 68.3625 137.771 68.1187 138.886 67.6426C140.001 67.1665 141.007 66.4681 141.842 65.5901C143.613 63.745 144.499 61.2255 144.5 58.0319C144.5 54.84 143.614 52.3207 141.842 50.474Z" fill="#052055"/>
+        <path d="M184.998 38.6879C187.267 37.36 189.855 36.6745 192.484 36.7048V50.2496H188.966C185.771 50.2496 183.376 50.9356 181.779 52.3076C180.181 53.6802 179.383 56.0873 179.384 59.5289V78.9106H166.583V37.154H179.384V44.1133C180.806 41.8915 182.729 40.0334 184.998 38.6879Z" fill="#052055"/>
+        <path d="M211.424 37.1538V78.9104H198.622V37.1538H211.424Z" fill="#052055"/>
+        <path d="M286.396 41.4191C289.466 44.562 291 48.9273 291 54.515V78.9104H278.274V56.2361C278.274 53.5421 277.563 51.4592 276.141 49.9874C274.718 48.5166 272.759 47.7808 270.264 47.7801C267.767 47.7801 265.809 48.5158 264.388 49.9874C262.965 51.4595 262.254 53.5424 262.254 56.2361V78.9104H249.527V56.2361C249.527 53.5421 248.816 51.4592 247.394 49.9874C245.971 48.5166 244.013 47.7808 241.517 47.7801C239.021 47.7801 237.062 48.5158 235.641 49.9874C234.219 51.4595 233.507 53.5424 233.507 56.2361V78.9104H220.706V37.1538H233.507V42.3921C234.842 40.6156 236.589 39.1902 238.598 38.2388C240.819 37.1887 243.253 36.6638 245.71 36.7046C248.854 36.7046 251.661 37.3781 254.131 38.7251C256.578 40.0493 258.592 42.0497 259.933 44.4874C261.414 42.1603 263.445 40.2329 265.847 38.8748C268.323 37.4331 271.141 36.6835 274.007 36.7046C279.197 36.7046 283.326 38.2761 286.396 41.4191Z" fill="#052055"/>
+        <path d="M202.508 22.299C202.396 21.8634 202.168 21.4658 201.85 21.1477C201.532 20.8296 201.135 20.6026 200.699 20.4902L192.977 18.4989C192.845 18.4615 192.729 18.3822 192.647 18.2729C192.564 18.1636 192.519 18.0304 192.519 17.8934C192.519 17.7565 192.564 17.6233 192.647 17.514C192.729 17.4047 192.845 17.3254 192.977 17.288L200.699 15.2954C201.135 15.1832 201.532 14.9563 201.85 14.6384C202.168 14.3206 202.395 13.9233 202.508 13.4879L204.499 5.76566C204.536 5.63339 204.615 5.51686 204.725 5.43385C204.834 5.35084 204.968 5.30591 205.105 5.30591C205.243 5.30591 205.376 5.35084 205.486 5.43385C205.595 5.51686 205.674 5.63339 205.711 5.76566L207.701 13.4879C207.814 13.9235 208.041 14.3211 208.359 14.6392C208.677 14.9573 209.075 15.1843 209.51 15.2967L217.232 17.2867C217.365 17.3234 217.482 17.4026 217.566 17.5122C217.649 17.6217 217.694 17.7557 217.694 17.8934C217.694 18.0312 217.649 18.1652 217.566 18.2747C217.482 18.3843 217.365 18.4635 217.232 18.5002L209.51 20.4902C209.075 20.6026 208.677 20.8296 208.359 21.1477C208.041 21.4658 207.814 21.8634 207.701 22.299L205.71 30.0212C205.673 30.1535 205.594 30.27 205.484 30.3531C205.375 30.4361 205.241 30.481 205.104 30.481C204.967 30.481 204.833 30.4361 204.724 30.3531C204.614 30.27 204.535 30.1535 204.498 30.0212L202.508 22.299Z" fill="#6D5DF3"/>
+        <path d="M215.174 6.56494V11.5998" stroke="#6D5DF3" stroke-width="1.52" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M217.692 9.08228H212.657" stroke="#6D5DF3" stroke-width="1.52" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M195.035 24.187V26.7045" stroke="#6D5DF3" stroke-width="1.52" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M196.294 25.4456H193.776" stroke="#6D5DF3" stroke-width="1.52" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand-tag">SEO results</span>
+    </div>
+    <div class="topmeta">lakewood.net.au · completed <b>7 Oct 2026</b> · <b>5</b> pages</div>
+  </div>
+</div>
+
+<div class="container">
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <span class="eyebrow"><span class="eyebrow-dot"></span>After implementation · fixes verified on the live site · 7 October 2026</span>
+  <h1>SEO results for <span class="grad">lakewood.net.au</span></h1>
+  <p class="lede">Every issue in the baseline audit has been fixed on the live site. This report sets each one beside its before figure, using the same sections as the baseline, and shows the site's SEO status now.</p>
+  <div class="kpis">
+    <div class="kpi"><span class="from">Before 85</span><span class="num good">100</span><span class="k">Lighthouse SEO score</span><span class="d">On all five pages, with no failing checks.</span></div>
+    <div class="kpi"><span class="from">Before 0 of 5</span><span class="num good">5 <small>of 5</small></span><span class="k">Pages with a meta description</span><span class="d">Each one written by hand, 148–157 characters.</span></div>
+    <div class="kpi"><span class="from">Before 23 of 24</span><span class="num good">0</span><span class="k">Images without alt text</span><span class="d">All 41 image tags across the five pages are described.</span></div>
+    <div class="kpi"><span class="from">Before 90.5–92.3</span><span class="num good">97.4</span><span class="k">On-page audit score</span><span class="d">The same score on every page.</span></div>
+  </div>
+  <nav class="toc" aria-label="Contents">
+    <div class="label">Contents</div>
+    <ol>
+      <li><a href="#s1">Executive summary</a></li>
+      <li><a href="#s2">SEO health overview</a></li>
+      <li><a href="#s3">Key findings: resolved</a></li>
+      <li><a href="#s4">Technical SEO</a></li>
+      <li><a href="#s5">Crawlability &amp; indexability</a></li>
+      <li><a href="#s6">On-page SEO</a></li>
+      <li><a href="#s7">Metadata</a></li>
+      <li><a href="#s8">Heading structure</a></li>
+      <li><a href="#s9">URL &amp; canonical</a></li>
+      <li><a href="#s10">Redirects &amp; status codes</a></li>
+      <li><a href="#s11">Internal linking</a></li>
+      <li><a href="#s12">Image SEO</a></li>
+      <li><a href="#s13">Duplicate &amp; thin content</a></li>
+      <li><a href="#s14">Issue resolution</a></li>
+      <li><a href="#s15">Next steps</a></li>
+      <li><a href="#s16">Before vs after baseline</a></li>
+    </ol>
+  </nav>
 </header>
 
-<nav class="toc" aria-label="Contents">
-  <div class="eyebrow">Contents</div>
-  <ol>
-    <li><a href="#summary">Executive Summary</a></li>
-    <li><a href="#health">Website SEO Health Overview</a></li>
-    <li><a href="#findings">Key Findings</a></li>
-    <li><a href="#technical">Technical SEO</a></li>
-    <li><a href="#crawl">Crawlability &amp; Indexability</a></li>
-    <li><a href="#onpage">On-Page SEO</a></li>
-    <li><a href="#metadata">Metadata</a></li>
-    <li><a href="#headings">Heading Structure</a></li>
-    <li><a href="#urls">URL &amp; Canonical</a></li>
-    <li><a href="#status">Redirects &amp; Status Codes</a></li>
-    <li><a href="#links">Internal Linking</a></li>
-    <li><a href="#images">Image SEO</a></li>
-    <li><a href="#thin">Duplicate &amp; Thin Content</a></li>
-    <li><a href="#priorities">Issue Resolution Summary</a></li>
-    <li><a href="#plan">Next Steps</a></li>
-    <li><a href="#baseline">Before vs After Baseline</a></li>
-  </ol>
-</nav>
-
-<main>
-
-<!-- 1 -->
-<section id="summary">
-  <div class="eyebrow">Executive Summary</div>
-  <h2>Every issue from the baseline audit is fixed</h2>
-  <p>All issues in the baseline audit have been worked through on the live site, and every finding is fixed. The social media icons stay on the site exactly as they looked. Lakewood Printing has no social profiles, so the icons are now plain icons instead of empty or placeholder links. If profiles are created later, adding their addresses turns the icons back into normal links automatically.</p>
-  <p>The site's design, page addresses, navigation and contact form are unchanged. Screenshots taken before and after show the Home and Services pages are pixel-identical apart from one button label. On the other pages, the only visible change is the extra paragraphs of copy.</p>
-  <div class="kpis">
-    <div class="kpi"><span class="from">Before 85*</span><span class="num">100</span><span class="lbl">Lighthouse SEO score on every page</span></div>
-    <div class="kpi"><span class="from">Before 0 / 5</span><span class="num">5 / 5</span><span class="lbl">Pages with a written meta description</span></div>
-    <div class="kpi"><span class="from">Before 2 / 5</span><span class="num">5 / 5</span><span class="lbl">Pages with 200+ words</span></div>
-    <div class="kpi"><span class="from">Before 23 of 24 missing</span><span class="num">0</span><span class="lbl">Images missing alt text</span></div>
-    <div class="kpi"><span class="from">Before 90.5–92.3</span><span class="num">97.4</span><span class="lbl">On-page audit score, all 5 pages</span></div>
+<!-- 01 -->
+<section class="s" id="s1">
+  <div class="label">01 — Executive summary</div>
+  <h2>Every baseline issue is fixed, and the <span class="grad">design is unchanged</span></h2>
+  <div class="prose">
+    <p>Every one of the 20 issues in the baseline audit has been fixed on the live site. Search engines now get a written title and description for every page, a clean heading outline, described images, descriptive links and a sitemap listing exactly the five real pages. WordPress's sample content is gone from search, and the site no longer loads images from the old staging server.</p>
+    <p>Page addresses, navigation, the contact form and the visual design are unchanged. Full-page screenshots taken before and after show Home, Services and Contact are pixel-identical apart from the deliberate changes: one button label, and the extra copy on Contact. About Us and What We Print differ only by their new paragraphs.</p>
+    <p>Rankings and traffic don't move straight away. Google has to re-crawl the pages first, so the first measurable change should appear in 4–8 weeks.</p>
   </div>
-  <p class="mono" style="color:var(--muted)">* The before score of 85 comes from the PageSpeed Insights screenshot supplied with the baseline (mobile, tested URL not shown). The after scores come from Lighthouse run through Atarim on each page, so treat the comparison as indicative rather than like-for-like.</p>
-  <div class="callout info">
-    <h3>How the results were measured</h3>
-    <ul class="plain">
-      <li><strong>Page audits</strong> on all five pages before and after (on-page score, titles, descriptions, heading tree, word count, social tags).</li>
-      <li><strong>Lighthouse</strong>: SEO on all five pages, plus Performance, Accessibility and Best Practices on the home page.</li>
-      <li><strong>A server-side check of the rendered pages</strong>: status codes, headings, image alt text, links, PHP errors, response headers, file content types, the sitemap and robots.txt.</li>
-      <li><strong>Full-page screenshots</strong> of every page before and after, desktop and mobile, compared pixel by pixel.</li>
-    </ul>
-    <p>Screaming Frog was not re-run for this report. A re-crawl with the same settings as the baseline will confirm these results in the original tool. See Section 15.</p>
+  <div class="card edge-ok">
+    <span class="tag ok">BIGGEST WIN</span>
+    <h3>Search results now show text Lakewood wrote</h3>
+    <p>Before, every page had no meta description and a title of 17–33 characters, so Google assembled the search result from whatever text it found. Each page now has a unique 52–60 character title and a 148–157 character description naming the services, Melbourne and how to get a quote.</p>
+  </div>
+  <div class="card edge-ok">
+    <span class="tag ok">RISK REMOVED</span>
+    <h3>The site no longer depends on the staging server</h3>
+    <p>45 images and backgrounds on the live pages were still loading from <code>lakewood-printing.stagingsea.com</code>. All 350 stored references have been changed to lakewood.net.au, so switching staging off can no longer break the site.</p>
+  </div>
+  <div class="card edge-ok">
+    <span class="tag ok">KEPT INTACT</span>
+    <h3>Crawl health is still perfect</h3>
+    <p>All five pages return 200, every canonical tag points to its own page, and nothing redirects except the author archive, which now goes to the home page by design. No PHP errors appear on any page.</p>
   </div>
 </section>
 
-<!-- 2 -->
-<section id="health">
-  <div class="eyebrow">Website SEO Health Overview</div>
-  <h2>Health by area: before and after</h2>
+<!-- 02 -->
+<section class="s" id="s2">
+  <div class="label">02 — Website SEO health overview</div>
+  <h2>Category by category, before and after</h2>
+  <p class="section-lede">The left-hand value is the baseline rating, struck through; the right is the rating now.</p>
+  <div class="rows">
+    <div class="row"><span class="n">Meta descriptions</span><span class="v"><span class="was">5 of 5 missing</span> → 5 of 5 written, 148–157 chars</span><span class="chip ok">Healthy</span></div>
+    <div class="row"><span class="n">Image alt text</span><span class="v"><span class="was">23 of 24 missing</span> → 0 missing</span><span class="chip ok">Healthy</span></div>
+    <div class="row"><span class="n">Meta titles</span><span class="v"><span class="was">17–33 chars</span> → 52–60 chars, all unique</span><span class="chip ok">Healthy</span></div>
+    <div class="row"><span class="n">Content depth</span><span class="v"><span class="was">3 pages under 200 words</span> → all 5 pages at 209+ words</span><span class="chip ok">Healthy</span></div>
+    <div class="row"><span class="n">Heading structure</span><span class="v"><span class="was">5 pages skip levels</span> → 0; every page has an H2</span><span class="chip ok">Healthy</span></div>
+    <div class="row"><span class="n">Index hygiene</span><span class="v"><span class="was">3 default URLs indexable</span> → 0</span><span class="chip ok">Healthy</span></div>
+    <div class="row"><span class="n">Links &amp; anchor text</span><span class="v"><span class="was">Empty and placeholder links</span> → 0 links without an address</span><span class="chip ok">Healthy</span></div>
+    <div class="row"><span class="n">Asset hosting</span><span class="v"><span class="was">45 staging references</span> → 0</span><span class="chip ok">Healthy</span></div>
+    <div class="row"><span class="n">Security headers</span><span class="v"><span class="was">0 of 5</span> → 5 of 5, site-wide</span><span class="chip ok">Healthy</span></div>
+    <div class="row"><span class="n">HTTP status, HTTPS, URLs, canonicals</span><span class="v">Healthy before, unchanged</span><span class="chip ok">Healthy</span></div>
+    <div class="row"><span class="n">XML sitemap</span><span class="v"><span class="was">Contents not checked</span> → 5 URLs, real pages only</span><span class="chip ok">Healthy</span></div>
+    <div class="row"><span class="n">Page speed</span><span class="v"><span class="was">Not measured</span> → Lighthouse Performance 66 (home)</span><span class="chip med">Monitor</span></div>
+    <div class="row"><span class="n">Structured data</span><span class="v">Organisation identity set in Yoast; rich results not tested</span><span class="chip na">No data</span></div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="s" id="s3">
+  <div class="label">03 — Key findings: resolved</div>
+  <h2>All twenty issues, and what happened to each</h2>
   <div class="tbl wide">
     <table>
-      <thead><tr><th>Area</th><th>Before</th><th>After</th><th>What changed</th></tr></thead>
+      <thead><tr><th>SEO issue</th><th>Priority</th><th>Before</th><th>After</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td class="issue">Metadata (titles &amp; descriptions)</td><td><span class="chip high">Poor</span></td><td><span class="chip good">Good</span></td><td>Unique titles of 52–60 characters and descriptions of 148–157 characters on all 5 pages.</td></tr>
-        <tr><td class="issue">Image SEO</td><td><span class="chip high">Poor</span></td><td><span class="chip good">Good</span></td><td>All 23 images used on the pages now have alt text describing what they show.</td></tr>
-        <tr><td class="issue">On-page content</td><td><span class="chip med">Needs work</span></td><td><span class="chip good">Good</span></td><td>About, What We Print and Contact expanded to 209–266 words, using only facts already on the site.</td></tr>
-        <tr><td class="issue">Duplicate &amp; thin content</td><td><span class="chip med">Needs work</span></td><td><span class="chip good">Good</span></td><td>The Hello World post is unpublished, the author archive redirects to the home page, and the Uncategorized archive is set to noindex.</td></tr>
-        <tr><td class="issue">Heading structure</td><td><span class="chip med">Needs work</span></td><td><span class="chip good">Good</span></td><td>Headings on all 5 pages now step down in order, every page has an H2, and each H1 comes first.</td></tr>
-        <tr><td class="issue">Internal linking</td><td><span class="chip med">Needs work</span></td><td><span class="chip good">Good</span></td><td>Vague link text is reworded, the logo links and menu button have text, and the social icons are no longer empty or placeholder links.</td></tr>
-        <tr><td class="issue">Crawlability &amp; indexability</td><td><span class="chip med">Mostly sound</span></td><td><span class="chip good">Good</span></td><td>A new XML sitemap lists exactly the 5 real pages, and robots.txt points to it.</td></tr>
-        <tr><td class="issue">Technical &amp; security</td><td><span class="chip low">Low risk</span></td><td><span class="chip good">Good</span></td><td>All 5 security headers are in place across the site, JavaScript is sent with the correct content type, and 350 old staging-server links are replaced.</td></tr>
-        <tr><td class="issue">URL structure</td><td><span class="chip good">Good</span></td><td><span class="chip good">Good</span></td><td>No page addresses were changed.</td></tr>
-        <tr><td class="issue">Canonicalisation</td><td><span class="chip good">Good</span></td><td><span class="chip good">Good</span></td><td>Each page's canonical tag points to itself (confirmed on all 5).</td></tr>
-        <tr><td class="issue">Redirects &amp; status codes</td><td><span class="chip good">Good</span></td><td><span class="chip good">Good</span></td><td>All 5 pages return 200. The removed pages return 404 or 301 by design.</td></tr>
-        <tr><td class="issue">Page performance</td><td><span class="chip none">Not measured</span></td><td><span class="chip partial">66 / 100</span></td><td>Now measured for the first time (home page, Lighthouse). Not part of this round of work. See Section 15.</td></tr>
-        <tr><td class="issue">XML sitemap &amp; robots.txt</td><td><span class="chip none">Not measured</span></td><td><span class="chip good">Good</span></td><td><code>sitemap_index.xml</code> contains the 5 pages only, and robots.txt declares it.</td></tr>
+        <tr><td class="i">Missing meta description</td><td><span class="chip high">High</span></td><td class="b">5 / 5 pages</td><td class="af">0</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Thin content on key pages</td><td><span class="chip high">High</span></td><td class="b">88 / 110 / 137 words</td><td class="af">209 / 266 / 245 words</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Page titles under 30 characters</td><td><span class="chip high">High</span></td><td class="b">3 / 5</td><td class="af">0 (52–60 chars)</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Default WordPress pages indexable</td><td><span class="chip high">High</span></td><td class="b">3</td><td class="af">0</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Links not crawlable</td><td><span class="chip high">High</span></td><td class="b">PageSpeed fail</td><td class="af">Lighthouse pass, 5 / 5</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Images loaded from staging server</td><td><span class="chip high">High</span></td><td class="b">45 on live pages</td><td class="af">0</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Images missing alt text</td><td><span class="chip med">Medium</span></td><td class="b">23 of 24</td><td class="af">0 of 41 tags</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Heading levels skip</td><td><span class="chip med">Medium</span></td><td class="b">5 / 5</td><td class="af">0</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">No H2 on the page</td><td><span class="chip med">Medium</span></td><td class="b">4 / 5</td><td class="af">0</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">H1 not the first heading</td><td><span class="chip med">Medium</span></td><td class="b">1 / 5</td><td class="af">0</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Internal links with no anchor text</td><td><span class="chip med">Medium</span></td><td class="b">5 / 5</td><td class="af">0*</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Non-descriptive anchor text</td><td><span class="chip med">Medium</span></td><td class="b">2 / 5</td><td class="af">0</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Orphan URLs</td><td><span class="chip med">Medium</span></td><td class="b">2</td><td class="af">0 indexable</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Hard-to-read copy</td><td><span class="chip med">Medium</span></td><td class="b">About 23.3, What We Print 35.0</td><td class="af">About 33.6, What We Print 46.6</td><td><span class="chip ok">Improved</span></td></tr>
+        <tr><td class="i">Security headers missing</td><td><span class="chip low">Low</span></td><td class="b">0 of 5</td><td class="af">5 of 5</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Bad content type</td><td><span class="chip low">Low</span></td><td class="b">26 URLs</td><td class="af">0*</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Unsafe cross-origin links</td><td><span class="chip low">Low</span></td><td class="b">5 URLs</td><td class="af">0</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">H2 not second heading</td><td><span class="chip low">Low</span></td><td class="b">1 / 5</td><td class="af">0</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Title under 200 pixels</td><td><span class="chip low">Low</span></td><td class="b">Home, 17 chars</td><td class="af">Home, 52 chars</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Spelling error</td><td><span class="chip low">Low</span></td><td class="b">"Calanders"</td><td class="af">"Calendars"</td><td><span class="chip ok">Fixed</span></td></tr>
       </tbody>
     </table>
   </div>
-
-  <h3>Share of main pages passing each check, after</h3>
-  <div class="bars" role="img" aria-label="Pass rates after: meta description 100%, title 30+ characters 100%, 200+ words 100%, has an H2 100%, headings in order 100%, image alt text 100%, links with anchor text 100%">
-    <div class="bar"><span class="name">Has a meta description</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="val">100%</span></div>
-    <div class="bar"><span class="name">Title 30+ characters</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="val">100%</span></div>
-    <div class="bar"><span class="name">200+ words of content</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="val">100%</span></div>
-    <div class="bar"><span class="name">Has at least one H2</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="val">100%</span></div>
-    <div class="bar"><span class="name">Headings in order (no skips)</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="val">100%</span></div>
-    <div class="bar"><span class="name">Images with alt text</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="val">100%</span></div>
-    <div class="bar"><span class="name">All links have anchor text</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="val">100%†</span></div>
-    <div class="axis" aria-hidden="true"><span></span><span class="ticks"><span>0%</span><span>50%</span><span>100%</span></span><span></span></div>
-  </div>
-  <p class="mono" style="color:var(--muted)">Before, these pass rates were 0%, 40%, 40%, 20%, 0%, 4.17% and 0% (Section 2 of the baseline). † Based on the rendered pages. Confirm with the Screaming Frog re-crawl.</p>
+  <p class="note">* Verified on the rendered pages and key files. Confirm in Screaming Frog with a re-crawl using the baseline settings (section 15).</p>
 </section>
 
-<!-- 3 -->
-<section id="findings">
-  <div class="eyebrow">Key Findings</div>
-  <h2>The seven key findings: before and after</h2>
+<!-- 04 -->
+<section class="s" id="s4">
+  <div class="label">04 — Technical SEO</div>
+  <h2>Platform, delivery and security, after</h2>
   <div class="tbl wide">
     <table>
-      <thead><tr><th>#</th><th>Finding</th><th>Before</th><th>After</th><th>Status</th></tr></thead>
+      <thead><tr><th>Check</th><th>Before</th><th>After</th><th>Assessment</th></tr></thead>
       <tbody>
-        <tr><td class="n">1</td><td class="issue">No meta descriptions</td><td class="before n">5 / 5 missing</td><td class="after n">0 / 5 missing</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="n">2</td><td class="issue">Default WordPress content live</td><td class="before n">3 URLs indexable</td><td class="after n">0 indexable</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="n">3</td><td class="issue">Thin main pages</td><td class="before n">3 / 5 under 200 words</td><td class="after n">0 / 5</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="n">4</td><td class="issue">Short page titles</td><td class="before n">3 / 5 under 30 chars</td><td class="after n">0 / 5 (52–60 chars)</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="n">5</td><td class="issue">Links not crawlable</td><td class="before n">PageSpeed fail</td><td class="after n">Pass</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="n">6</td><td class="issue">Images without alt text</td><td class="before n">23 / 24</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="n">7</td><td class="issue">Broken heading order</td><td class="before n">5 / 5 pages</td><td class="after n">0 / 5</td><td><span class="chip fixed">Fixed</span></td></tr>
+        <tr><td class="i">SEO plugin</td><td class="b">None</td><td class="af">Yoast SEO, configured</td><td><span class="chip ok">Pass</span></td></tr>
+        <tr><td class="i">Security headers</td><td class="b">0 of 5</td><td class="af">HSTS, X-Frame-Options, nosniff, Referrer-Policy, CSP</td><td><span class="chip ok">Pass</span></td></tr>
+        <tr><td class="i">JavaScript content type</td><td class="b"><code>application/x-javascript</code></td><td class="af"><code>application/javascript</code></td><td><span class="chip ok">Pass</span></td></tr>
+        <tr><td class="i">Staging-domain references</td><td class="b">45 rendered; 350 stored</td><td class="af">0</td><td><span class="chip ok">Pass</span></td></tr>
+        <tr><td class="i">HTTPS, response codes</td><td class="b">Pass</td><td class="af">Pass</td><td><span class="chip ok">Pass</span></td></tr>
+        <tr><td class="i">PHP errors on rendered pages</td><td class="b">—</td><td class="af">0</td><td><span class="chip ok">Pass</span></td></tr>
+        <tr><td class="i">Lighthouse Best Practices (home)</td><td class="b">Not measured</td><td class="af">100</td><td><span class="chip ok">Pass</span></td></tr>
+        <tr><td class="i">Lighthouse Accessibility (home)</td><td class="b">Not measured</td><td class="af">100</td><td><span class="chip ok">Pass</span></td></tr>
+        <tr><td class="i">Lighthouse Performance (home)</td><td class="b">Not measured</td><td class="af">66 · LCP 3.2 s · server 890 ms</td><td><span class="chip med">Monitor</span></td></tr>
+        <tr><td class="i">Plugin updates pending</td><td class="b">4</td><td class="af">4 (not in scope)</td><td><span class="chip low">Maintain</span></td></tr>
       </tbody>
     </table>
   </div>
-  <div class="callout good">
-    <h3>What we also found and fixed along the way</h3>
-    <ul class="plain">
-      <li><strong>Images were loading from the old staging server.</strong> Background images, social preview images and stored page data still pointed to <code>lakewood-printing.stagingsea.com</code>. If that server had gone offline, those images would have broken. All 350 references now point to lakewood.net.au, and none remain on the rendered pages.</li>
-      <li><strong>The "bad content type" files were JavaScript files</strong> sent with an outdated type (<code>application/x-javascript</code>). They are now sent as <code>application/javascript</code>.</li>
-      <li><strong>Social share previews used scraped page text.</strong> Facebook, LinkedIn and other link previews showed jumbled on-page text such as "SOLUTIONS We offer end-to-end solutions… find out more". They now show each page's written title and description.</li>
-    </ul>
+  <div class="card edge-ok">
+    <div class="find-head"><h3><span class="fid">TECH-01</span> Staging-server references replaced</h3><span class="chip ok">Fixed</span></div>
+    <p>A serialisation-safe search and replace changed 350 stored references, in page data and settings, from <code>lakewood-printing.stagingsea.com</code> to lakewood.net.au. The rendered pages, stylesheets and social share tags now contain no staging URLs.</p>
+  </div>
+  <div class="card edge-ok">
+    <div class="find-head"><h3><span class="fid">TECH-02</span> Content type corrected before turning on nosniff</h3><span class="chip ok">Fixed</span></div>
+    <p>JavaScript is now sent as <code>application/javascript</code>. The five headers sit in one labelled block in <code>.htaccess</code>, so they apply to every page and file. jQuery, Elementor, Elementor Pro and WPForms scripts, a WebP image, an SVG and a stylesheet were all fetched afterwards and load correctly. The Content-Security-Policy allows the site itself and Atarim's feedback tool to frame pages, and doesn't restrict scripts, so the page builder and form keep working.</p>
   </div>
 </section>
 
-<!-- 4 -->
-<section id="technical">
-  <div class="eyebrow">Technical SEO</div>
-  <h2>Server and security configuration</h2>
-  <p>The headers were added in one clearly labelled block in the server's <code>.htaccess</code> file, so they apply to every page, image and file on the site. The Content-Security-Policy is deliberately permissive, so the page builder and the contact form keep working, and it still allows Atarim's visual feedback tool to load the site.</p>
-  <div class="tbl wide">
-    <table>
-      <thead><tr><th>SEO issue</th><th>Before</th><th>After</th><th>Status</th><th>What was done</th></tr></thead>
-      <tbody>
-        <tr><td class="issue">HSTS header</td><td class="before">Missing on 86 / 86</td><td class="after"><code>max-age=31536000</code></td><td><span class="chip fixed">Fixed</span></td><td class="act">Added site-wide. Subdomains are not included, to avoid side effects.</td></tr>
-        <tr><td class="issue">X-Frame-Options</td><td class="before">Missing on 86 / 86</td><td class="after"><code>SAMEORIGIN</code></td><td><span class="chip fixed">Fixed</span></td><td class="act">Added site-wide.</td></tr>
-        <tr><td class="issue">X-Content-Type-Options</td><td class="before">Missing on 86 / 86</td><td class="after"><code>nosniff</code></td><td><span class="chip fixed">Fixed</span></td><td class="act">Added after first confirming every script, stylesheet and image is sent with a valid content type, so nothing gets blocked.</td></tr>
-        <tr><td class="issue">Referrer-Policy</td><td class="before">Missing on 86 / 86</td><td class="after"><code>strict-origin-when-cross-origin</code></td><td><span class="chip fixed">Fixed</span></td><td class="act">Added site-wide.</td></tr>
-        <tr><td class="issue">Content-Security-Policy</td><td class="before">Missing on 86 / 86</td><td class="after">Present</td><td><span class="chip fixed">Fixed</span></td><td class="act"><code>upgrade-insecure-requests; frame-ancestors 'self' https://*.atarim.io; base-uri 'self'; object-src 'none'</code></td></tr>
-        <tr><td class="issue">Bad content type</td><td class="before">26 / 86 (30.23%)</td><td class="after">JavaScript sent as <code>application/javascript</code></td><td><span class="chip fixed">Fixed</span></td><td class="act">Corrected the server's content type for <code>.js</code> files. Checked jQuery, Elementor, Elementor Pro and WPForms scripts, a WebP image, an SVG and a stylesheet: all are served correctly.</td></tr>
-        <tr><td class="issue">Unsafe cross-origin links</td><td class="before">5 / 86 (5.81%)</td><td class="after">0</td><td><span class="chip fixed">Fixed</span></td><td class="act">Added <code>rel="noopener"</code> to the flipbook link. Removed the placeholder facebook.com, instagram.com and pinterest.com links from the mobile menu and contact page icons.</td></tr>
-        <tr><td class="issue">Staging-server dependency</td><td class="before">Not in the CSV</td><td class="after">0 references rendered</td><td><span class="chip fixed">Fixed</span></td><td class="act">Replaced 350 references in page data and settings. The replacement was safe for serialised data.</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p>Lighthouse Best Practices on the home page now scores <strong>100</strong>.</p>
-</section>
-
-<!-- 5 -->
-<section id="crawl">
-  <div class="eyebrow">Crawlability &amp; Indexability</div>
+<!-- 05 -->
+<section class="s" id="s5">
+  <div class="label">05 — Crawlability &amp; indexability</div>
   <h2>Search engines now see only the five real pages</h2>
+  <div class="grid3">
+    <div class="kpi"><span class="num good">5</span><span class="k">Real pages, indexable</span><span class="d">Unchanged. All return 200.</span></div>
+    <div class="kpi"><span class="from">Before 3</span><span class="num good">0</span><span class="k">Default pages, indexable</span><span class="d">Removed, redirected or noindexed.</span></div>
+    <div class="kpi"><span class="from">Before: not checked</span><span class="num good">5</span><span class="k">URLs in the XML sitemap</span><span class="d">Exactly the five real pages.</span></div>
+  </div>
   <div class="tbl wide">
     <table>
       <thead><tr><th>URL / item</th><th>Before</th><th>After</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td class="mono">/hello-world/</td><td class="before">Live, indexable sample post</td><td class="after">Unpublished (returns 404, noindex)</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="mono">/hello-world/?replytocom=1</td><td class="before">noindex, canonicalised</td><td class="after">Returns 404 with the post</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="mono">/author/lakewood/</td><td class="before">Indexable, thin (97 words), orphan</td><td class="after">301 redirect to the home page</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="mono">/category/uncategorized/</td><td class="before">Indexable, thin (96 words), orphan</td><td class="after">noindex, not in sitemap</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="issue">XML sitemap</td><td class="before">WordPress default (contents not measured)</td><td class="after"><code>sitemap_index.xml</code> → <code>page-sitemap.xml</code> with exactly 5 URLs</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="issue">robots.txt</td><td class="before">Declared <code>wp-sitemap.xml</code></td><td class="after">Declares <code>sitemap_index.xml</code>; nothing important blocked</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="issue">Elementor template pages</td><td class="before">Not measured</td><td class="after">noindex, kept out of the sitemap</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="issue">Links not crawlable</td><td class="before">PageSpeed fail</td><td class="after">Lighthouse pass on all 5 pages</td><td><span class="chip fixed">Fixed</span></td></tr>
+        <tr><td class="u">/hello-world/</td><td class="b">Live sample post, indexable</td><td class="af">Unpublished, returns 404</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="u">/author/lakewood/</td><td class="b">97 words, indexable, orphan</td><td class="af">301 redirect to the home page</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="u">/category/uncategorized/</td><td class="b">96 words, indexable, orphan</td><td class="af">noindex, kept out of the sitemap</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">robots.txt</td><td class="b">Declared <code>wp-sitemap.xml</code></td><td class="af">Declares <code>sitemap_index.xml</code></td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Elementor templates, tags, attachments</td><td class="b">Indexable by default</td><td class="af">noindex</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Links not crawlable</td><td class="b">PageSpeed fail</td><td class="af">Lighthouse pass on all 5 pages</td><td><span class="chip ok">Fixed</span></td></tr>
       </tbody>
     </table>
   </div>
-  <details>
-    <summary>Sitemap contents after (5 URLs)</summary>
-    <div><ul>
-      <li>https://lakewood.net.au/</li>
-      <li>https://lakewood.net.au/about-us/</li>
-      <li>https://lakewood.net.au/what-we-print/</li>
-      <li>https://lakewood.net.au/services/</li>
-      <li>https://lakewood.net.au/contact-us/</li>
-    </ul></div>
-  </details>
-  <p>These indexing rules are managed by Yoast SEO, the industry-standard SEO plugin, which was installed and configured as part of this work.</p>
+  <div class="card edge-ok">
+    <div class="find-head"><h3><span class="fid">CRAWL-02</span> Social icons kept, empty links removed</h3><span class="chip ok">Fixed</span></div>
+    <p>Lakewood Printing has no social media profiles, so the icons now display as plain icons instead of links that go nowhere. They look exactly as before; only the hand cursor on hover is gone. The placeholder facebook.com, instagram.com and pinterest.com links in the mobile menu and on the contact page were cleared. A small must-use plugin (<code>lakewood-linkless-social-icons.php</code>) renders any icon without an address as plain text, so adding a real profile address later turns it back into a link automatically.</p>
+  </div>
 </section>
 
-<!-- 6 -->
-<section id="onpage">
-  <div class="eyebrow">On-Page SEO</div>
-  <h2>Content depth on the main pages</h2>
-  <p>New copy was added as extra paragraphs in the existing text sections, so it uses the same fonts, colours and spacing as the rest of each page. Every sentence restates something the website already says: services, products, ownership, contact details and the postal address. No new claims were introduced.</p>
+<!-- 06 -->
+<section class="s" id="s6">
+  <div class="label">06 — On-page SEO</div>
+  <h2>Every page now clears 200 words</h2>
+  <p class="section-lede">New copy was added as extra paragraphs inside each page's existing text section, so it uses the same fonts and spacing. Every sentence restates something the site already says. No new claims were introduced.</p>
+  <div class="chart" role="img" aria-label="Words per page before and after: Home 309 to 309, Services 294 to 294, About Us 110 to 266, What We Print 137 to 245, Contact Us 88 to 209. Reference line at 200 words.">
+    <h3>Words per page, before and after</h3>
+    <span class="sub">Top bar before, bottom bar after. Dashed line marks 200 words.</span>
+    <div class="hbar" title="Home: 309 words before, 309 after"><span class="lab">Home</span><div class="pair"><span class="trk"><span class="bar before" style="width:96.6%"></span><span class="ref" style="left:62.5%"></span></span><span class="trk"><span class="bar hi" style="width:96.6%"></span><span class="ref" style="left:62.5%"></span></span></div><span class="val">309 → 309</span></div>
+    <div class="hbar" title="Services: 294 words before, 294 after"><span class="lab">Services</span><div class="pair"><span class="trk"><span class="bar before" style="width:91.9%"></span><span class="ref" style="left:62.5%"></span></span><span class="trk"><span class="bar hi" style="width:91.9%"></span><span class="ref" style="left:62.5%"></span></span></div><span class="val">294 → 294</span></div>
+    <div class="hbar" title="About Us: 110 words before, 266 after"><span class="lab">About Us</span><div class="pair"><span class="trk"><span class="bar before" style="width:34.4%"></span><span class="ref" style="left:62.5%"></span></span><span class="trk"><span class="bar hi" style="width:83.1%"></span><span class="ref" style="left:62.5%"></span></span></div><span class="val">110 → 266</span></div>
+    <div class="hbar" title="What We Print: 137 words before, 245 after"><span class="lab">What We Print</span><div class="pair"><span class="trk"><span class="bar before" style="width:42.8%"></span><span class="ref" style="left:62.5%"></span></span><span class="trk"><span class="bar hi" style="width:76.6%"></span><span class="ref" style="left:62.5%"></span></span></div><span class="val">137 → 245</span></div>
+    <div class="hbar" title="Contact Us: 88 words before, 209 after"><span class="lab">Contact Us</span><div class="pair"><span class="trk"><span class="bar before" style="width:27.5%"></span><span class="ref" style="left:62.5%"></span></span><span class="trk"><span class="bar hi" style="width:65.3%"></span><span class="ref" style="left:62.5%"></span></span></div><span class="val">88 → 209</span></div>
+    <div class="legend"><span><i class="sw" style="background:#d9d6e8"></i>Before</span><span><i class="sw" style="background:#6d5df3"></i>After</span></div>
+  </div>
   <div class="tbl wide">
     <table>
-      <thead><tr><th>Page</th><th>Words before</th><th>Words after</th><th>Change</th><th>Status</th></tr></thead>
+      <thead><tr><th>Page</th><th class="n">Words</th><th class="n">Reading ease</th><th class="n">On-page score</th><th>Assessment</th></tr></thead>
       <tbody>
-        <tr><td class="issue">Home</td><td class="before n">309</td><td class="after n">309</td><td class="n">—</td><td><span class="chip good">Already OK</span></td></tr>
-        <tr><td class="issue">About Us</td><td class="before n">110</td><td class="after n">266</td><td class="delta">+156</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="issue">What We Print</td><td class="before n">137</td><td class="after n">245</td><td class="delta">+108</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="issue">Services</td><td class="before n">294</td><td class="after n">294</td><td class="n">—</td><td><span class="chip good">Already OK</span></td></tr>
-        <tr><td class="issue">Contact Us</td><td class="before n">88</td><td class="after n">209</td><td class="delta">+121</td><td><span class="chip fixed">Fixed</span></td></tr>
+        <tr><td class="u">/contact-us/</td><td class="n">88 → 209</td><td class="n">70.5 → 63.8</td><td class="n">92.32 → 97.44</td><td><span class="chip ok">Adequate</span></td></tr>
+        <tr><td class="u">/about-us/</td><td class="n">110 → 266</td><td class="n">23.3 → 33.6</td><td class="n">90.49 → 97.44</td><td><span class="chip ok">Adequate</span></td></tr>
+        <tr><td class="u">/what-we-print/</td><td class="n">137 → 245</td><td class="n">35.0 → 46.6</td><td class="n">92.32 → 97.44</td><td><span class="chip ok">Adequate</span></td></tr>
+        <tr><td class="u">/services/</td><td class="n">294 → 294</td><td class="n">43.6 → 43.6</td><td class="n">91.59 → 97.44</td><td><span class="chip ok">Adequate</span></td></tr>
+        <tr><td class="u">/ (homepage)</td><td class="n">309 → 309</td><td class="n">39.7 → 39.7</td><td class="n">91.59 → 97.44</td><td><span class="chip ok">Adequate</span></td></tr>
       </tbody>
     </table>
   </div>
-  <p class="mono" style="color:var(--muted)">Word counts are from the Atarim page audit, before and after.</p>
-  <details>
-    <summary>Copy added to each page</summary>
-    <div>
-      <p><strong>About Us:</strong> three paragraphs. They say the business is a division of Lakewood Corporation Pty Ltd, 100% Australian owned and operated. They list the full service and product range (digital, offset, design, and every product shown on the page), and finish with sustainable practices, deadlines and contact details.</p>
-      <p><strong>What We Print:</strong> two paragraphs. They explain when to choose digital and when to choose offset printing (from the Services page), describe the design help available, and point to the flipbook and contact details.</p>
-      <p><strong>Contact Us:</strong> three paragraphs. They give the email and postal address (PO Box 222, Essendon North VIC 3041, as shown in the footer), list what to include in a quote request, and summarise the product range.</p>
-    </div>
-  </details>
+  <p class="note">Word count, Flesch reading ease and on-page score from the Atarim page audit, before and after. Contact's reading ease dropped slightly because the new paragraphs are fuller sentences, but it is still in the "plain English" band.</p>
+  <div class="card edge-ok">
+    <div class="find-head"><h3><span class="fid">PAGE-01</span> Eight factual paragraphs added</h3><span class="chip ok">Fixed</span></div>
+    <p><strong>About Us</strong> (3 paragraphs): ownership (a division of Lakewood Corporation Pty Ltd, 100% Australian owned), the full service and product range, sustainable practices and contact details. <strong>What We Print</strong> (2): when to choose digital or offset printing, design help, and the flipbook. <strong>Contact Us</strong> (3): email and postal address, what to include in a quote request, and the product range.</p>
+  </div>
 </section>
 
-<!-- 7 -->
-<section id="metadata">
-  <div class="eyebrow">Metadata</div>
-  <h2>New titles and meta descriptions</h2>
-  <p>Each page now has a unique, hand-written title and description. They also feed the social share previews, which replaces the scraped page text those previews used to show.</p>
+<!-- 07 -->
+<section class="s" id="s7">
+  <div class="label">07 — Metadata</div>
+  <h2>Every title and description, rewritten</h2>
+  <div class="chart" role="img" aria-label="Metadata coverage after: title, meta description, H1 and canonical all correct on 5 of 5 pages">
+    <h3>Metadata coverage across all 5 pages, after</h3>
+    <span class="sub">Before: 0 correct titles and 0 descriptions.</span>
+    <div class="hbar" title="Title tag: 5 correct"><span class="lab">Title tag</span><div class="stackbar"><div class="sb-ok" style="flex:5">5</div></div><span class="val">5 OK</span></div>
+    <div class="hbar" title="Meta description: 5 correct"><span class="lab">Meta description</span><div class="stackbar"><div class="sb-ok" style="flex:5">5</div></div><span class="val">5 OK</span></div>
+    <div class="hbar" title="H1: 5 correct"><span class="lab">H1 heading</span><div class="stackbar"><div class="sb-ok" style="flex:5">5</div></div><span class="val">5 OK</span></div>
+    <div class="hbar" title="Canonical: 5 correct"><span class="lab">Canonical tag</span><div class="stackbar"><div class="sb-ok" style="flex:5">5</div></div><span class="val">5 OK</span></div>
+    <div class="legend"><span><i class="sw sb-ok"></i>Present and correct</span><span><i class="sw sb-warn"></i>Present but needs work</span><span><i class="sw sb-bad"></i>Missing</span></div>
+  </div>
+  <div class="chart">
+    <h3>Title tag length, page by page, after</h3>
+    <span class="sub">All five now sit in the 50–60 character target band. Before, they were 17–33 characters.</span>
+    <svg viewBox="0 0 640 250" width="100%" role="img" aria-label="Title lengths after: Home 52, About Us 60, Services 56, Contact Us 52, What We Print 55 characters; all inside the 50 to 60 target band">
+      <rect x="60" y="20" width="560" height="32" fill="#e6f8ef"/>
+      <g stroke="rgba(54,61,77,0.10)"><line x1="60" y1="212" x2="620" y2="212"/><line x1="60" y1="148" x2="620" y2="148"/><line x1="60" y1="84" x2="620" y2="84"/><line x1="60" y1="20" x2="620" y2="20"/></g>
+      <line x1="60" y1="116" x2="620" y2="116" stroke="#535768" stroke-dasharray="4 4"/>
+      <g fill="#535768" font-size="12" text-anchor="end"><text x="50" y="216">0</text><text x="50" y="152">20</text><text x="50" y="88">40</text><text x="50" y="24">60</text></g>
+      
+      <g><path d="M90 212 V49.6 a4 4 0 0 1 4 -4 H158 a4 4 0 0 1 4 4 V212 Z" fill="#0b8f57"><title>Home: 52 characters</title></path><path d="M200 212 V24.0 a4 4 0 0 1 4 -4 H268 a4 4 0 0 1 4 4 V212 Z" fill="#0b8f57"><title>About Us: 60 characters</title></path><path d="M310 212 V36.8 a4 4 0 0 1 4 -4 H378 a4 4 0 0 1 4 4 V212 Z" fill="#0b8f57"><title>Services: 56 characters</title></path><path d="M420 212 V49.6 a4 4 0 0 1 4 -4 H488 a4 4 0 0 1 4 4 V212 Z" fill="#0b8f57"><title>Contact Us: 52 characters</title></path><path d="M530 212 V40.0 a4 4 0 0 1 4 -4 H598 a4 4 0 0 1 4 4 V212 Z" fill="#0b8f57"><title>What We Print: 55 characters</title></path></g>
+      <g fill="#ffffff" font-size="12" text-anchor="middle" font-family="JetBrains Mono, monospace"><text x="126" y="63.6">52</text><text x="236" y="38.0">60</text><text x="346" y="50.8">56</text><text x="456" y="63.6">52</text><text x="566" y="54.0">55</text></g>
+      <g fill="#363d4d" font-size="12" text-anchor="middle"><text x="126" y="232">Home</text><text x="236" y="232">About Us</text><text x="346" y="232">Services</text><text x="456" y="232">Contact Us</text><text x="566" y="232">What We Print</text></g>
+    </svg>
+    <div class="legend"><span><i class="sw" style="background:#0b8f57"></i>50–60 characters (5 pages)</span><span><i class="sw" style="background:#e6f8ef"></i>50–60 target band</span><span>- - - 30 characters (Screaming Frog minimum)</span></div>
+  </div>
   <div class="tbl wide">
     <table>
       <thead><tr><th>Page</th><th>Title before</th><th>Title after</th><th>Meta description after</th></tr></thead>
       <tbody>
-        <tr><td class="issue">Home</td><td class="before">Lakewood Printing (17)</td><td class="after">Lakewood Printing | Commercial Printing in Melbourne (52)</td><td>Melbourne printer for business cards, flyers, brochures, booklets and more. 100% Australian owned, with offset and digital printing and quick turnaround. (153)</td></tr>
-        <tr><td class="issue">About Us</td><td class="before">About Us – Lakewood Printing (28)</td><td class="after">About Lakewood Printing | Australian-Owned Melbourne Printer (60)</td><td>Lakewood Printing is a 100% Australian-owned printer providing end-to-end print solutions, from business stationery to marketing materials. Get a quote. (152)</td></tr>
-        <tr><td class="issue">What We Print</td><td class="before">what we Print – Lakewood Printing (33)</td><td class="after">What We Print: Business Cards, Flyers &amp; More | Lakewood (55)</td><td>Flyers, business cards, brochures, booklets, menus, calendars, invitations, stickers and more. Browse our print range or request a quick, personalised quote. (157)</td></tr>
-        <tr><td class="issue">Services</td><td class="before">Services – Lakewood Printing (28)</td><td class="after">Offset &amp; Digital Printing and Design | Lakewood Printing (56)</td><td>Offset printing for large runs, digital printing for short runs and urgent jobs, and graphic design to make your artwork print-ready. Request a quote today. (156)</td></tr>
-        <tr><td class="issue">Contact Us</td><td class="before">Contact Us – Lakewood Printing (30)</td><td class="after">Contact Lakewood Printing | Request a Printing Quote (52)</td><td>Request a printing quote from Lakewood Printing. Call 0449 107 547, email info@lakewood.net.au or send your project details through our online form. (148)</td></tr>
+        <tr><td class="u">/</td><td class="b">Lakewood Printing (17)</td><td class="af">Lakewood Printing | Commercial Printing in Melbourne (52)</td><td>Melbourne printer for business cards, flyers, brochures, booklets and more. 100% Australian owned, with offset and digital printing and quick turnaround. (153)</td></tr>
+        <tr><td class="u">/about-us/</td><td class="b">About Us – Lakewood Printing (28)</td><td class="af">About Lakewood Printing | Australian-Owned Melbourne Printer (60)</td><td>Lakewood Printing is a 100% Australian-owned printer providing end-to-end print solutions, from business stationery to marketing materials. Get a quote. (152)</td></tr>
+        <tr><td class="u">/what-we-print/</td><td class="b">what we Print – Lakewood Printing (33)</td><td class="af">What We Print: Business Cards, Flyers &amp; More | Lakewood (55)</td><td>Flyers, business cards, brochures, booklets, menus, calendars, invitations, stickers and more. Browse our print range or request a quick, personalised quote. (157)</td></tr>
+        <tr><td class="u">/services/</td><td class="b">Services – Lakewood Printing (28)</td><td class="af">Offset &amp; Digital Printing and Design | Lakewood Printing (56)</td><td>Offset printing for large runs, digital printing for short runs and urgent jobs, and graphic design to make your artwork print-ready. Request a quote today. (156)</td></tr>
+        <tr><td class="u">/contact-us/</td><td class="b">Contact Us – Lakewood Printing (30)</td><td class="af">Contact Lakewood Printing | Request a Printing Quote (52)</td><td>Request a printing quote from Lakewood Printing. Call 0449 107 547, email info@lakewood.net.au or send your project details through our online form. (148)</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="mono" style="color:var(--muted)">Character counts in brackets. All five titles and descriptions were confirmed in the live page HTML.</p>
+  <div class="card edge-ok">
+    <div class="find-head"><h3><span class="fid">META-01</span> Yoast SEO installed and configured</h3><span class="chip ok">Fixed</span></div>
+    <p>Yoast now outputs each page's title and description, and also produces the social share tags. Before the fix, the share text was scraped from the page and read like "SOLUTIONS We offer end-to-end solutions… find out more". It is now the written title and description. Author, date and format archives are disabled, and the organisation name is set to Lakewood Printing.</p>
+  </div>
 </section>
 
-<!-- 8 -->
-<section id="headings">
-  <div class="eyebrow">Heading Structure</div>
-  <h2>Every page now has a clean outline</h2>
-  <p>Small labels above headings, such as "SOLUTIONS" and "GET IN TOUCH", were coded as headings but work as decoration. They are now ordinary text with exactly the same styling. Section headings were moved to the correct level, and each one keeps its original font, size and colour. The screenshot comparison confirms the home and Services pages look identical.</p>
+<!-- 08 -->
+<section class="s" id="s8">
+  <div class="label">08 — Heading structure</div>
+  <h2>A clean outline on every page, with no visual change</h2>
+  <p class="section-lede">Decorative labels became plain text with identical styling. Section headings moved to H2 and subheadings to H3, each keeping its exact font, size, colour and letter-spacing. The screenshot comparison confirms the change is invisible.</p>
   <div class="tbl wide">
     <table>
-      <thead><tr><th>Page</th><th>Outline before</th><th>Outline after</th><th>Status</th></tr></thead>
+      <thead><tr><th>Page</th><th>Outline before</th><th>Outline after</th></tr></thead>
       <tbody>
-        <tr><td class="issue">Home</td><td class="before">H4 → H1 → H6 → H2 → 6×H5 → H6 → H3 → H3</td><td class="after">H1 → H2 → 6×H3 → H2 → H2</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="issue">About Us</td><td class="before">H1 → H6 → H3 → H6 → H3 → 16×H3 → H6 → H4</td><td class="after">H1 → H2 → H2 → 16×H3 → H4</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="issue">What We Print</td><td class="before">H1 → H6 → H4 → H6 → H3 → H6 → H4</td><td class="after">H1 → H2 → H2 → H2</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="issue">Services</td><td class="before">H1 → H3 → H6 → H6 → H3 → H6 → H6 → H4 → 4×H3 → H6 → H4</td><td class="after">H1 → H2 → 2×H3 → H2 → 2×H3 → H2 → 4×H3 → H4</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="issue">Contact Us</td><td class="before">H1 → H6 → H3</td><td class="after">H1 → H2</td><td><span class="chip fixed">Fixed</span></td></tr>
+        <tr><td class="u">/</td><td class="outline"><span class="bad">H4</span><span>H1</span><span class="bad">H6</span><span>H2</span><span class="bad">H5×6</span><span class="bad">H6</span><span>H3</span><span>H3</span></td><td class="outline"><span>H1</span><span>H2</span><span>H3×6</span><span>H2</span><span>H2</span></td></tr>
+        <tr><td class="u">/about-us/</td><td class="outline"><span>H1</span><span class="bad">H6</span><span class="bad">H3</span><span class="bad">H6</span><span>H3</span><span>H3×16</span><span class="bad">H6</span><span>H4</span></td><td class="outline"><span>H1</span><span>H2</span><span>H2</span><span>H3×16</span><span>H4</span></td></tr>
+        <tr><td class="u">/what-we-print/</td><td class="outline"><span>H1</span><span class="bad">H6</span><span class="bad">H4</span><span class="bad">H6</span><span>H3</span><span class="bad">H6</span><span>H4</span></td><td class="outline"><span>H1</span><span>H2</span><span>H2</span><span>H2</span></td></tr>
+        <tr><td class="u">/services/</td><td class="outline"><span>H1</span><span class="bad">H3</span><span class="bad">H6×2</span><span>H3</span><span class="bad">H6×2</span><span>H4</span><span>H3×4</span><span class="bad">H6</span><span>H4</span></td><td class="outline"><span>H1</span><span>H2</span><span>H3×2</span><span>H2</span><span>H3×2</span><span>H2</span><span>H3×4</span><span>H4</span></td></tr>
+        <tr><td class="u">/contact-us/</td><td class="outline"><span>H1</span><span class="bad">H6</span><span class="bad">H3</span></td><td class="outline"><span>H1</span><span>H2</span></td></tr>
       </tbody>
     </table>
   </div>
   <div class="tbl">
     <table>
-      <thead><tr><th>Check</th><th>Before</th><th>After</th></tr></thead>
+      <thead><tr><th>Issue</th><th class="n">Before</th><th class="n">After</th></tr></thead>
       <tbody>
-        <tr><td class="issue">Heading levels skip</td><td class="before n">5 / 5 (100%)</td><td class="after n">0 / 5</td></tr>
-        <tr><td class="issue">H2 missing</td><td class="before n">4 / 5 (80%)</td><td class="after n">0 / 5</td></tr>
-        <tr><td class="issue">H1 not the first heading</td><td class="before n">1 / 5 (20%)</td><td class="after n">0 / 5</td></tr>
-        <tr><td class="issue">H2 not second in order</td><td class="before n">1 / 5 (20%)</td><td class="after n">0 / 5</td></tr>
+        <tr><td class="i">Heading levels skip</td><td class="n">5 / 5</td><td class="n">0</td></tr>
+        <tr><td class="i">No H2 on the page</td><td class="n">4 / 5</td><td class="n">0</td></tr>
+        <tr><td class="i">H1 not the first heading</td><td class="n">1 / 5</td><td class="n">0</td></tr>
+        <tr><td class="i">H2 not second heading</td><td class="n">1 / 5</td><td class="n">0</td></tr>
       </tbody>
     </table>
   </div>
+  <div class="card edge-low">
+    <div class="find-head"><h3><span class="fid">HEAD-02</span> H1s still match the menu labels</h3><span class="chip low">Open</span></div>
+    <p>"About Us", "what we Print", "Services" and "Contact Us" are left as they are. They come from the page titles, so changing them would also rename the menu. It's worth revisiting once keyword targets are agreed.</p>
+  </div>
 </section>
 
-<!-- 9 -->
-<section id="urls">
-  <div class="eyebrow">URL &amp; Canonical</div>
-  <h2>No page addresses were changed</h2>
-  <div class="tbl wide">
-    <table>
-      <thead><tr><th>Check</th><th>Before</th><th>After</th><th>Status</th></tr></thead>
-      <tbody>
-        <tr><td class="issue">URL format</td><td class="before">Short, lowercase, hyphenated</td><td class="after">Unchanged</td><td><span class="chip good">Kept</span></td></tr>
-        <tr><td class="issue">Canonical tags</td><td class="before">Self-referencing</td><td class="after">Self-referencing on all 5 pages</td><td><span class="chip good">Kept</span></td></tr>
-        <tr><td class="issue">Placeholder URL <code>/hello-world/</code></td><td class="before">Live</td><td class="after">Unpublished</td><td><span class="chip fixed">Fixed</span></td></tr>
-      </tbody>
-    </table>
+<!-- 09 -->
+<section class="s" id="s9">
+  <div class="label">09 — URL &amp; canonical</div>
+  <h2>No page address changed</h2>
+  <div class="rows">
+    <div class="row"><span class="n">URL format</span><span class="v">Lowercase, hyphenated, unchanged</span><span class="chip ok">Pass</span></div>
+    <div class="row"><span class="n">Self-referencing canonical</span><span class="v">5 of 5 pages</span><span class="chip ok">Pass</span></div>
+    <div class="row"><span class="n">Placeholder slug <code>/hello-world/</code></span><span class="v"><span class="was">Live</span> → unpublished</span><span class="chip ok">Fixed</span></div>
   </div>
 </section>
 
 <!-- 10 -->
-<section id="status">
-  <div class="eyebrow">Redirects &amp; Status Codes</div>
-  <h2>Every page still responds cleanly</h2>
+<section class="s" id="s10">
+  <div class="label">10 — Redirects &amp; HTTP status codes</div>
+  <h2>Still a clean bill of health</h2>
   <div class="tbl">
     <table>
-      <thead><tr><th>URL</th><th>Status after</th><th>Expected?</th></tr></thead>
+      <thead><tr><th>URL</th><th class="n">Status after</th><th>Expected?</th></tr></thead>
       <tbody>
-        <tr><td class="mono">/ · /about-us/ · /what-we-print/ · /services/ · /contact-us/</td><td class="n">200</td><td><span class="chip good">Yes</span></td></tr>
-        <tr><td class="mono">/author/lakewood/</td><td class="n">301 → /</td><td><span class="chip good">Yes</span></td></tr>
-        <tr><td class="mono">/hello-world/</td><td class="n">404</td><td><span class="chip good">Yes</span></td></tr>
-        <tr><td class="mono">/sitemap_index.xml · /page-sitemap.xml · /robots.txt</td><td class="n">200</td><td><span class="chip good">Yes</span></td></tr>
+        <tr><td class="u">/ · /about-us/ · /what-we-print/ · /services/ · /contact-us/</td><td class="n">200</td><td><span class="chip ok">Yes</span></td></tr>
+        <tr><td class="u">/author/lakewood/</td><td class="n">301 → /</td><td><span class="chip ok">Yes</span></td></tr>
+        <tr><td class="u">/hello-world/</td><td class="n">404</td><td><span class="chip ok">Yes</span></td></tr>
+        <tr><td class="u">/sitemap_index.xml · /page-sitemap.xml · /robots.txt</td><td class="n">200</td><td><span class="chip ok">Yes</span></td></tr>
       </tbody>
     </table>
   </div>
-  <p>Nothing linked to the Hello World post, so it needed no redirect. No PHP errors or warnings appear in any rendered page.</p>
+  <p class="note">Nothing linked to the Hello World post, so it needed no redirect.</p>
 </section>
 
 <!-- 11 -->
-<section id="links">
-  <div class="eyebrow">Internal Linking</div>
-  <h2>Clearer links</h2>
+<section class="s" id="s11">
+  <div class="label">11 — Internal linking</div>
+  <h2>Every link now says where it goes</h2>
   <div class="tbl wide">
     <table>
-      <thead><tr><th>SEO issue</th><th>Before</th><th>After</th><th>Status</th></tr></thead>
+      <thead><tr><th>Issue</th><th>Before</th><th>After</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td class="issue">Links with no anchor text</td><td class="before">5 / 5 pages</td><td class="after">Logo links now carry the alt text "Lakewood Printing". The icon-only menu button has the label "Menu" (hidden on screen, read by screen readers and search engines).</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="issue">Non-descriptive anchor text</td><td class="before">2 / 5 pages ("find out more")</td><td class="after">"Explore our services" on Home and About</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="issue">Links not crawlable</td><td class="before">PageSpeed fail</td><td class="after">Social icons with no profile now render as plain icons, not empty links. They look the same; only the hand cursor on hover is gone. Lighthouse passes on all 5 pages.</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="issue">Orphan pages</td><td class="before">2</td><td class="after">0 indexable orphans</td><td><span class="chip fixed">Fixed</span></td></tr>
+        <tr><td class="i">Links with no anchor text</td><td class="b">Logos without alt; icon-only menu button</td><td class="af">Logos have the alt text "Lakewood Printing"; the menu button has a hidden "Menu" label</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Non-descriptive anchors</td><td class="b">"find out more" ×2</td><td class="af">"Explore our services"</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Links without an address</td><td class="b">Empty social links on every page</td><td class="af">0 (icons render as plain icons)</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">New-tab links without noopener</td><td class="b">Flipbook and placeholder social links</td><td class="af">0</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Internal links per page</td><td class="b">11</td><td class="af">11 (unchanged)</td><td><span class="chip ok">Strong</span></td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
 <!-- 12 -->
-<section id="images">
-  <div class="eyebrow">Image SEO</div>
+<section class="s" id="s12">
+  <div class="label">12 — Image SEO</div>
   <h2>Every image is now described</h2>
-  <p>Alt text was written after looking at each image, not from its file name; the file names were mostly numbers such as "18726.webp". Because the alt text is stored in the media library, it shows wherever the image is used.</p>
-  <div class="tbl wide">
+  <p class="section-lede">Alt text was written after looking at each image, not from its file name, and stored in the media library so it appears wherever the image is used.</p>
+  <div class="tbl">
     <table>
-      <thead><tr><th>SEO issue</th><th>Before</th><th>After</th><th>Status</th></tr></thead>
+      <thead><tr><th>Page</th><th class="n">Image tags</th><th>Before</th><th>After</th></tr></thead>
       <tbody>
-        <tr><td class="issue">Images missing alt text</td><td class="before n">23 of 24 (95.83%)</td><td class="after n">0 (checked on all 41 image tags across the 5 pages)</td><td><span class="chip fixed">Fixed</span></td></tr>
+        <tr><td class="u">/about-us/</td><td class="n">20</td><td><span class="chip crit">Missing</span></td><td><span class="chip ok">Described</span></td></tr>
+        <tr><td class="u">/services/</td><td class="n">9</td><td><span class="chip crit">Missing</span></td><td><span class="chip ok">Described</span></td></tr>
+        <tr><td class="u">/</td><td class="n">4</td><td><span class="chip crit">Missing</span></td><td><span class="chip ok">Described</span></td></tr>
+        <tr><td class="u">/what-we-print/</td><td class="n">4</td><td><span class="chip crit">Missing</span></td><td><span class="chip ok">Described</span></td></tr>
+        <tr><td class="u">/contact-us/</td><td class="n">4</td><td><span class="chip crit">Missing</span></td><td><span class="chip ok">Described</span></td></tr>
       </tbody>
     </table>
   </div>
-  <details>
-    <summary>Examples of the new alt text</summary>
-    <div><ul>
-      <li>Logo: "Lakewood Printing"</li>
-      <li>Hero banner: "The people to people and business to people printers"</li>
-      <li>About image: "Print technician checking a large-format colour print as it comes off the printer"</li>
-      <li>Business cards: "Lakewood Printing business card with contact details"</li>
-      <li>What We Print: "Wide-format printer printing a vivid rainbow colour gradient"</li>
-      <li>Services, digital printing: "Splash of bright multicoloured ink"</li>
-    </ul></div>
-  </details>
+  <div class="card edge-ok">
+    <div class="find-head"><h3><span class="fid">IMG-01</span> 23 images described</h3><span class="chip ok">Fixed</span></div>
+    <p>Examples: logo "Lakewood Printing"; hero banner "The people to people and business to people printers"; About image "Print technician checking a large-format colour print as it comes off the printer"; business cards "Lakewood Printing business card with contact details"; What We Print "Wide-format printer printing a vivid rainbow colour gradient".</p>
+  </div>
+  <div class="card edge-low">
+    <div class="find-head"><h3><span class="fid">IMG-02</span> Numbered file names left as they are</h3><span class="chip low">Open</span></div>
+    <p>Renaming existing files risks broken references for a small gain. Name new uploads descriptively from now on.</p>
+  </div>
 </section>
 
 <!-- 13 -->
-<section id="thin">
-  <div class="eyebrow">Duplicate &amp; Thin Content</div>
+<section class="s" id="s13">
+  <div class="label">13 — Duplicate &amp; thin content</div>
   <h2>No thin or placeholder pages left in search</h2>
   <div class="tbl wide">
     <table>
-      <thead><tr><th>Item</th><th>Before</th><th>After</th><th>Status</th></tr></thead>
+      <thead><tr><th>Check</th><th>Before</th><th>After</th><th>Assessment</th></tr></thead>
       <tbody>
-        <tr><td class="mono">/author/lakewood/</td><td class="before">97 words, indexable</td><td class="after">Redirects home</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="mono">/category/uncategorized/</td><td class="before">96 words, indexable</td><td class="after">noindex</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="mono">/hello-world/</td><td class="before">Live sample post</td><td class="after">Unpublished</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="issue">Main pages under 200 words</td><td class="before">3</td><td class="after">0</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td class="issue">Duplicate titles / descriptions</td><td class="before">None flagged</td><td class="after">All unique</td><td><span class="chip good">Kept</span></td></tr>
+        <tr><td class="i">Duplicate titles and descriptions</td><td class="b">None (no descriptions)</td><td class="af">All unique</td><td><span class="chip ok">Pass</span></td></tr>
+        <tr><td class="i">Main pages under 200 words</td><td class="b">3</td><td class="af">0</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Thin archive pages indexable</td><td class="b">2</td><td class="af">0</td><td><span class="chip ok">Fixed</span></td></tr>
+        <tr><td class="i">Sample content live</td><td class="b">1</td><td class="af">0</td><td><span class="chip ok">Fixed</span></td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
 <!-- 14 -->
-<section id="priorities">
-  <div class="eyebrow">Issue Resolution Summary</div>
-  <h2>Every baseline issue and what happened to it</h2>
-  <div class="tbl wide">
-    <table>
-      <thead><tr><th>Priority</th><th>SEO issue</th><th>Before</th><th>After</th><th>Status</th></tr></thead>
-      <tbody>
-        <tr><td><span class="chip high">High</span></td><td class="issue">Meta descriptions missing</td><td class="before n">5 (100%)</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td><span class="chip high">High</span></td><td class="issue">Default WordPress content indexable</td><td class="before n">3</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td><span class="chip high">High</span></td><td class="issue">Thin main pages</td><td class="before n">3 (60%)</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td><span class="chip high">High</span></td><td class="issue">Short page titles</td><td class="before n">3 (60%)</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td><span class="chip high">High</span></td><td class="issue">Links not crawlable</td><td class="before n">Fail</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td><span class="chip med">Medium</span></td><td class="issue">Images missing alt text</td><td class="before n">23 (95.83%)</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td><span class="chip med">Medium</span></td><td class="issue">Heading levels skip</td><td class="before n">5 (100%)</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td><span class="chip med">Medium</span></td><td class="issue">H2 missing</td><td class="before n">4 (80%)</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td><span class="chip med">Medium</span></td><td class="issue">H1 not first heading</td><td class="before n">1 (20%)</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td><span class="chip med">Medium</span></td><td class="issue">Links with no anchor text</td><td class="before n">5 (100%)</td><td class="after n">0†</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td><span class="chip med">Medium</span></td><td class="issue">Non-descriptive anchor text</td><td class="before n">2 (40%)</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td><span class="chip med">Medium</span></td><td class="issue">Orphan pages</td><td class="before n">2</td><td class="after n">0 indexable</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td><span class="chip med">Medium</span></td><td class="issue">Crawl coverage mismatch</td><td class="before n">5 vs 9</td><td class="after n">Sitemap lists the 5 real pages</td><td><span class="chip partial">Re-crawl to confirm</span></td></tr>
-        <tr><td><span class="chip low">Low</span></td><td class="issue">5 security headers missing</td><td class="before n">86 (100%)</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td><span class="chip low">Low</span></td><td class="issue">Bad content type</td><td class="before n">26 (30.23%)</td><td class="after n">0†</td><td><span class="chip fixed">Fixed</span></td></tr>
-        <tr><td><span class="chip low">Low</span></td><td class="issue">Unsafe cross-origin links</td><td class="before n">5 (5.81%)</td><td class="after n">0</td><td><span class="chip fixed">Fixed</span></td></tr>
-      </tbody>
-    </table>
+<section class="s" id="s14">
+  <div class="label">14 — Issue resolution</div>
+  <h2>By priority tier</h2>
+  <div class="grid3">
+    <div class="kpi"><span class="num good">6 <small>of 6</small></span><span class="k">High priority fixed</span><span class="d">Metadata, titles, thin pages, default pages, crawlable links, staging images.</span></div>
+    <div class="kpi"><span class="num good">8 <small>of 8</small></span><span class="k">Medium priority addressed</span><span class="d">Alt text, headings, anchors, orphans, readability.</span></div>
+    <div class="kpi"><span class="num good">6 <small>of 6</small></span><span class="k">Low priority fixed</span><span class="d">Headers, content type, noopener, heading order, title width, spelling.</span></div>
   </div>
-  <p class="mono" style="color:var(--muted)">† Verified on the rendered pages and key assets. Confirm with the Screaming Frog re-crawl.</p>
+  <div class="card edge-ok">
+    <span class="tag ok">SITE SAFETY</span>
+    <h3>Every change can be rolled back</h3>
+    <p>A full database backup was taken before the first change and stored outside the public web folder. Each edited page was saved through the page builder's revision system, with its original data kept separately. The <code>.htaccess</code> change is one labelled block, and the original file is backed up. Desktop and mobile screenshots were compared pixel by pixel before and after.</p>
+  </div>
 </section>
 
 <!-- 15 -->
-<section id="plan">
-  <div class="eyebrow">Next Steps</div>
-  <h2>What is left, and what we recommend next</h2>
-  <div class="callout warn">
-    <h3>Needed from Lakewood Printing</h3>
-    <ul class="plain">
-      <li><strong>Social profiles (optional).</strong> The icons now show without linking anywhere. If you create Facebook, Instagram or Pinterest pages, send us the addresses and the icons become real links. If you don't plan to, consider removing the icons later so visitors don't look for profiles that don't exist.</li>
-      <li><strong>Access to Google Search Console</strong>, or a Google account to set it up under, so the new sitemap can be submitted and indexing tracked.</li>
-    </ul>
-  </div>
+<section class="s" id="s15">
+  <div class="label">15 — Next steps</div>
+  <h2>What we recommend from here</h2>
   <div class="phases">
-    <div class="phase">
-      <span class="when">Now</span>
-      <h3>Confirm in Screaming Frog</h3>
-      <ul>
-        <li>Re-crawl with the baseline settings, with XML sitemap crawling turned on</li>
-        <li>Export Issues Overview and compare it with the baseline CSV</li>
-      </ul>
-    </div>
-    <div class="phase">
-      <span class="when">Next</span>
-      <h3>Page speed</h3>
-      <ul>
-        <li>Home page performance: 66 / 100 (LCP 3.2 s, server response 890 ms)</li>
-        <li>The server runs LiteSpeed, so the LiteSpeed Cache plugin is the natural fix</li>
-        <li>Longer cache lifetimes for images and files</li>
-      </ul>
-    </div>
-    <div class="phase">
-      <span class="when">Recommended</span>
-      <h3>Content polish</h3>
-      <ul>
-        <li>Consider more descriptive H1s. They currently match the menu labels, such as "Services"</li>
-        <li>Add a 1200×630 social share image. The current one is a thin 854×135 banner</li>
-      </ul>
-    </div>
-    <div class="phase">
-      <span class="when">4–8 weeks</span>
-      <h3>Measure results</h3>
-      <ul>
-        <li>Indexed pages, impressions and clicks in Search Console</li>
-        <li>Keyword rankings for the agreed target terms</li>
-        <li>Enquiries from organic search</li>
-      </ul>
-    </div>
+    <div class="card phase"><span class="t">NOW · CONFIRM</span><h3>Measure the fixes in the original tools</h3><ul>
+      <li>Re-crawl in Screaming Frog with the baseline settings, sitemap crawling on</li>
+      <li>Compare the Issues Overview export with the baseline CSV</li>
+      <li>Connect Google Search Console and submit <code>sitemap_index.xml</code></li>
+    </ul></div>
+    <div class="card phase"><span class="t">NEXT · SPEED</span><h3>Lift Performance from 66</h3><ul>
+      <li>Install LiteSpeed Cache, since the server runs LiteSpeed</li>
+      <li>Reduce the 890 ms server response time and set longer cache lifetimes</li>
+      <li>Re-test Core Web Vitals on mobile and desktop</li>
+    </ul></div>
+    <div class="card phase"><span class="t">RECOMMENDED · POLISH</span><h3>Small improvements</h3><ul>
+      <li>Add a 1200×630 social share image (the current one is an 854×135 banner)</li>
+      <li>More descriptive H1s once keyword targets are agreed</li>
+      <li>Apply the 4 pending plugin updates, on a staging copy first</li>
+      <li>Remove the social icons if no profiles are planned</li>
+    </ul></div>
+    <div class="card phase"><span class="t">4–8 WEEKS · RESULTS</span><h3>Track the outcome</h3><ul>
+      <li>Indexed pages, impressions and clicks in Search Console</li>
+      <li>Rankings for agreed target terms</li>
+      <li>Enquiries from organic search</li>
+    </ul></div>
   </div>
-  <p>Rankings and traffic do not change straight away. Google first has to re-crawl and re-index the updated pages, which usually takes several weeks.</p>
 </section>
 
 <!-- 16 -->
-<section id="baseline">
-  <div class="eyebrow">Before vs After Baseline</div>
+<section class="s" id="s16">
+  <div class="label">16 — Before vs after baseline</div>
   <h2>The baseline table, filled in</h2>
   <div class="tbl wide">
     <table>
-      <thead><tr><th>Metric</th><th>Before</th><th>Target</th><th>After</th><th>Source (after)</th></tr></thead>
+      <thead><tr><th>Metric</th><th class="n">Before</th><th class="n">Target</th><th class="n">After</th><th>Result</th></tr></thead>
       <tbody>
-        <tr><td class="issue">Lighthouse SEO score</td><td class="before n">85 (mobile, PSI)</td><td class="n">95–100</td><td class="after n">100 on all 5 pages</td><td>Lighthouse via Atarim</td></tr>
-        <tr><td class="issue">Lighthouse SEO failed audits</td><td class="before n">2</td><td class="n">0</td><td class="after n">0</td><td>Lighthouse via Atarim</td></tr>
-        <tr><td class="issue">Pages with a meta description</td><td class="before n">0 / 5 (0%)</td><td class="n">5 / 5</td><td class="after n">5 / 5</td><td>Page audit + rendered HTML</td></tr>
-        <tr><td class="issue">Titles of 30+ characters</td><td class="before n">2 / 5 (40%)</td><td class="n">5 / 5</td><td class="after n">5 / 5</td><td>Page audit</td></tr>
-        <tr><td class="issue">Pages with 200+ words</td><td class="before n">2 / 5 (40%)</td><td class="n">5 / 5</td><td class="after n">5 / 5</td><td>Page audit</td></tr>
-        <tr><td class="issue">Pages with an H2</td><td class="before n">1 / 5 (20%)</td><td class="n">5 / 5</td><td class="after n">5 / 5</td><td>Page audit</td></tr>
-        <tr><td class="issue">Pages with headings in order</td><td class="before n">0 / 5 (0%)</td><td class="n">5 / 5</td><td class="after n">5 / 5</td><td>Rendered HTML</td></tr>
-        <tr><td class="issue">Images with alt text</td><td class="before n">1 / 24 (4.17%)</td><td class="n">All content images</td><td class="after n">All (41 / 41 tags)</td><td>Rendered HTML</td></tr>
-        <tr><td class="issue">Pages with no-anchor-text links</td><td class="before n">5 / 5 (100%)</td><td class="n">0</td><td class="after n">0†</td><td>Rendered HTML</td></tr>
-        <tr><td class="issue">Pages with non-descriptive anchors</td><td class="before n">2 / 5 (40%)</td><td class="n">0</td><td class="after n">0</td><td>Rendered HTML</td></tr>
-        <tr><td class="issue">Indexable default WordPress URLs</td><td class="before n">3</td><td class="n">0</td><td class="after n">0</td><td>Status codes + robots tags</td></tr>
-        <tr><td class="issue">Thin archive pages</td><td class="before n">2</td><td class="n">0</td><td class="after n">0</td><td>Status codes + robots tags</td></tr>
-        <tr><td class="issue">Orphan URLs (indexable)</td><td class="before n">2</td><td class="n">0</td><td class="after n">0</td><td>Sitemap + robots tags</td></tr>
-        <tr><td class="issue">Security headers in place</td><td class="before n">0 of 5</td><td class="n">5 of 5</td><td class="after n">5 of 5</td><td>Response headers</td></tr>
-        <tr><td class="issue">URLs with a bad content type</td><td class="before n">26 / 86 (30.23%)</td><td class="n">0</td><td class="after n">0†</td><td>Response headers</td></tr>
-        <tr><td class="issue">Unsafe cross-origin links</td><td class="before n">5 / 86 (5.81%)</td><td class="n">0</td><td class="after n">0</td><td>Rendered HTML</td></tr>
-        <tr><td class="issue">4xx / 5xx / redirect issues</td><td class="before n">0</td><td class="n">0</td><td class="after n">0 unexpected</td><td>Status codes</td></tr>
-        <tr><td class="issue">On-page audit score</td><td class="before n">90.49–92.32</td><td class="n">95+</td><td class="after n">97.44 (all 5)</td><td>Page audit</td></tr>
-        <tr><td class="issue">URLs in XML sitemap</td><td class="before n">Not measured</td><td class="n">Real pages only</td><td class="after n">5</td><td>sitemap_index.xml</td></tr>
-        <tr><td class="issue">Lighthouse Accessibility (home)</td><td class="before n">Not measured</td><td class="n">—</td><td class="after n">100</td><td>Lighthouse via Atarim</td></tr>
-        <tr><td class="issue">Lighthouse Best Practices (home)</td><td class="before n">Not measured</td><td class="n">—</td><td class="after n">100</td><td>Lighthouse via Atarim</td></tr>
-        <tr><td class="issue">Lighthouse Performance (home)</td><td class="before n">Not measured</td><td class="n">—</td><td class="after n">66</td><td>Lighthouse via Atarim (new baseline)</td></tr>
+        <tr><td class="i">Lighthouse / PageSpeed SEO score</td><td class="n">85</td><td class="n">95–100</td><td class="n">100 (all 5)</td><td><span class="chip ok">Met</span></td></tr>
+        <tr><td class="i">SEO failed checks</td><td class="n">2</td><td class="n">0</td><td class="n">0</td><td><span class="chip ok">Met</span></td></tr>
+        <tr><td class="i">On-page audit score</td><td class="n">90.49–92.32</td><td class="n">95+</td><td class="n">97.44</td><td><span class="chip ok">Met</span></td></tr>
+        <tr><td class="i">Pages with a meta description</td><td class="n">0 / 5</td><td class="n">5 / 5</td><td class="n">5 / 5</td><td><span class="chip ok">Met</span></td></tr>
+        <tr><td class="i">Titles 50–60 characters</td><td class="n">0 / 5</td><td class="n">5 / 5</td><td class="n">5 / 5</td><td><span class="chip ok">Met</span></td></tr>
+        <tr><td class="i">Titles under 30 characters</td><td class="n">3 / 5</td><td class="n">0</td><td class="n">0</td><td><span class="chip ok">Met</span></td></tr>
+        <tr><td class="i">Pages with 200+ words</td><td class="n">2 / 5</td><td class="n">5 / 5</td><td class="n">5 / 5</td><td><span class="chip ok">Met</span></td></tr>
+        <tr><td class="i">Pages with an H2</td><td class="n">1 / 5</td><td class="n">5 / 5</td><td class="n">5 / 5</td><td><span class="chip ok">Met</span></td></tr>
+        <tr><td class="i">Pages with headings in order</td><td class="n">0 / 5</td><td class="n">5 / 5</td><td class="n">5 / 5</td><td><span class="chip ok">Met</span></td></tr>
+        <tr><td class="i">Images with alt text</td><td class="n">1 / 24</td><td class="n">All</td><td class="n">41 / 41 tags</td><td><span class="chip ok">Met</span></td></tr>
+        <tr><td class="i">Pages with no-text links</td><td class="n">5 / 5</td><td class="n">0</td><td class="n">0*</td><td><span class="chip ok">Met</span></td></tr>
+        <tr><td class="i">Pages with "find out more" links</td><td class="n">2 / 5</td><td class="n">0</td><td class="n">0</td><td><span class="chip ok">Met</span></td></tr>
+        <tr><td class="i">Indexable default WordPress URLs</td><td class="n">3</td><td class="n">0</td><td class="n">0</td><td><span class="chip ok">Met</span></td></tr>
+        <tr><td class="i">Orphan URLs (indexable)</td><td class="n">2</td><td class="n">0</td><td class="n">0</td><td><span class="chip ok">Met</span></td></tr>
+        <tr><td class="i">Staging-domain references</td><td class="n">45</td><td class="n">0</td><td class="n">0</td><td><span class="chip ok">Met</span></td></tr>
+        <tr><td class="i">Security headers present</td><td class="n">0 of 5</td><td class="n">5 of 5</td><td class="n">5 of 5</td><td><span class="chip ok">Met</span></td></tr>
+        <tr><td class="i">URLs with bad content type</td><td class="n">26</td><td class="n">0</td><td class="n">0*</td><td><span class="chip ok">Met</span></td></tr>
+        <tr><td class="i">Unsafe cross-origin links</td><td class="n">5</td><td class="n">0</td><td class="n">0</td><td><span class="chip ok">Met</span></td></tr>
+        <tr><td class="i">4xx / 5xx / unexpected redirects</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td><span class="chip ok">Kept</span></td></tr>
+        <tr><td class="i">URLs in XML sitemap</td><td class="n">Not checked</td><td class="n">Real pages only</td><td class="n">5</td><td><span class="chip ok">Met</span></td></tr>
+        <tr><td class="i">Lighthouse Performance (home)</td><td class="n">Not measured</td><td class="n">—</td><td class="n">66</td><td><span class="chip med">New baseline</span></td></tr>
       </tbody>
     </table>
   </div>
-
-  <div class="callout info">
-    <h3>Site safety and rollback</h3>
-    <ul class="plain">
-      <li>A full database backup was taken before any change and stored outside the public web folder.</li>
-      <li>Each edited page was saved through the page builder's own revision system, and its original data was also kept separately.</li>
-      <li>The server configuration change is one clearly labelled block, and the previous file was backed up.</li>
-      <li>Checked after the changes: all pages load, the contact form is present, no PHP errors appear, every script and stylesheet loads with a valid content type, and desktop and mobile screenshots match the original design.</li>
-    </ul>
-  </div>
-
-  <details>
-    <summary>Full change log</summary>
-    <div><ul>
-      <li>Installed and configured Yoast SEO. Disabled author, date and post-format archives; set category, tag, attachment and Elementor template pages to noindex; set the organisation name to Lakewood Printing.</li>
-      <li>Wrote titles and meta descriptions for the 5 pages.</li>
-      <li>Set "Hello world!" (post 1) to draft.</li>
-      <li>Added alt text to 23 media library images.</li>
-      <li>Fixed heading levels on all 5 pages, keeping the original typography and colours.</li>
-      <li>Changed "find out more" to "Explore our services" on Home and About.</li>
-      <li>Gave the header's mobile menu button the label "Menu", visually hidden.</li>
-      <li>Added rel="noopener" to the flipbook link.</li>
-      <li>Added 8 factual paragraphs across About, What We Print and Contact.</li>
-      <li>Replaced 350 staging-domain references (lakewood-printing.stagingsea.com → lakewood.net.au) in page data and settings.</li>
-      <li>Added a "Lakewood SEO Security Headers" block to .htaccess: 5 security headers plus the JavaScript content type.</li>
-      <li>Cleared the placeholder social links in the mobile menu and on the contact page. Added a small must-use plugin (<code>mu-plugins/lakewood-linkless-social-icons.php</code>) that renders social icons with no address as plain icons.</li>
-      <li>Corrected the "Calanders" card title on About Us to "Calendars".</li>
-      <li>Cleared the page builder and object caches.</li>
-    </ul></div>
-  </details>
+  <p class="note">* Verified on the rendered pages and key files; confirm with the Screaming Frog re-crawl. The before score of 85 is from the supplied PageSpeed screenshot (mobile, URL not shown). After scores are Lighthouse via Atarim on each page, so treat that comparison as indicative.</p>
 </section>
 
-</main>
-
 <footer>
-  <div class="colourbar" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-  <p>Prepared for Lakewood Printing · lakewood.net.au · Work completed and verified on 7 October 2026.</p>
-  <p>"Before" figures come from the baseline report (Screaming Frog Issues Overview, site audit export, PageSpeed screenshot) and from Atarim page audits taken before any change. "After" figures come from Atarim page audits, Lighthouse, and a server-side check of the rendered pages on 7 October 2026.</p>
+  <span>SEO results report · lakewood.net.au · Lakewood Printing</span>
+  <span>Before: Screaming Frog Issues Overview (86 URLs), site audit export, PageSpeed screenshot, and Atarim page audits and WordPress checks taken before any change. After: Atarim page audits, Lighthouse, a server-side check of the rendered pages, and before/after screenshots, all on 7 October 2026.</span>
+  <span>Prepared by Atarim.</span>
 </footer>
+
 </div>
