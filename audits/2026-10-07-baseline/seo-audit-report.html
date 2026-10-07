@@ -1,683 +1,780 @@
 <title>Lakewood Printing SEO Baseline</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* Layout: a single-column print proof. A process-colour bar marks the masthead, and severity is shown with ink-style chips. */
+/* Atarim brand, light theme only (deliberate single theme). Single column report, cards on white. */
 :root {
-  --paper: #f6f7f9;
-  --sheet: #ffffff;
-  --ink: #161a22;
-  --muted: #586070;
-  --rule: #dce0e7;
-  --accent: #0a6a8f;
-  --high: #b3164f;
-  --high-bg: #fbe8ef;
-  --med: #8a5a00;
-  --med-bg: #fdf1d8;
-  --low: #3f5f7a;
-  --low-bg: #e7eef5;
-  --good: #23704a;
-  --good-bg: #e3f3ea;
-  --none: #6b7280;
-  --none-bg: #eceef2;
-  --c: #00a3d9; --m: #d4006f; --y: #f2c500; --k: #1b1b1b;
-  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --f-body: "Source Sans 3", "Segoe UI", Roboto, Arial, sans-serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #101318; --sheet: #171b22; --ink: #e6e9ef; --muted: #9ba4b4; --rule: #2a313c;
-    --accent: #52c2ea; --high: #f27aa5; --high-bg: #3a1424; --med: #eab65a; --med-bg: #362810;
-    --low: #9cbcd8; --low-bg: #1c2a38; --good: #66cc95; --good-bg: #13301f; --none: #a2a9b6; --none-bg: #242a33;
-    --k: #e6e9ef; color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #101318; --sheet: #171b22; --ink: #e6e9ef; --muted: #9ba4b4; --rule: #2a313c;
-  --accent: #52c2ea; --high: #f27aa5; --high-bg: #3a1424; --med: #eab65a; --med-bg: #362810;
-  --low: #9cbcd8; --low-bg: #1c2a38; --good: #66cc95; --good-bg: #13301f; --none: #a2a9b6; --none-bg: #242a33;
-  --k: #e6e9ef; color-scheme: dark;
+  --primary: #6d5df3; --primary-deep: #5546d8; --primary-wordmark: #052055;
+  --accent: #17de88; --accent-deep: #0fb86f;
+  --canvas: #ffffff; --subtle: #f6f4ff; --brand-soft: #f1effe;
+  --text-strong: #1a1f2e; --text: #363d4d; --text-dim: #535768;
+  --rule: rgba(54,61,77,0.08); --rule-strong: rgba(54,61,77,0.16);
+  --shadow-tier1: rgba(0,0,51,0.06) 0px 0px 0px 1px, rgba(0,0,0,0.08) 0px 0px 10px 0px, rgba(0,0,85,0.024) 0px 16px 64px 0px;
+  --radius-button: 8px; --radius-card: 18px; --radius-image: 7px; --radius-pill: 999px;
+  --font-body: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  /* status (reserved, always shown with a text label) */
+  --crit: #c62828; --crit-bg: #fdecec;
+  --high: #b35c00; --high-bg: #fff3e3;
+  --med: #2f6fd1; --med-bg: #eaf2fd;
+  --low: #5b6170; --low-bg: #f0f1f4;
+  --ok: #0b8f57; --ok-bg: #e6f8ef;
+  color-scheme: light;
 }
 * { box-sizing: border-box; }
-body { background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 17px; line-height: 1.6; }
-.wrap { max-width: 1040px; margin: 0 auto; padding-inline: 20px; padding-block: 32px 72px; }
-h1, h2, h3 { font-family: var(--f-display); line-height: 1.2; text-wrap: balance; margin: 0; }
-h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.02em; }
-h2 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.01em; }
-h3 { font-size: 1.15rem; font-weight: 700; }
-p { margin: 0; max-width: 68ch; }
-a { color: var(--accent); }
-a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-code, .mono { font-family: var(--f-mono); font-size: 0.86em; }
-.eyebrow { font-family: var(--f-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-
-/* Masthead */
-.masthead { display: grid; gap: 18px; padding-bottom: 28px; border-bottom: 1px solid var(--rule); }
-.colourbar { display: flex; gap: 4px; }
-.colourbar span { width: 22px; height: 10px; }
-.colourbar span:nth-child(1) { background: var(--c); }
-.colourbar span:nth-child(2) { background: var(--m); }
-.colourbar span:nth-child(3) { background: var(--y); }
-.colourbar span:nth-child(4) { background: var(--k); }
-.meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px 28px; margin: 0; }
-.meta-grid div { min-width: 0; }
-.meta-grid dt { font-family: var(--f-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-.meta-grid dd { margin: 2px 0 0; font-weight: 600; overflow-wrap: anywhere; }
-.lede { font-size: 1.15rem; color: var(--muted); }
-
-/* Contents */
-nav.toc { margin-top: 28px; }
-nav.toc ol { list-style: none; padding: 0; margin: 10px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 4px 24px; counter-reset: toc; }
-nav.toc li { counter-increment: toc; }
-nav.toc a { text-decoration: none; color: var(--ink); display: flex; gap: 10px; padding: 3px 0; }
-nav.toc a::before { content: counter(toc, decimal-leading-zero); font-family: var(--f-mono); font-size: 0.8rem; color: var(--muted); padding-top: 3px; }
-nav.toc a:hover { color: var(--accent); }
-
-/* Sections */
-section { padding-top: 48px; display: grid; gap: 16px; counter-increment: sec; }
-main { counter-reset: sec; }
-section > .eyebrow::before { content: "Section " counter(sec, decimal-leading-zero) " · "; }
-.callout { background: var(--sheet); border: 1px solid var(--rule); padding: 18px 20px; display: grid; gap: 8px; }
-.callout.good { border-left: 4px solid var(--good); }
-.callout.info { border-left: 4px solid var(--accent); }
-.callout.warn { border-left: 4px solid var(--med); }
-ul.plain { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; max-width: 72ch; }
-
-/* KPI tiles */
-.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
-.kpi { background: var(--sheet); border: 1px solid var(--rule); padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
-.kpi .num { font-family: var(--f-display); font-size: 2rem; font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1.1; }
-.kpi .lbl { font-size: 0.92rem; color: var(--muted); line-height: 1.35; }
-
-/* Tables */
-.tbl { overflow-x: auto; border: 1px solid var(--rule); background: var(--sheet); }
-table { border-collapse: collapse; width: 100%; font-size: 0.93rem; }
-th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--rule); }
-th { font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; background: var(--paper); white-space: nowrap; }
-tbody tr:last-child td { border-bottom: 0; }
-td.n { font-variant-numeric: tabular-nums; white-space: nowrap; font-family: var(--f-mono); font-size: 0.86rem; }
-td.issue { font-weight: 600; min-width: 170px; }
-td.act { min-width: 240px; }
-.wide table { min-width: 860px; }
-
-/* Chips */
-.chip { display: inline-block; font-family: var(--f-mono); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; white-space: nowrap; font-weight: 500; }
-.chip.high { color: var(--high); background: var(--high-bg); }
-.chip.med { color: var(--med); background: var(--med-bg); }
-.chip.low { color: var(--low); background: var(--low-bg); }
-.chip.good { color: var(--good); background: var(--good-bg); }
-.chip.none { color: var(--none); background: var(--none-bg); }
-
-/* Pass-rate bars */
-.bars { display: grid; gap: 12px; background: var(--sheet); border: 1px solid var(--rule); padding: 18px 20px; }
-.bar { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) 4.5rem; gap: 12px; align-items: center; }
-.bar .name { font-size: 0.93rem; }
-.bar .track { height: 12px; background: var(--paper); border: 1px solid var(--rule); position: relative; }
-.bar .fill { position: absolute; inset: 0 auto 0 0; background: var(--accent); }
-.bar .val { font-family: var(--f-mono); font-size: 0.85rem; text-align: right; font-variant-numeric: tabular-nums; }
-.bars .axis { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) 4.5rem; gap: 12px; font-family: var(--f-mono); font-size: 0.7rem; color: var(--muted); }
-.bars .axis .ticks { display: flex; justify-content: space-between; }
-@media (max-width: 620px) {
-  .bar, .bars .axis { grid-template-columns: minmax(0, 1fr) 4rem; }
-  .bar .name { grid-column: 1 / -1; }
-  .bars .axis span:first-child { display: none; }
-}
-
-/* Details */
-details { background: var(--sheet); border: 1px solid var(--rule); }
-summary { cursor: pointer; padding: 10px 14px; font-weight: 600; font-size: 0.95rem; }
-details > div { padding: 0 14px 14px; display: grid; gap: 8px; }
-details ul { margin: 0; padding-left: 1.2em; font-family: var(--f-mono); font-size: 0.82rem; overflow-wrap: anywhere; }
-
-/* Phases */
-.phases { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
-.phase { background: var(--sheet); border: 1px solid var(--rule); border-top: 4px solid var(--accent); padding: 16px 18px; display: grid; gap: 8px; align-content: start; }
-.phase:nth-child(2) { border-top-color: var(--m); }
-.phase:nth-child(3) { border-top-color: var(--y); }
-.phase:nth-child(4) { border-top-color: var(--k); }
-.phase ul { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; font-size: 0.95rem; }
-.phase .when { font-family: var(--f-mono); font-size: 0.75rem; color: var(--muted); }
-
-footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.9rem; display: grid; gap: 6px; }
-@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
 html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--canvas); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+.container { max-width: 1040px; margin: 0 auto; padding-inline: 20px; }
+code, .mono { font-family: var(--font-mono); font-size: 0.86em; }
+a { color: var(--primary); }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* topbar */
+.topbar { border-bottom: 1px solid var(--rule); background: rgba(255,255,255,0.92); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; backdrop-filter: blur(12px); }
+.topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.atarim-logo { height: 26px; width: auto; display: block; }
+.brand-tag, .pill { font-family: var(--font-mono); font-size: 11px; font-weight: 500; color: var(--primary); padding: 4px 10px; border-radius: var(--radius-pill); background: var(--brand-soft); }
+.topmeta { font-family: var(--font-mono); font-size: 12px; color: var(--text-dim); }
+.topmeta b { color: var(--text-strong); font-weight: 500; }
+
+/* hero */
+.hero { position: relative; padding-block: 48px 24px; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; z-index: -1; background: radial-gradient(at 6% 12%, rgba(195,137,245,0.14) 0px, transparent 50%), radial-gradient(at 96% 21%, rgba(127,209,250,0.12) 0px, transparent 50%), radial-gradient(at 71% 76%, rgba(58,42,201,0.05) 0px, transparent 50%), var(--canvas); }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: var(--radius-pill); background: white; box-shadow: var(--shadow-tier1); font-family: var(--font-mono); font-size: 12px; color: var(--primary); font-weight: 500; }
+.eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+h1 { font-weight: 900; font-size: clamp(34px, 6vw, 56px); line-height: 1.02; letter-spacing: -2px; color: var(--text-strong); margin: 22px 0 0; text-wrap: balance; }
+h2 { font-weight: 900; font-size: clamp(26px, 4vw, 36px); line-height: 1.08; letter-spacing: -1.2px; color: var(--text-strong); margin: 0; text-wrap: balance; }
+h3 { font-weight: 700; font-size: 18px; line-height: 1.25; letter-spacing: -0.3px; color: var(--text-strong); margin: 0; }
+p { margin: 0; max-width: 70ch; }
+.grad { background: linear-gradient(135deg, var(--primary) 0%, var(--accent-deep) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.lede { font-size: 19px; color: var(--text-dim); margin-top: 18px; max-width: 64ch; }
+
+/* kpi tiles */
+.kpis { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin-top: 32px; }
+.kpi { background: white; border-radius: var(--radius-card); box-shadow: var(--shadow-tier1); padding: 20px 22px; display: grid; gap: 4px; align-content: start; }
+.kpi .num { font-weight: 900; font-size: 40px; letter-spacing: -1.5px; line-height: 1; font-variant-numeric: tabular-nums; color: var(--text-strong); }
+.kpi .num small { font-size: 20px; letter-spacing: -0.5px; }
+.kpi .num.bad { color: var(--crit); } .kpi .num.good { color: var(--ok); } .kpi .num.warn { color: var(--high); }
+.kpi .k { font-weight: 700; color: var(--text-strong); font-size: 15px; }
+.kpi .d { font-size: 13px; color: var(--text-dim); }
+
+/* contents */
+.toc { background: var(--subtle); border-radius: var(--radius-card); padding: 24px 28px; margin-top: 32px; }
+.toc .label { margin-bottom: 12px; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); grid-template-rows: repeat(8, auto); grid-auto-flow: column; gap: 6px 32px; counter-reset: t; }
+.toc li { counter-increment: t; }
+.toc a { display: flex; gap: 12px; color: var(--text-strong); text-decoration: none; font-size: 15px; }
+.toc a::before { content: counter(t, decimal-leading-zero); font-family: var(--font-mono); font-size: 12px; color: var(--primary); padding-top: 2px; }
+.toc a:hover { color: var(--primary); }
+
+/* sections */
+section.s { padding-block: 56px 8px; border-top: 1px solid var(--rule); margin-top: 48px; display: grid; gap: 20px; }
+.label { font-family: var(--font-mono); font-size: 12px; color: var(--primary); font-weight: 500; display: inline-flex; align-items: center; gap: 8px; }
+.label::before { content: ''; width: 16px; height: 2px; background: var(--primary); border-radius: 2px; }
+.section-lede { font-size: 16px; color: var(--text-dim); }
+.prose { display: grid; gap: 12px; font-size: 15px; }
+
+/* cards */
+.card { background: white; border-radius: var(--radius-card); box-shadow: var(--shadow-tier1); padding: 22px 24px; display: grid; gap: 10px; min-width: 0; }
+.card .tag { font-family: var(--font-mono); font-size: 11px; font-weight: 500; }
+.tag.crit { color: var(--crit); } .tag.high { color: var(--high); } .tag.ok { color: var(--ok); } .tag.med { color: var(--med); }
+.card.edge-crit { border-left: 4px solid var(--crit); } .card.edge-high { border-left: 4px solid #e8902a; }
+.card.edge-med { border-left: 4px solid var(--med); } .card.edge-low { border-left: 4px solid #9aa0ad; } .card.edge-ok { border-left: 4px solid var(--accent-deep); }
+.find-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.find-head h3 { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.fid { font-family: var(--font-mono); font-size: 12px; color: var(--text-dim); font-weight: 500; }
+.urls { font-family: var(--font-mono); font-size: 12.5px; color: var(--text); overflow-wrap: anywhere; }
+.urls b { font-weight: 500; color: var(--text-strong); display: block; margin-bottom: 4px; font-family: var(--font-mono); }
+.action { background: var(--subtle); border-radius: 12px; padding: 14px 16px; display: grid; gap: 4px; }
+.action .t { font-family: var(--font-mono); font-size: 11px; color: var(--primary); font-weight: 500; }
+.action p { font-size: 15px; color: var(--text-strong); }
+.stack { display: grid; gap: 16px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+
+/* chips */
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: var(--radius-pill); font-family: var(--font-mono); font-size: 11px; font-weight: 500; white-space: nowrap; border: 1px solid currentColor; }
+.chip::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.chip.crit { color: var(--crit); background: var(--crit-bg); } .chip.high { color: var(--high); background: var(--high-bg); }
+.chip.med { color: var(--med); background: var(--med-bg); } .chip.low { color: var(--low); background: var(--low-bg); }
+.chip.ok { color: var(--ok); background: var(--ok-bg); } .chip.na { color: var(--low); background: white; }
+
+/* status list rows */
+.rows { background: white; border-radius: var(--radius-card); box-shadow: var(--shadow-tier1); overflow: hidden; }
+.row { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.6fr) auto; gap: 16px; padding: 14px 22px; border-bottom: 1px solid var(--rule); align-items: center; }
+.row:last-child { border-bottom: 0; }
+.row .n { font-weight: 700; color: var(--text-strong); font-size: 15px; }
+.row .v { font-size: 14px; color: var(--text-dim); }
+
+/* tables */
+.tbl { background: white; border-radius: var(--radius-card); box-shadow: var(--shadow-tier1); overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th { text-align: left; font-family: var(--font-mono); font-size: 11px; font-weight: 500; color: var(--text-dim); padding: 12px 14px; border-bottom: 1px solid var(--rule-strong); white-space: nowrap; background: white; }
+td { padding: 11px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td.i { font-weight: 700; color: var(--text-strong); min-width: 150px; }
+td.n, th.n { text-align: right; font-family: var(--font-mono); font-size: 12.5px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.u { font-family: var(--font-mono); font-size: 12.5px; overflow-wrap: anywhere; min-width: 150px; }
+td.a { min-width: 220px; }
+.wide table { min-width: 860px; }
+.note { font-family: var(--font-mono); font-size: 11.5px; color: var(--text-dim); max-width: none; }
+
+/* charts */
+.chart { background: white; border-radius: var(--radius-card); box-shadow: var(--shadow-tier1); padding: 22px 24px; display: grid; gap: 14px; }
+.chart .sub { font-size: 13px; color: var(--text-dim); }
+.hbar { display: grid; grid-template-columns: minmax(0, 9.5rem) minmax(0, 1fr) 5.5rem; gap: 12px; align-items: center; font-size: 13.5px; }
+.hbar .lab { text-align: right; color: var(--text); }
+.hbar .trk { position: relative; height: 20px; }
+.hbar .bar { position: absolute; inset: 0 auto 0 0; border-radius: 0 4px 4px 0; background: #c6bffb; }
+.hbar .bar.hi { background: var(--primary); }
+.hbar .val { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-strong); font-variant-numeric: tabular-nums; }
+.hbar .ref { position: absolute; top: -4px; bottom: -4px; width: 0; border-left: 2px dashed var(--text-dim); }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 12.5px; color: var(--text-dim); padding-top: 10px; border-top: 1px solid var(--rule); }
+.legend span { display: inline-flex; align-items: center; gap: 7px; }
+.sw { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+.stackbar { display: flex; gap: 2px; height: 26px; }
+.stackbar div { display: flex; align-items: center; justify-content: center; color: white; font-family: var(--font-mono); font-size: 12px; font-weight: 500; }
+.stackbar div:first-child { border-radius: 4px 0 0 4px; } .stackbar div:last-child { border-radius: 0 4px 4px 0; }
+.sb-ok { background: var(--accent-deep); } .sb-warn { background: #e8902a; } .sb-bad { background: var(--crit); }
+svg text { font-family: var(--font-body); }
+
+.outline { font-family: var(--font-mono); font-size: 12px; line-height: 1.9; }
+.outline span { display: inline-block; padding: 0 6px; border-radius: 4px; background: var(--brand-soft); color: var(--primary-deep); margin: 1px 2px; }
+.outline span.bad { background: var(--crit-bg); color: var(--crit); }
+
+.phases { display: grid; gap: 16px; }
+.phase ul { margin: 0; padding-left: 0; list-style: none; display: grid; gap: 8px; font-size: 15px; }
+.phase li { display: flex; gap: 12px; } .phase li::before { content: ''; flex: none; width: 8px; height: 8px; margin-top: 8px; border-radius: 2px; background: #c6bffb; }
+.phase .t { font-family: var(--font-mono); font-size: 12px; color: var(--primary); font-weight: 500; }
+
+footer { margin-top: 56px; padding-block: 24px 48px; border-top: 1px solid var(--rule); font-family: var(--font-mono); font-size: 12px; color: var(--text-dim); display: grid; gap: 4px; }
+
+@media (max-width: 760px) {
+  .kpis, .toc ol, .grid3 { grid-template-columns: 1fr; }
+  .toc ol { grid-template-rows: none; grid-auto-flow: row; }
+  .row { grid-template-columns: minmax(0,1fr) auto; }
+  .row .v { grid-column: 1 / -1; grid-row: 2; }
+  .hbar { grid-template-columns: minmax(0, 1fr) 4.5rem; }
+  .hbar .lab { grid-column: 1 / -1; text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 
-<div class="wrap">
-<header class="masthead">
-  <div class="colourbar" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-  <div class="eyebrow">SEO Audit Report · Pre-project baseline</div>
-  <h1>Lakewood Printing SEO Baseline</h1>
-  <p class="lede">This report records the condition of lakewood.net.au before SEO work begins. Every figure comes from the crawl exports listed below. We will compare against these numbers after the work is done.</p>
-  <dl class="meta-grid">
-    <div><dt>Website</dt><dd>https://lakewood.net.au</dd></div>
-    <div><dt>Report date</dt><dd>7 October 2026</dd></div>
-    <div><dt>Platform</dt><dd>WordPress</dd></div>
-    <div><dt>Report type</dt><dd>Baseline (before SEO)</dd></div>
-  </dl>
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="brand">
+      <svg class="atarim-logo" viewBox="0 0 291 80" xmlns="http://www.w3.org/2000/svg" fill="none" aria-label="Atarim">
+        <path d="M70.038 57.6165L55.7483 62.8644L63.6592 78.1047L80.6972 78.0848L70.038 57.6165Z" fill="#052055"/>
+        <path d="M40.3442 0.381104L0 78.0849H17.0475L40.3391 33.1781L48.7368 49.3569L63.0266 44.1089L40.3442 0.381104Z" fill="#052055"/>
+        <path d="M17.0106 78.1106L27.9428 57.0615L78.8349 37.7051L17.0106 78.1106Z" fill="#6D5DF3"/>
+        <path d="M108.642 68.0594V78.9102H102.13C97.4883 78.9102 93.87 77.7752 91.2747 75.5053C88.6793 73.2359 87.3817 69.5317 87.3821 64.3927V47.7799H82.2915V37.1537H87.3821V26.9763H100.183V37.1537H108.568V47.7799H100.183V64.5425C100.183 65.79 100.483 66.688 101.082 67.2365C101.68 67.7858 102.679 68.0601 104.076 68.0594L108.642 68.0594Z" fill="#052055"/>
+        <path d="M115.641 46.6573C117.262 43.4149 119.471 40.9206 122.266 39.1743C125.071 37.4253 128.318 36.5163 131.624 36.5551C134.568 36.5551 137.151 37.1538 139.372 38.351C141.472 39.4367 143.242 41.0646 144.5 43.0655V37.1538H157.301V78.9103H144.5V72.9986C143.2 74.9913 141.408 76.6151 139.297 77.7131C137.076 78.9103 134.493 79.509 131.549 79.509C128.263 79.5402 125.038 78.6174 122.266 76.8524C119.471 75.0821 117.262 72.5627 115.641 69.2942C114.019 66.0275 113.208 62.2484 113.208 57.957C113.208 53.6671 114.019 49.9005 115.641 46.6573ZM141.842 50.474C141.006 49.6018 140.002 48.9071 138.891 48.4314C137.779 47.9556 136.584 47.7087 135.375 47.7052C134.166 47.7017 132.969 47.9417 131.855 48.411C130.741 48.8803 129.733 49.5692 128.891 50.4366C127.119 52.2581 126.234 54.7649 126.234 57.957C126.234 61.1505 127.12 63.6823 128.891 65.5527C129.722 66.4355 130.724 67.1397 131.836 67.6222C132.948 68.1048 134.147 68.3554 135.359 68.359C136.571 68.3625 137.771 68.1187 138.886 67.6426C140.001 67.1665 141.007 66.4681 141.842 65.5901C143.613 63.745 144.499 61.2255 144.5 58.0319C144.5 54.84 143.614 52.3207 141.842 50.474Z" fill="#052055"/>
+        <path d="M184.998 38.6879C187.267 37.36 189.855 36.6745 192.484 36.7048V50.2496H188.966C185.771 50.2496 183.376 50.9356 181.779 52.3076C180.181 53.6802 179.383 56.0873 179.384 59.5289V78.9106H166.583V37.154H179.384V44.1133C180.806 41.8915 182.729 40.0334 184.998 38.6879Z" fill="#052055"/>
+        <path d="M211.424 37.1538V78.9104H198.622V37.1538H211.424Z" fill="#052055"/>
+        <path d="M286.396 41.4191C289.466 44.562 291 48.9273 291 54.515V78.9104H278.274V56.2361C278.274 53.5421 277.563 51.4592 276.141 49.9874C274.718 48.5166 272.759 47.7808 270.264 47.7801C267.767 47.7801 265.809 48.5158 264.388 49.9874C262.965 51.4595 262.254 53.5424 262.254 56.2361V78.9104H249.527V56.2361C249.527 53.5421 248.816 51.4592 247.394 49.9874C245.971 48.5166 244.013 47.7808 241.517 47.7801C239.021 47.7801 237.062 48.5158 235.641 49.9874C234.219 51.4595 233.507 53.5424 233.507 56.2361V78.9104H220.706V37.1538H233.507V42.3921C234.842 40.6156 236.589 39.1902 238.598 38.2388C240.819 37.1887 243.253 36.6638 245.71 36.7046C248.854 36.7046 251.661 37.3781 254.131 38.7251C256.578 40.0493 258.592 42.0497 259.933 44.4874C261.414 42.1603 263.445 40.2329 265.847 38.8748C268.323 37.4331 271.141 36.6835 274.007 36.7046C279.197 36.7046 283.326 38.2761 286.396 41.4191Z" fill="#052055"/>
+        <path d="M202.508 22.299C202.396 21.8634 202.168 21.4658 201.85 21.1477C201.532 20.8296 201.135 20.6026 200.699 20.4902L192.977 18.4989C192.845 18.4615 192.729 18.3822 192.647 18.2729C192.564 18.1636 192.519 18.0304 192.519 17.8934C192.519 17.7565 192.564 17.6233 192.647 17.514C192.729 17.4047 192.845 17.3254 192.977 17.288L200.699 15.2954C201.135 15.1832 201.532 14.9563 201.85 14.6384C202.168 14.3206 202.395 13.9233 202.508 13.4879L204.499 5.76566C204.536 5.63339 204.615 5.51686 204.725 5.43385C204.834 5.35084 204.968 5.30591 205.105 5.30591C205.243 5.30591 205.376 5.35084 205.486 5.43385C205.595 5.51686 205.674 5.63339 205.711 5.76566L207.701 13.4879C207.814 13.9235 208.041 14.3211 208.359 14.6392C208.677 14.9573 209.075 15.1843 209.51 15.2967L217.232 17.2867C217.365 17.3234 217.482 17.4026 217.566 17.5122C217.649 17.6217 217.694 17.7557 217.694 17.8934C217.694 18.0312 217.649 18.1652 217.566 18.2747C217.482 18.3843 217.365 18.4635 217.232 18.5002L209.51 20.4902C209.075 20.6026 208.677 20.8296 208.359 21.1477C208.041 21.4658 207.814 21.8634 207.701 22.299L205.71 30.0212C205.673 30.1535 205.594 30.27 205.484 30.3531C205.375 30.4361 205.241 30.481 205.104 30.481C204.967 30.481 204.833 30.4361 204.724 30.3531C204.614 30.27 204.535 30.1535 204.498 30.0212L202.508 22.299Z" fill="#6D5DF3"/>
+        <path d="M215.174 6.56494V11.5998" stroke="#6D5DF3" stroke-width="1.52" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M217.692 9.08228H212.657" stroke="#6D5DF3" stroke-width="1.52" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M195.035 24.187V26.7045" stroke="#6D5DF3" stroke-width="1.52" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M196.294 25.4456H193.776" stroke="#6D5DF3" stroke-width="1.52" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand-tag">SEO audit</span>
+    </div>
+    <div class="topmeta">lakewood.net.au · baseline <b>7 Oct 2026</b> · <b>86</b> URLs</div>
+  </div>
+</div>
+
+<div class="container">
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <span class="eyebrow"><span class="eyebrow-dot"></span>Pre-project baseline · Screaming Frog crawl + site checks · 7 October 2026</span>
+  <h1>SEO audit for <span class="grad">lakewood.net.au</span></h1>
+  <p class="lede">Lakewood Printing is a Melbourne commercial printer, 100% Australian owned. This report records the site's technical and on-page condition before any SEO work begins, so every change made from here can be measured against a fixed starting point.</p>
+  <div class="kpis">
+    <div class="kpi"><span class="num">86</span><span class="k">URLs crawled</span><span class="d">5 pages, 24 images and 57 supporting files. No broken pages, server errors or redirects flagged.</span></div>
+    <div class="kpi"><span class="num bad">0 <small>of 5</small></span><span class="k">Pages with a meta description</span><span class="d">Google writes the search snippet for every page on the site.</span></div>
+    <div class="kpi"><span class="num bad">23 <small>of 24</small></span><span class="k">Images without alt text</span><span class="d">95.83% of images are invisible to image search and screen readers.</span></div>
+    <div class="kpi"><span class="num warn">85</span><span class="k">PageSpeed SEO score (mobile)</span><span class="d">Two failed checks: no meta description, links that can't be crawled.</span></div>
+  </div>
+  <nav class="toc" aria-label="Contents">
+    <div class="label">Contents</div>
+    <ol>
+      <li><a href="#s1">Executive summary</a></li>
+      <li><a href="#s2">SEO health overview</a></li>
+      <li><a href="#s3">Key findings</a></li>
+      <li><a href="#s4">Technical SEO</a></li>
+      <li><a href="#s5">Crawlability &amp; indexability</a></li>
+      <li><a href="#s6">On-page SEO</a></li>
+      <li><a href="#s7">Metadata analysis</a></li>
+      <li><a href="#s8">Heading structure</a></li>
+      <li><a href="#s9">URL &amp; canonical</a></li>
+      <li><a href="#s10">Redirects &amp; status codes</a></li>
+      <li><a href="#s11">Internal linking</a></li>
+      <li><a href="#s12">Image SEO</a></li>
+      <li><a href="#s13">Duplicate &amp; thin content</a></li>
+      <li><a href="#s14">Priority issues</a></li>
+      <li><a href="#s15">Action plan</a></li>
+      <li><a href="#s16">Baseline summary</a></li>
+    </ol>
+  </nav>
 </header>
 
-<nav class="toc" aria-label="Contents">
-  <div class="eyebrow">Contents</div>
-  <ol>
-    <li><a href="#summary">Executive Summary</a></li>
-    <li><a href="#health">Website SEO Health Overview</a></li>
-    <li><a href="#findings">Key Findings</a></li>
-    <li><a href="#technical">Technical SEO Audit</a></li>
-    <li><a href="#crawl">Crawlability &amp; Indexability</a></li>
-    <li><a href="#onpage">On-Page SEO Analysis</a></li>
-    <li><a href="#metadata">Metadata Analysis</a></li>
-    <li><a href="#headings">Heading Structure</a></li>
-    <li><a href="#urls">URL &amp; Canonical Analysis</a></li>
-    <li><a href="#status">Redirects &amp; HTTP Status Codes</a></li>
-    <li><a href="#links">Internal Linking Analysis</a></li>
-    <li><a href="#images">Image SEO</a></li>
-    <li><a href="#thin">Duplicate &amp; Thin Content</a></li>
-    <li><a href="#priorities">Priority Issues &amp; Recommendations</a></li>
-    <li><a href="#plan">SEO Action Plan</a></li>
-    <li><a href="#baseline">Before-SEO Baseline Summary</a></li>
-  </ol>
-</nav>
-
-<main>
-
-<!-- 1 -->
-<section id="summary">
-  <div class="eyebrow">Executive Summary</div>
-  <h2>A small site with a sound foundation and clear on-page gaps</h2>
-  <p>Lakewood Printing's website has five main pages. The crawl found <strong>no broken pages, no server errors, no redirects and no canonical conflicts</strong>. Search engines can reach the site and nothing is blocking it from being indexed.</p>
-  <p>The gaps are in what search engines and searchers see once they get there. No page has a meta description, three of the five page titles are very short, three of the five pages have fewer than 200 words, and 23 of the 24 images have no alt text. WordPress's default <code>Hello World</code> post, an author archive and an <code>Uncategorized</code> category page are also live and visible to search engines.</p>
-  <p>Google PageSpeed Insights gives the site an <strong>SEO score of 85 out of 100 on mobile</strong>. It fails two checks: a missing meta description and links that cannot be crawled.</p>
-  <div class="kpis">
-    <div class="kpi"><span class="num">85</span><span class="lbl">PageSpeed SEO score (mobile)</span></div>
-    <div class="kpi"><span class="num">0 / 5</span><span class="lbl">Pages with a meta description</span></div>
-    <div class="kpi"><span class="num">3 / 5</span><span class="lbl">Pages under 200 words</span></div>
-    <div class="kpi"><span class="num">23 / 24</span><span class="lbl">Images missing alt text (95.83%)</span></div>
-    <div class="kpi"><span class="num">0</span><span class="lbl">Broken pages or server errors flagged</span></div>
+<!-- 01 -->
+<section class="s" id="s1">
+  <div class="label">01 — Executive summary</div>
+  <h2>The site works. It tells <span class="grad">search engines</span> very little.</h2>
+  <div class="prose">
+    <p>Technically the site is in reasonable shape. The crawl found no broken pages, no server errors, no redirects and no canonical conflicts, every page is served over HTTPS, and the URLs are short and readable. Nothing blocks Google from reaching the five main pages.</p>
+    <p>The problems are in what each page says about itself. No page has a meta description, all five titles are under 34 characters, three of five pages have fewer than 200 words, and every page skips heading levels. 23 of 24 images have no alt text. WordPress's sample "Hello world!" post, an author archive and an "Uncategorized" archive are all live and open to indexing.</p>
+    <p>There is no SEO plugin installed, which is why none of the metadata exists, and the page data still loads 45 images and backgrounds from the old staging server.</p>
+    <p>None of this needs a rebuild. Most of it is configuration and copy, and the high-priority items can be done in the first two weeks.</p>
   </div>
-  <div class="callout info">
-    <h3>Where this data comes from</h3>
-    <ul class="plain">
-      <li><strong>Screaming Frog SEO Spider "Issues Overview" export.</strong> It covers 86 crawled URLs: 5 HTML pages, 24 images and 57 other files. The export does not break down what the 57 other files are. They are typically scripts, stylesheets and fonts.</li>
-      <li><strong>Site audit issues export.</strong> It lists findings for 9 URLs: the 5 main pages plus 4 URLs that WordPress generates automatically.</li>
-      <li><strong>Google PageSpeed Insights screenshot</strong> (Mobile, SEO category). The tested URL is not visible in the screenshot.</li>
-    </ul>
-    <p>Neither export includes the crawl date or the crawler settings. Anything these sources cannot show is marked <span class="chip none">Not measured</span>, and the tool needed to measure it is named.</p>
+  <div class="card edge-high">
+    <span class="tag high">MOST URGENT</span>
+    <h3>No page has a meta description, and there is no SEO plugin to add one</h3>
+    <p>All five pages (100%) output no <code>&lt;meta name="description"&gt;</code>. PageSpeed Insights fails the site on this check. Without an SEO plugin there is no field in WordPress to write one, so installing and configuring one comes first.</p>
+  </div>
+  <div class="card edge-high">
+    <span class="tag high">HIGHEST IMPACT ON RANKING</span>
+    <h3>The pages people click first have the least to say</h3>
+    <p>Contact Us has 88 words, About Us 110 and What We Print 137. Each is a page someone lands on to decide whether to call. Google has very little text to work out what they offer.</p>
+  </div>
+  <div class="card edge-ok">
+    <span class="tag ok">ALREADY STRONG</span>
+    <h3>Crawl health needs no work</h3>
+    <p>Zero 404s, zero server errors, zero redirects, self-referencing canonicals on every page, HTTPS throughout, and clean lowercase hyphenated URLs. This part of the site should be left alone.</p>
   </div>
 </section>
 
-<!-- 2 -->
-<section id="health">
-  <div class="eyebrow">Website SEO Health Overview</div>
-  <h2>Health by area</h2>
-  <p>Each area is rated from the crawl evidence. "Good" means the crawl flagged nothing in that area. It does not mean the area has been fully optimised.</p>
-  <div class="tbl wide">
-    <table>
-      <thead><tr><th>Area</th><th>Status</th><th>What the data shows</th></tr></thead>
-      <tbody>
-        <tr><td class="issue">Metadata (titles &amp; descriptions)</td><td><span class="chip high">Poor</span></td><td>All 5 pages have no meta description (100%). 3 of 5 titles are under 30 characters (60%).</td></tr>
-        <tr><td class="issue">Image SEO</td><td><span class="chip high">Poor</span></td><td>23 of 24 images have no alt text (95.83%).</td></tr>
-        <tr><td class="issue">On-page content</td><td><span class="chip med">Needs work</span></td><td>3 of 5 pages are under 200 words (60%).</td></tr>
-        <tr><td class="issue">Duplicate &amp; thin content</td><td><span class="chip med">Needs work</span></td><td>Two auto-generated archive pages have 96–97 words each. The default "Hello World" post is live.</td></tr>
-        <tr><td class="issue">Heading structure</td><td><span class="chip med">Needs work</span></td><td>All 5 main pages skip heading levels. 4 of 5 have no H2 (80%).</td></tr>
-        <tr><td class="issue">Internal linking</td><td><span class="chip med">Needs work</span></td><td>All 5 pages have links with no anchor text. 2 pages use vague link text. 2 URLs are orphaned. PageSpeed flags links that cannot be crawled.</td></tr>
-        <tr><td class="issue">Crawlability &amp; indexability</td><td><span class="chip med">Mostly sound</span></td><td>No blocking issues on the main pages. Default WordPress URLs are open to indexing.</td></tr>
-        <tr><td class="issue">Technical &amp; security</td><td><span class="chip low">Low risk</span></td><td>5 security headers are missing on all 86 URLs. 26 URLs (30.23%) are sent with the wrong content type.</td></tr>
-        <tr><td class="issue">URL structure</td><td><span class="chip good">Good</span></td><td>Main page URLs are short, lowercase and hyphenated. No URL issues were flagged.</td></tr>
-        <tr><td class="issue">Canonicalisation</td><td><span class="chip good">Good</span></td><td>The one comment-reply URL correctly points its canonical tag to the original post. No canonical issues were flagged.</td></tr>
-        <tr><td class="issue">Redirects &amp; status codes</td><td><span class="chip good">Good</span></td><td>No 3xx, 4xx or 5xx issues were flagged.</td></tr>
-        <tr><td class="issue">Page performance / Core Web Vitals</td><td><span class="chip none">Not measured</span></td><td>Neither export contains speed data. The PageSpeed screenshot shows only the SEO category.</td></tr>
-        <tr><td class="issue">XML sitemap &amp; robots.txt</td><td><span class="chip none">Not measured</span></td><td>Neither export contains sitemap or robots.txt data.</td></tr>
-      </tbody>
-    </table>
+<!-- 02 -->
+<section class="s" id="s2">
+  <div class="label">02 — Website SEO health overview</div>
+  <h2>Where the site stands, category by category</h2>
+  <p class="section-lede">Each rating comes from what the crawl and the pre-change site checks actually measured. Categories the data could not assess are marked as such rather than guessed at.</p>
+  <div class="rows">
+    <div class="row"><span class="n">HTTP status codes</span><span class="v">No 4xx, 5xx or 3xx issues flagged</span><span class="chip ok">Healthy</span></div>
+    <div class="row"><span class="n">HTTPS</span><span class="v">All 5 pages served over HTTPS</span><span class="chip ok">Healthy</span></div>
+    <div class="row"><span class="n">URL structure</span><span class="v">Lowercase, hyphenated, no parameters on pages</span><span class="chip ok">Healthy</span></div>
+    <div class="row"><span class="n">Canonicalisation</span><span class="v">5 of 5 pages self-referencing</span><span class="chip ok">Healthy</span></div>
+    <div class="row"><span class="n">Meta descriptions</span><span class="v">5 of 5 missing</span><span class="chip crit">Poor</span></div>
+    <div class="row"><span class="n">Image alt text</span><span class="v">23 of 24 images missing alt</span><span class="chip crit">Poor</span></div>
+    <div class="row"><span class="n">Meta titles</span><span class="v">All 5 under 34 characters; 3 under 30</span><span class="chip high">Needs work</span></div>
+    <div class="row"><span class="n">Content depth</span><span class="v">3 of 5 pages under 200 words</span><span class="chip high">Needs work</span></div>
+    <div class="row"><span class="n">Heading structure</span><span class="v">All 5 pages skip levels; 4 have no H2</span><span class="chip high">Needs work</span></div>
+    <div class="row"><span class="n">Index hygiene</span><span class="v">3 default WordPress URLs open to indexing</span><span class="chip high">Needs work</span></div>
+    <div class="row"><span class="n">Links &amp; anchor text</span><span class="v">Every page has links with no text; social icons have empty or placeholder links</span><span class="chip high">Needs work</span></div>
+    <div class="row"><span class="n">Asset hosting</span><span class="v">45 image references point to the staging server</span><span class="chip high">Needs work</span></div>
+    <div class="row"><span class="n">Security headers</span><span class="v">0 of 5 recommended headers on 86 URLs</span><span class="chip med">Monitor</span></div>
+    <div class="row"><span class="n">Page speed / Core Web Vitals</span><span class="v">Not in the export</span><span class="chip na">No data</span></div>
+    <div class="row"><span class="n">Structured data</span><span class="v">Not in the export</span><span class="chip na">No data</span></div>
   </div>
-
-  <h3>Share of main pages passing each check</h3>
-  <div class="bars" role="img" aria-label="Pass rates: meta description 0%, title at least 30 characters 40%, at least 200 words 40%, has an H2 20%, headings in order 0%, image alt text 4.17%, links with anchor text 0%">
-    <div class="bar"><span class="name">Has a meta description</span><span class="track"><span class="fill" style="width:0%"></span></span><span class="val">0%</span></div>
-    <div class="bar"><span class="name">Title 30+ characters</span><span class="track"><span class="fill" style="width:40%"></span></span><span class="val">40%</span></div>
-    <div class="bar"><span class="name">200+ words of content</span><span class="track"><span class="fill" style="width:40%"></span></span><span class="val">40%</span></div>
-    <div class="bar"><span class="name">Has at least one H2</span><span class="track"><span class="fill" style="width:20%"></span></span><span class="val">20%</span></div>
-    <div class="bar"><span class="name">Headings in order (no skips)</span><span class="track"><span class="fill" style="width:0%"></span></span><span class="val">0%</span></div>
-    <div class="bar"><span class="name">Images with alt text (of 24)</span><span class="track"><span class="fill" style="width:4.17%"></span></span><span class="val">4.17%</span></div>
-    <div class="bar"><span class="name">All links have anchor text</span><span class="track"><span class="fill" style="width:0%"></span></span><span class="val">0%</span></div>
-    <div class="axis" aria-hidden="true"><span></span><span class="ticks"><span>0%</span><span>50%</span><span>100%</span></span><span></span></div>
+  <div class="chart" role="img" aria-label="URLs crawled by type: images 24, HTML pages 5, other files 57">
+    <h3>What the crawler found</h3>
+    <span class="sub">86 URLs by type. Only the 5 HTML pages can rank.</span>
+    <div class="hbar" title="Other files: 57 URLs"><span class="lab">Other files*</span><span class="trk"><span class="bar" style="width:100%"></span></span><span class="val">57</span></div>
+    <div class="hbar" title="Images: 24 URLs"><span class="lab">Images</span><span class="trk"><span class="bar" style="width:42.1%"></span></span><span class="val">24</span></div>
+    <div class="hbar" title="HTML pages: 5 URLs"><span class="lab">HTML pages</span><span class="trk"><span class="bar hi" style="width:8.8%"></span></span><span class="val">5</span></div>
+    <p class="note">* Scripts, stylesheets and fonts. The Issues Overview export doesn't break this group down further.</p>
   </div>
 </section>
 
-<!-- 3 -->
-<section id="findings">
-  <div class="eyebrow">Key Findings</div>
-  <h2>The seven findings that matter most</h2>
+<!-- 03 -->
+<section class="s" id="s3">
+  <div class="label">03 — Key findings</div>
+  <h2>The twenty issues found, ranked by impact</h2>
+  <p class="section-lede">Percentages are calculated against the 5 HTML pages unless stated otherwise. Nothing found blocks the main pages from ranking, so no item is rated Critical.</p>
   <div class="tbl wide">
     <table>
-      <thead><tr><th>#</th><th>Finding</th><th>Affected</th><th>Priority</th><th>Why it matters</th></tr></thead>
+      <thead><tr><th>SEO issue</th><th>Current status</th><th class="n">URLs</th><th class="n">% of pages</th><th>SEO impact</th><th>Priority</th></tr></thead>
       <tbody>
-        <tr><td class="n">1</td><td class="issue">No meta descriptions anywhere</td><td class="n">5 / 5 (100%)</td><td><span class="chip high">High</span></td><td>Google writes its own snippet for every result, so the site has no say in the text people read before they decide to click. PageSpeed also fails this check.</td></tr>
-        <tr><td class="n">2</td><td class="issue">Default WordPress content is live</td><td class="n">3 URLs</td><td><span class="chip high">High</span></td><td>The "Hello World" sample post, the author archive and the "Uncategorized" category give search engines low-value pages and look unfinished to visitors.</td></tr>
-        <tr><td class="n">3</td><td class="issue">Thin content on main pages</td><td class="n">3 / 5 (60%)</td><td><span class="chip high">High</span></td><td>Pages with fewer than 200 words give Google little to understand or rank. On a five-page site, this affects most of the site.</td></tr>
-        <tr><td class="n">4</td><td class="issue">Short page titles</td><td class="n">3 / 5 (60%)</td><td><span class="chip high">High</span></td><td>The title is the clickable headline in search results and one of the strongest on-page ranking signals. Titles under 30 characters leave out services and location.</td></tr>
-        <tr><td class="n">5</td><td class="issue">Links that cannot be crawled</td><td class="n">PageSpeed fail</td><td><span class="chip high">High</span></td><td>Search engines can only follow links that have a real web address. Links that can't be followed waste the pages they point to.</td></tr>
-        <tr><td class="n">6</td><td class="issue">Images without alt text</td><td class="n">23 / 24 (95.83%)</td><td><span class="chip med">Medium</span></td><td>Images can't rank in Google Images, and screen-reader users don't know what the images show.</td></tr>
-        <tr><td class="n">7</td><td class="issue">Broken heading order</td><td class="n">5 / 5 (100%)</td><td><span class="chip med">Medium</span></td><td>Headings act as the outline of a page. Skipped levels and missing H2s make that outline harder for Google and for screen readers to follow.</td></tr>
+        <tr><td class="i">Missing meta description</td><td>No description tag; no SEO plugin installed</td><td class="n">5</td><td class="n">100.0%</td><td>Google writes its own snippet</td><td><span class="chip high">High</span></td></tr>
+        <tr><td class="i">Thin content on key pages</td><td>Contact 88, About 110, What We Print 137 words</td><td class="n">3</td><td class="n">60.0%</td><td>Too little to rank for service terms</td><td><span class="chip high">High</span></td></tr>
+        <tr><td class="i">Page titles under 30 characters</td><td>Home 17, About 28, Services 28</td><td class="n">3</td><td class="n">60.0%</td><td>Unused space for services and location</td><td><span class="chip high">High</span></td></tr>
+        <tr><td class="i">Default WordPress pages indexable</td><td>Hello World post, author and Uncategorized archives</td><td class="n">3</td><td class="n">33.3% of 9</td><td>Thin pages in the index</td><td><span class="chip high">High</span></td></tr>
+        <tr><td class="i">Links not crawlable</td><td>Social icons with empty links on every page</td><td class="n">5</td><td class="n">100.0%</td><td>PageSpeed SEO fail</td><td><span class="chip high">High</span></td></tr>
+        <tr><td class="i">Images loaded from staging server</td><td>45 references to lakewood-printing.stagingsea.com</td><td class="n">5</td><td class="n">100.0%</td><td>Images break if staging goes offline</td><td><span class="chip high">High</span></td></tr>
+        <tr><td class="i">Images missing alt text</td><td>Empty alt attribute</td><td class="n">23</td><td class="n">95.8% of images</td><td>No image search; accessibility gap</td><td><span class="chip med">Medium</span></td></tr>
+        <tr><td class="i">Heading levels skip</td><td>e.g. H1 → H6 → H2 → H5 on the homepage</td><td class="n">5</td><td class="n">100.0%</td><td>Page outline unclear</td><td><span class="chip med">Medium</span></td></tr>
+        <tr><td class="i">No H2 on the page</td><td>About, What We Print, Services, Contact</td><td class="n">4</td><td class="n">80.0%</td><td>No section-level topic signals</td><td><span class="chip med">Medium</span></td></tr>
+        <tr><td class="i">H1 not the first heading</td><td>Homepage: "WE ARE YOUR" H4 sits above the H1</td><td class="n">1</td><td class="n">20.0%</td><td>Diluted primary heading</td><td><span class="chip med">Medium</span></td></tr>
+        <tr><td class="i">Internal links with no anchor text</td><td>Logo image links without alt; icon-only menu button</td><td class="n">5</td><td class="n">100.0%</td><td>No context for linked pages</td><td><span class="chip med">Medium</span></td></tr>
+        <tr><td class="i">Non-descriptive anchor text</td><td>"find out more" on Home and About</td><td class="n">2</td><td class="n">40.0%</td><td>Wasted link context</td><td><span class="chip med">Medium</span></td></tr>
+        <tr><td class="i">Orphan URLs</td><td>Author and Uncategorized archives</td><td class="n">2</td><td class="n">22.2% of 9</td><td>Crawl waste</td><td><span class="chip med">Medium</span></td></tr>
+        <tr><td class="i">Hard-to-read copy</td><td>About 23.3, What We Print 35.0, Home 39.7 (Flesch)</td><td class="n">3</td><td class="n">60.0%</td><td>Visitors skim and leave</td><td><span class="chip med">Medium</span></td></tr>
+        <tr><td class="i">Security headers missing</td><td>None of HSTS, X-Frame, nosniff, Referrer, CSP</td><td class="n">86</td><td class="n">100% of URLs</td><td>Trust and security</td><td><span class="chip low">Low</span></td></tr>
+        <tr><td class="i">Bad content type</td><td>JavaScript served as <code>application/x-javascript</code></td><td class="n">26</td><td class="n">30.2% of URLs</td><td>Robustness</td><td><span class="chip low">Low</span></td></tr>
+        <tr><td class="i">Unsafe cross-origin links</td><td>Placeholder social links open in new tab without <code>noopener</code></td><td class="n">5</td><td class="n">5.8% of URLs</td><td>Legacy-browser risk</td><td><span class="chip low">Low</span></td></tr>
+        <tr><td class="i">H2 not second heading</td><td>Homepage: H6 label between H1 and H2</td><td class="n">1</td><td class="n">20.0%</td><td>Minor outline issue</td><td><span class="chip low">Low</span></td></tr>
+        <tr><td class="i">Title under 200 pixels</td><td>Homepage "Lakewood Printing"</td><td class="n">1</td><td class="n">20.0%</td><td>Very short in results</td><td><span class="chip low">Low</span></td></tr>
+        <tr><td class="i">Spelling error</td><td>"Calanders" on About Us</td><td class="n">1</td><td class="n">20.0%</td><td>Credibility</td><td><span class="chip low">Low</span></td></tr>
       </tbody>
     </table>
   </div>
-  <div class="callout good">
-    <h3>What is already working</h3>
-    <ul class="plain">
-      <li>No broken links, missing pages (404) or server errors (5xx) were flagged.</li>
-      <li>No redirect chains or redirect loops were flagged.</li>
-      <li>No missing or duplicate page titles, and no missing or multiple H1 headings, were flagged.</li>
-      <li>The comment-reply URL <code>/hello-world/?replytocom=1</code> is correctly set to <code>noindex</code> and canonicalised to <code>/hello-world/</code>, so it can't compete as a duplicate.</li>
-      <li>Main page URLs are short, readable and descriptive.</li>
-    </ul>
+  <p class="note">Sources: Screaming Frog Issues Overview (86 URLs), site audit export (9 URLs), PageSpeed Insights mobile screenshot, and Atarim page audits and WordPress checks taken on 7 Oct 2026 before any change.</p>
+</section>
+
+<!-- 04 -->
+<section class="s" id="s4">
+  <div class="label">04 — Technical SEO audit</div>
+  <h2>Platform, delivery and security</h2>
+  <div class="tbl wide">
+    <table>
+      <thead><tr><th>Check</th><th>Result</th><th class="n">Count</th><th>Assessment</th></tr></thead>
+      <tbody>
+        <tr><td class="i">HTTPS coverage</td><td>All pages served over HTTPS</td><td class="n">5 / 5</td><td><span class="chip ok">Pass</span></td></tr>
+        <tr><td class="i">Response codes</td><td>No 4xx, 5xx or 3xx issues flagged</td><td class="n">0</td><td><span class="chip ok">Pass</span></td></tr>
+        <tr><td class="i">WordPress &amp; PHP</td><td>WordPress 7.1.3 (latest), PHP 8.4.19, LiteSpeed server</td><td class="n">—</td><td><span class="chip ok">Pass</span></td></tr>
+        <tr><td class="i">SEO plugin</td><td>None installed</td><td class="n">0</td><td><span class="chip high">Install</span></td></tr>
+        <tr><td class="i">Security headers</td><td>HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, CSP all missing</td><td class="n">0 / 5</td><td><span class="chip med">Improve</span></td></tr>
+        <tr><td class="i">Content type</td><td>JavaScript sent as <code>application/x-javascript</code></td><td class="n">26</td><td><span class="chip low">Correct</span></td></tr>
+        <tr><td class="i">Staging-domain references</td><td>Images and backgrounds loaded from <code>lakewood-printing.stagingsea.com</code></td><td class="n">45</td><td><span class="chip high">Fix</span></td></tr>
+        <tr><td class="i">Render-blocking scripts</td><td>2 per page</td><td class="n">5 / 5</td><td><span class="chip med">Review</span></td></tr>
+        <tr><td class="i">Average HTML page size</td><td>79.9 KB; largest is the homepage at 87.7 KB</td><td class="n">5</td><td><span class="chip ok">Acceptable</span></td></tr>
+        <tr><td class="i">Plugin updates pending</td><td>Elementor, Elementor Pro, WPForms Lite, All-in-One WP Migration</td><td class="n">4</td><td><span class="chip low">Maintain</span></td></tr>
+        <tr><td class="i">Site tagline</td><td>Empty</td><td class="n">—</td><td><span class="chip low">Low</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card edge-high">
+    <div class="find-head"><h3><span class="fid">TECH-01</span> 45 images still load from the old staging server</h3><span class="chip high">High</span></div>
+    <p>The site was built on <code>lakewood-printing.stagingsea.com</code> and moved to lakewood.net.au, but the page builder data still points to the staging address: 9 references on Home, 20 on About Us, 4 on What We Print, 9 on Services, 2 on Contact and 1 in the footer. They currently work because staging is still online. The day it is switched off, the hero backgrounds and several images on every page will break.</p>
+    <div class="action"><span class="t">RECOMMENDED ACTION</span><p>Run a serialisation-safe search and replace from the staging domain to lakewood.net.au across page data and settings, then clear the page-builder cache.</p></div>
+  </div>
+  <div class="card edge-low">
+    <div class="find-head"><h3><span class="fid">TECH-02</span> No security headers, and JavaScript sent with an outdated type</h3><span class="chip low">Low</span></div>
+    <p>None of the five headers Screaming Frog checks is present on any of the 86 URLs. Separately, 26 URLs (30.23%) are flagged for a bad content type. The server sends JavaScript files as <code>application/x-javascript</code>, an obsolete type. Neither affects rankings much, but both are quick server-level fixes. The content type must be corrected before <code>nosniff</code> is turned on, or browsers may refuse to run the scripts.</p>
+    <div class="action"><span class="t">RECOMMENDED ACTION</span><p>Set <code>.js</code> to <code>application/javascript</code>, then add the five headers in one marked block in <code>.htaccess</code>. Keep the Content-Security-Policy permissive enough for Elementor and the contact form.</p></div>
   </div>
 </section>
 
-<!-- 4 -->
-<section id="technical">
-  <div class="eyebrow">Technical SEO Audit</div>
-  <h2>Server and security configuration</h2>
-  <p>These findings concern how the web server delivers files. Most of them are security best practice and affect rankings little or not at all. They do affect how trustworthy and robust the site is, and they are usually fixed once, at server level, by the hosting provider.</p>
-  <div class="tbl wide">
-    <table>
-      <thead><tr><th>SEO issue</th><th>Current status</th><th>URLs</th><th>%</th><th>SEO impact</th><th>Priority</th><th>Recommended action</th></tr></thead>
-      <tbody>
-        <tr><td class="issue">Missing HSTS header</td><td>Not set</td><td class="n">86</td><td class="n">100%</td><td>Low. This header tells browsers to always use the secure (HTTPS) version of the site.</td><td><span class="chip low">Low</span></td><td class="act">Add <code>Strict-Transport-Security</code> at server level after confirming HTTPS works on every URL.</td></tr>
-        <tr><td class="issue">Missing X-Frame-Options header</td><td>Not set</td><td class="n">86</td><td class="n">100%</td><td>None for rankings. Protects against another site displaying your pages inside a frame ("clickjacking").</td><td><span class="chip low">Low</span></td><td class="act">Set <code>X-Frame-Options: SAMEORIGIN</code>.</td></tr>
-        <tr><td class="issue">Missing X-Content-Type-Options header</td><td>Not set</td><td class="n">86</td><td class="n">100%</td><td>None for rankings. Stops browsers from guessing file types.</td><td><span class="chip low">Low</span></td><td class="act">Set <code>X-Content-Type-Options: nosniff</code>. Fix the content types below first.</td></tr>
-        <tr><td class="issue">Missing secure Referrer-Policy header</td><td>Not set</td><td class="n">86</td><td class="n">100%</td><td>None for rankings. Controls what address information is shared when visitors leave the site.</td><td><span class="chip low">Low</span></td><td class="act">Set <code>Referrer-Policy: strict-origin-when-cross-origin</code>.</td></tr>
-        <tr><td class="issue">Missing Content-Security-Policy header</td><td>Not set</td><td class="n">86</td><td class="n">100%</td><td>None for rankings. Limits which scripts can run on the site.</td><td><span class="chip low">Low</span></td><td class="act">Add a policy and test it carefully. A strict policy can break page builders and plugins.</td></tr>
-        <tr><td class="issue">Bad content type</td><td>Mismatched</td><td class="n">26</td><td class="n">30.23%</td><td>Low. The server says a file is one type while it is actually another. Browsers usually cope, but some may render or cache the file incorrectly.</td><td><span class="chip low">Low</span></td><td class="act">Export the 26 URLs from Screaming Frog and correct the MIME types on the server.</td></tr>
-        <tr><td class="issue">Unsafe cross-origin links</td><td>Present</td><td class="n">5</td><td class="n">5.81%</td><td>Very low. These are external links that open in a new tab without <code>rel="noopener"</code>. Only older browsers are at risk.</td><td><span class="chip low">Low</span></td><td class="act">Add <code>rel="noopener"</code> to links that use <code>target="_blank"</code>.</td></tr>
-      </tbody>
-    </table>
+<!-- 05 -->
+<section class="s" id="s5">
+  <div class="label">05 — Crawlability &amp; indexability</div>
+  <h2>What Google can reach, and what it shouldn't be shown</h2>
+  <p class="section-lede">Of the 9 URLs the site audit found, 5 are real pages and all 5 can be indexed. Three of the other four are WordPress defaults that are also open to indexing.</p>
+  <div class="grid3">
+    <div class="kpi"><span class="num good">5</span><span class="k">Real pages, indexable</span><span class="d">Home, About Us, What We Print, Services, Contact Us.</span></div>
+    <div class="kpi"><span class="num bad">3</span><span class="k">Default pages, indexable</span><span class="d">Should not appear in search.</span></div>
+    <div class="kpi"><span class="num">1</span><span class="k">Noindex on purpose</span><span class="d">The comment-reply copy of Hello World.</span></div>
   </div>
-  <p class="mono" style="color:var(--muted)">Percentages are of all 86 URLs crawled, which includes images, scripts and stylesheets as well as pages.</p>
-</section>
-
-<!-- 5 -->
-<section id="crawl">
-  <div class="eyebrow">Crawlability &amp; Indexability</div>
-  <h2>Can search engines find and index the right pages?</h2>
-  <p>"Crawlability" is whether search engines can reach a page. "Indexability" is whether they are allowed to store it and show it in results. The main pages are reachable and none is blocked. The issue is that some pages that shouldn't appear in search results are open to indexing, and some links can't be followed.</p>
-  <div class="tbl wide">
-    <table>
-      <thead><tr><th>SEO issue</th><th>Current status</th><th>URLs</th><th>%</th><th>SEO impact</th><th>Priority</th><th>Recommended action</th></tr></thead>
-      <tbody>
-        <tr><td class="issue">Links are not crawlable (PageSpeed)</td><td>Failed audit</td><td class="n">Not listed</td><td class="n">n/a</td><td>Medium–High. Links without a valid web address (for example <code>href="#"</code> or JavaScript links) can't be followed, so the pages behind them get less discovery and less link value.</td><td><span class="chip high">High</span></td><td class="act">Expand this audit in PageSpeed Insights to list the exact links. Give each one a real URL, or change it to a button if it isn't meant to be a link.</td></tr>
-        <tr><td class="issue">Default WordPress URLs open to indexing</td><td>Live, not noindexed</td><td class="n">3</td><td class="n">33.3% of 9</td><td>Medium. <code>/hello-world/</code>, <code>/author/lakewood/</code> and <code>/category/uncategorized/</code> add low-quality pages to the site's indexed footprint.</td><td><span class="chip high">High</span></td><td class="act">Delete the "Hello World" post. Then disable or <code>noindex</code> the author archive and the Uncategorized category, and remove them from the sitemap.</td></tr>
-        <tr><td class="issue">Orphan pages</td><td>No internal links</td><td class="n">2</td><td class="n">22.2% of 9</td><td>Low–Medium. <code>/author/lakewood/</code> and <code>/category/uncategorized/</code> exist, but no page links to them. They are the same archive pages as the row above.</td><td><span class="chip med">Medium</span></td><td class="act">Remove them from indexing (see above) rather than adding links. Neither page is a useful destination.</td></tr>
-        <tr><td class="issue">Noindex page</td><td>Intentional</td><td class="n">1</td><td class="n">11.1% of 9</td><td>None. <code>/hello-world/?replytocom=1</code> is a WordPress comment-reply link and is correctly excluded.</td><td><span class="chip good">No action</span></td><td class="act">No action needed. It disappears when the Hello World post is removed.</td></tr>
-        <tr><td class="issue">Crawls found different page sets</td><td>Mismatch</td><td class="n">5 vs 9</td><td class="n">n/a</td><td>Process issue. Screaming Frog found 5 HTML pages, while the site audit found 9 URLs. The second crawl most likely used another discovery source, such as the sitemap. Neither export records its settings.</td><td><span class="chip med">Medium</span></td><td class="act">For the "after" crawl, run Screaming Frog with XML sitemap crawling enabled and save the configuration, so both crawls cover the same URLs.</td></tr>
-      </tbody>
-    </table>
+  <div class="card edge-high">
+    <div class="find-head"><h3><span class="fid">CRAWL-01</span> WordPress's sample content is live and indexable</h3><span class="chip high">High</span></div>
+    <p>"Hello world!" is the post WordPress creates on install. It is still published, and with it come an author archive (97 words) and an "Uncategorized" category archive (96 words). Both archives are orphans: nothing on the site links to them. All three can be indexed and add thin, unfinished-looking pages to the site's footprint.</p>
+    <div class="urls"><b>Affected URLs</b>/hello-world/ · /author/lakewood/ · /category/uncategorized/</div>
+    <div class="action"><span class="t">RECOMMENDED ACTION</span><p>Unpublish the Hello World post. Disable author archives on this single-author site, set the Uncategorized archive to noindex, and keep both out of the XML sitemap.</p></div>
   </div>
-  <div class="callout warn">
-    <h3>Not measured in this data</h3>
-    <ul class="plain">
-      <li><strong>robots.txt and the XML sitemap.</strong> We have not checked whether a sitemap exists, whether robots.txt declares it, or which URLs it lists. Needed: a review of <code>/robots.txt</code> and the sitemap index, or a Screaming Frog crawl with sitemap crawling enabled.</li>
-      <li><strong>What Google has actually indexed.</strong> Needed: Google Search Console (Pages report). We have no evidence that Search Console is set up.</li>
-    </ul>
+  <div class="card edge-high">
+    <div class="find-head"><h3><span class="fid">CRAWL-02</span> Social icons are links that go nowhere</h3><span class="chip high">High</span></div>
+    <p>The footer (on every page) shows a Facebook icon with an empty link and an Instagram icon with no link. The contact page has the same empty Facebook link plus a generic instagram.com link, and the mobile menu points to the generic facebook.com, instagram.com and pinterest.com home pages in a new tab. PageSpeed fails the site on "Links are not crawlable" because of the empty links.</p>
+    <div class="action"><span class="t">RECOMMENDED ACTION</span><p>Link the icons to Lakewood's real profiles. If there are none, render them as plain icons rather than links, or remove them.</p></div>
+  </div>
+  <div class="rows">
+    <div class="row"><span class="n">robots.txt</span><span class="v">Generated by WordPress; blocks /wp-admin/ only and declares <code>wp-sitemap.xml</code></span><span class="chip ok">OK</span></div>
+    <div class="row"><span class="n">XML sitemap</span><span class="v">WordPress core sitemap declared; its URL list was not checked</span><span class="chip na">No data</span></div>
+    <div class="row"><span class="n">Crawl coverage</span><span class="v">Screaming Frog found 5 HTML pages; the site audit found 9 URLs</span><span class="chip med">Re-crawl</span></div>
+    <div class="row"><span class="n">Search Console coverage</span><span class="v">Requires Google Search Console access</span><span class="chip na">No data</span></div>
   </div>
 </section>
 
-<!-- 6 -->
-<section id="onpage">
-  <div class="eyebrow">On-Page SEO Analysis</div>
-  <h2>Content depth on the main pages</h2>
-  <p>Google ranks pages it understands, and it understands pages through their text. There is no official minimum word count, but pages under about 200 words rarely explain a service well enough to rank for it. Screaming Frog flags three of the five main pages as below that line.</p>
+<!-- 06 -->
+<section class="s" id="s6">
+  <div class="label">06 — On-page SEO analysis</div>
+  <h2>Content depth and readability</h2>
+  <p class="section-lede">The two pages with the most to say, Home and Services, sit near 300 words. The pages a visitor checks before getting in touch sit between 88 and 137.</p>
+  <div class="chart" role="img" aria-label="Words per page: Home 309, Services 294, What We Print 137, About Us 110, Contact Us 88. Reference line at 200 words.">
+    <h3>Words per page</h3>
+    <span class="sub">Dashed line marks 200 words, Screaming Frog's low-content threshold.</span>
+    <div class="hbar" title="Home: 309 words"><span class="lab">Home</span><span class="trk"><span class="bar" style="width:88.3%"></span><span class="ref" style="left:57.1%"></span></span><span class="val">309</span></div>
+    <div class="hbar" title="Services: 294 words"><span class="lab">Services</span><span class="trk"><span class="bar" style="width:84%"></span><span class="ref" style="left:57.1%"></span></span><span class="val">294</span></div>
+    <div class="hbar" title="What We Print: 137 words"><span class="lab">What We Print</span><span class="trk"><span class="bar hi" style="width:39.1%"></span><span class="ref" style="left:57.1%"></span></span><span class="val">137</span></div>
+    <div class="hbar" title="About Us: 110 words"><span class="lab">About Us</span><span class="trk"><span class="bar hi" style="width:31.4%"></span><span class="ref" style="left:57.1%"></span></span><span class="val">110</span></div>
+    <div class="hbar" title="Contact Us: 88 words"><span class="lab">Contact Us</span><span class="trk"><span class="bar hi" style="width:25.1%"></span><span class="ref" style="left:57.1%"></span></span><span class="val">88</span></div>
+    <div class="legend"><span><i class="sw" style="background:#6d5df3"></i>Under 200 words</span><span><i class="sw" style="background:#c6bffb"></i>200 words or more</span></div>
+  </div>
   <div class="tbl wide">
     <table>
-      <thead><tr><th>SEO issue</th><th>Current status</th><th>URLs</th><th>%</th><th>SEO impact</th><th>Priority</th><th>Recommended action</th></tr></thead>
+      <thead><tr><th>Page</th><th class="n">Words</th><th class="n">Reading ease</th><th>Readability</th><th class="n">On-page score</th><th class="n">Images</th><th>Assessment</th></tr></thead>
       <tbody>
-        <tr><td class="issue">Low content pages (&lt; 200 words)</td><td>Thin</td><td class="n">3</td><td class="n">60%</td><td>High. Thin pages struggle to rank for service searches like "business card printing", and they give visitors little reason to enquire.</td><td><span class="chip high">High</span></td><td class="act">Expand each page with useful detail: products and options, turnaround, ordering steps, the area served and FAQs. Write it for customers, not for word count.</td></tr>
+        <tr><td class="u">/contact-us/</td><td class="n">88</td><td class="n">70.5</td><td>Fairly easy</td><td class="n">92.32</td><td class="n">4</td><td><span class="chip crit">Very thin</span></td></tr>
+        <tr><td class="u">/about-us/</td><td class="n">110</td><td class="n">23.3</td><td>Very hard</td><td class="n">90.49</td><td class="n">20</td><td><span class="chip crit">Very thin</span></td></tr>
+        <tr><td class="u">/what-we-print/</td><td class="n">137</td><td class="n">35.0</td><td>Hard</td><td class="n">92.32</td><td class="n">4</td><td><span class="chip high">Thin</span></td></tr>
+        <tr><td class="u">/services/</td><td class="n">294</td><td class="n">43.6</td><td>Hard</td><td class="n">91.59</td><td class="n">9</td><td><span class="chip med">Could go deeper</span></td></tr>
+        <tr><td class="u">/ (homepage)</td><td class="n">309</td><td class="n">39.7</td><td>Hard</td><td class="n">91.59</td><td class="n">4</td><td><span class="chip med">Could go deeper</span></td></tr>
       </tbody>
     </table>
   </div>
-  <p>The Screaming Frog overview export doesn't say which three pages are affected. The full <em>Internal → HTML</em> export, which includes the word count column, will name them and record each page's word count for the baseline.</p>
-  <div class="callout warn">
-    <h3>Not measured in this data</h3>
-    <ul class="plain">
-      <li><strong>Keyword targeting and relevance.</strong> Needed: keyword research, plus each page's chosen target phrase.</li>
-      <li><strong>Structured data (schema), such as LocalBusiness.</strong> Needed: Screaming Frog structured data extraction, or Google's Rich Results Test.</li>
-      <li><strong>Social sharing tags (Open Graph).</strong> Needed: a page-level tag review.</li>
-    </ul>
+  <p class="note">Word count, Flesch reading ease (higher is easier) and on-page score from the Atarim page audit taken before any change.</p>
+  <div class="card edge-high">
+    <div class="find-head"><h3><span class="fid">PAGE-01</span> The pages people check before calling have the least to say</h3><span class="chip high">High</span></div>
+    <p>Contact Us (88 words), About Us (110) and What We Print (137) are below Screaming Frog's 200-word threshold. About Us is mostly a grid of 16 product cards with one-line captions. What We Print is a bulleted list and a link to a flipbook. Neither tells Google, or a new customer, much about how Lakewood works.</p>
+    <div class="action"><span class="t">RECOMMENDED ACTION</span><p>Add two to three short paragraphs to each, using only facts the site already states: Australian ownership, the full service range, digital versus offset printing, design help, contact details and how to request a quote.</p></div>
+  </div>
+  <div class="card edge-med">
+    <div class="find-head"><h3><span class="fid">PAGE-02</span> Three pages read as hard, including the homepage</h3><span class="chip med">Medium</span></div>
+    <p>About Us scores 23.3 on the Flesch scale, What We Print 35.0 and the homepage 39.7. Long single sentences and list-style text pull the scores down.</p>
+    <div class="action"><span class="t">RECOMMENDED ACTION</span><p>Write new copy in short sentences, and aim for 50–65 on commercial pages.</p></div>
   </div>
 </section>
 
-<!-- 7 -->
-<section id="metadata">
-  <div class="eyebrow">Metadata Analysis</div>
-  <h2>Titles and meta descriptions</h2>
-  <p>The <strong>page title</strong> is the blue headline in a Google result. The <strong>meta description</strong> is the two lines of text under it. Together they are the site's advert in search results. Right now Google writes every description itself, and most titles are too short to mention what Lakewood prints or where.</p>
+<!-- 07 -->
+<section class="s" id="s7">
+  <div class="label">07 — Metadata analysis</div>
+  <h2>Titles and descriptions: the site's shopfront in search results</h2>
+  <p class="section-lede">Titles exist but are short default labels. Meta descriptions don't exist at all.</p>
+  <div class="chart" role="img" aria-label="Metadata coverage across 5 pages: title tag 0 correct, 5 need work; meta description 5 missing; H1 5 present; canonical 5 correct">
+    <h3>Metadata coverage across all 5 pages</h3>
+    <span class="sub">Each bar totals 5 pages.</span>
+    <div class="hbar" title="Title tag: 5 present but short"><span class="lab">Title tag</span><div class="stackbar"><div class="sb-warn" style="flex:5">5</div></div><span class="val">0 OK</span></div>
+    <div class="hbar" title="Meta description: 5 missing"><span class="lab">Meta description</span><div class="stackbar"><div class="sb-bad" style="flex:5">5</div></div><span class="val">0 OK</span></div>
+    <div class="hbar" title="H1: 5 present, one per page"><span class="lab">H1 heading</span><div class="stackbar"><div class="sb-ok" style="flex:5">5</div></div><span class="val">5 OK</span></div>
+    <div class="hbar" title="Canonical: 5 self-referencing"><span class="lab">Canonical tag</span><div class="stackbar"><div class="sb-ok" style="flex:5">5</div></div><span class="val">5 OK</span></div>
+    <div class="legend"><span><i class="sw sb-ok"></i>Present and correct</span><span><i class="sw sb-warn"></i>Present but needs work</span><span><i class="sw sb-bad"></i>Missing</span></div>
+  </div>
+
+  <div class="chart">
+    <h3>Title tag length, page by page</h3>
+    <span class="sub">The shaded band is the 50–60 character target. None of the five titles reaches it.</span>
+    <svg viewBox="0 0 640 250" width="100%" role="img" aria-label="Title lengths: Home 17, About Us 28, Services 28, Contact Us 30, What We Print 33 characters; target band 50 to 60">
+      <rect x="60" y="20" width="560" height="32" fill="#e6f8ef"/>
+      <g stroke="rgba(54,61,77,0.10)"><line x1="60" y1="212" x2="620" y2="212"/><line x1="60" y1="148" x2="620" y2="148"/><line x1="60" y1="84" x2="620" y2="84"/><line x1="60" y1="20" x2="620" y2="20"/></g>
+      <line x1="60" y1="116" x2="620" y2="116" stroke="#535768" stroke-dasharray="4 4"/>
+      <g fill="#535768" font-size="12" text-anchor="end"><text x="50" y="216">0</text><text x="50" y="152">20</text><text x="50" y="88">40</text><text x="50" y="24">60</text></g>
+      <text x="616" y="111" fill="#535768" font-size="11" text-anchor="end">30 characters (Screaming Frog minimum)</text>
+      <text x="616" y="40" fill="#0b8f57" font-size="11" text-anchor="end">50–60 character target</text>
+      <g><path d="M90 212 V161.6 a4 4 0 0 1 4 -4 H158 a4 4 0 0 1 4 4 V212 Z" fill="#c62828"><title>Home: 17 characters</title></path><path d="M200 212 V126.4 a4 4 0 0 1 4 -4 H268 a4 4 0 0 1 4 4 V212 Z" fill="#c62828"><title>About Us: 28 characters</title></path><path d="M310 212 V126.4 a4 4 0 0 1 4 -4 H378 a4 4 0 0 1 4 4 V212 Z" fill="#c62828"><title>Services: 28 characters</title></path><path d="M420 212 V120.0 a4 4 0 0 1 4 -4 H488 a4 4 0 0 1 4 4 V212 Z" fill="#e8902a"><title>Contact Us: 30 characters</title></path><path d="M530 212 V110.4 a4 4 0 0 1 4 -4 H598 a4 4 0 0 1 4 4 V212 Z" fill="#e8902a"><title>What We Print: 33 characters</title></path></g>
+      <g fill="#1a1f2e" font-size="12" text-anchor="middle" font-family="JetBrains Mono, monospace"><text x="126" y="149.6">17</text><text x="236" y="114.4">28</text><text x="346" y="114.4">28</text><text x="456" y="108.0">30</text><text x="566" y="98.4">33</text></g>
+      <g fill="#363d4d" font-size="12" text-anchor="middle"><text x="126" y="232">Home</text><text x="236" y="232">About Us</text><text x="346" y="232">Services</text><text x="456" y="232">Contact Us</text><text x="566" y="232">What We Print</text></g>
+    </svg>
+    <div class="legend"><span><i class="sw" style="background:#c62828"></i>Under 30 characters (3 pages)</span><span><i class="sw" style="background:#e8902a"></i>30–49 characters (2 pages)</span><span><i class="sw" style="background:#0b8f57"></i>50–60 characters (0 pages)</span></div>
+  </div>
+
+  <h3>Meta title findings</h3>
   <div class="tbl wide">
     <table>
-      <thead><tr><th>SEO issue</th><th>Current status</th><th>URLs</th><th>%</th><th>SEO impact</th><th>Priority</th><th>Recommended action</th></tr></thead>
+      <thead><tr><th>Page</th><th>Current title</th><th class="n">Chars</th><th>Issue</th><th>Priority</th></tr></thead>
       <tbody>
-        <tr><td class="issue">Meta description missing</td><td>Absent</td><td class="n">5 HTML pages<br>(9 URLs in site audit)</td><td class="n">100%</td><td>High. Every search snippet is generated automatically, which usually lowers click-through rate. This is also one of the two failed PageSpeed SEO checks.</td><td><span class="chip high">High</span></td><td class="act">Write a unique description of about 140–155 characters for each main page. Lead with the service, add a reason to choose Lakewood, and end with a call to action.</td></tr>
-        <tr><td class="issue">Page titles under 30 characters</td><td>Too short</td><td class="n">3</td><td class="n">60%</td><td>High. The title space that could name services and location goes unused.</td><td><span class="chip high">High</span></td><td class="act">Rewrite to 50–60 characters, for example <em>[Service] in [Area] | Lakewood Printing</em>. Use only service and area names the business confirms.</td></tr>
-        <tr><td class="issue">Page titles under 200 pixels</td><td>Very short</td><td class="n">1</td><td class="n">20%</td><td>High. This page is one of the three above, and its title uses less than half of the space Google displays.</td><td><span class="chip high">High</span></td><td class="act">Covered by the rewrite above.</td></tr>
+        <tr><td class="u">/</td><td>Lakewood Printing</td><td class="n">17</td><td>Brand only; under 200 pixels wide. Says nothing about printing services or Melbourne.</td><td><span class="chip high">High</span></td></tr>
+        <tr><td class="u">/about-us/</td><td>About Us – Lakewood Printing</td><td class="n">28</td><td>Default "Page – Site" pattern</td><td><span class="chip high">High</span></td></tr>
+        <tr><td class="u">/services/</td><td>Services – Lakewood Printing</td><td class="n">28</td><td>Doesn't name offset, digital printing or design</td><td><span class="chip high">High</span></td></tr>
+        <tr><td class="u">/contact-us/</td><td>Contact Us – Lakewood Printing</td><td class="n">30</td><td>Default pattern; no call to action</td><td><span class="chip med">Medium</span></td></tr>
+        <tr><td class="u">/what-we-print/</td><td>what we Print – Lakewood Printing</td><td class="n">33</td><td>Inconsistent capitalisation; no products named</td><td><span class="chip med">Medium</span></td></tr>
       </tbody>
     </table>
   </div>
-  <details>
-    <summary>URLs missing a meta description (site audit export, 9)</summary>
-    <div><ul>
-      <li>https://lakewood.net.au/</li>
-      <li>https://lakewood.net.au/about-us/</li>
-      <li>https://lakewood.net.au/contact-us/</li>
-      <li>https://lakewood.net.au/what-we-print/</li>
-      <li>https://lakewood.net.au/services/</li>
-      <li>https://lakewood.net.au/hello-world/</li>
-      <li>https://lakewood.net.au/hello-world/?replytocom=1 (noindex, so no action needed)</li>
-      <li>https://lakewood.net.au/author/lakewood/</li>
-      <li>https://lakewood.net.au/category/uncategorized/</li>
-    </ul>
-    <p>The last four should be removed or noindexed (Section 5) rather than given descriptions.</p></div>
-  </details>
-  <p>No missing, duplicate or over-length titles were flagged, and no duplicate or over-length meta descriptions were flagged.</p>
+  <h3>Meta description findings</h3>
+  <div class="tbl wide">
+    <table>
+      <thead><tr><th>Issue</th><th>Current status</th><th class="n">URLs</th><th class="n">%</th><th>SEO impact</th><th>Priority</th><th>Recommended action</th></tr></thead>
+      <tbody>
+        <tr><td class="i">Missing entirely</td><td>All 5 pages (9 of 9 URLs in the site audit)</td><td class="n">5</td><td class="n">100%</td><td>Google writes its own snippet from page text</td><td><span class="chip high">High</span></td><td class="a">Install an SEO plugin and write a 145–155 character description for each page.</td></tr>
+        <tr><td class="i">Duplicate across pages</td><td>None (none exist)</td><td class="n">0</td><td class="n">0%</td><td>—</td><td><span class="chip ok">Pass</span></td><td class="a">Keep every description unique.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card edge-high">
+    <div class="find-head"><h3><span class="fid">META-01</span> There is no tool on the site to write metadata</h3><span class="chip high">High</span></div>
+    <p>No SEO plugin is installed, so WordPress outputs its default title ("Page – Site name") and no description. The same gap means no control over social share previews, archive indexing or the XML sitemap's contents.</p>
+    <div class="action"><span class="t">RECOMMENDED ACTION</span><p>Install and configure Yoast SEO. Write a 50–60 character title and a 145–155 character description for each page, and turn off the archives this site doesn't need.</p></div>
+  </div>
 </section>
 
-<!-- 8 -->
-<section id="headings">
-  <div class="eyebrow">Heading Structure</div>
-  <h2>Page outlines</h2>
-  <p>Headings work like a table of contents. There is one H1 for the page's main topic, H2s for its sections and H3s inside those, in that order. Google uses this outline to understand what a page covers, and screen-reader users navigate by it. Every main page currently has a gap in its outline.</p>
+<!-- 08 -->
+<section class="s" id="s8">
+  <div class="label">08 — Heading structure</div>
+  <h2>Every page skips heading levels</h2>
+  <p class="section-lede">Headings form the outline Google and screen readers use to understand a page. Small decorative labels such as "SOLUTIONS" and "GET IN TOUCH" are coded as H4 and H6 headings, which breaks the order on every page.</p>
   <div class="tbl wide">
     <table>
-      <thead><tr><th>SEO issue</th><th>Current status</th><th>URLs</th><th>%</th><th>SEO impact</th><th>Priority</th><th>Recommended action</th></tr></thead>
+      <thead><tr><th>Page</th><th>Heading outline in page order</th><th>Issues</th></tr></thead>
       <tbody>
-        <tr><td class="issue">Heading levels skip</td><td>Out of order</td><td class="n">5</td><td class="n">100%</td><td>Medium. The outline jumps levels, for example from H1 straight to H3.</td><td><span class="chip med">Medium</span></td><td class="act">Restructure the headings to step down one level at a time. Choose heading levels by meaning, not by font size.</td></tr>
-        <tr><td class="issue">H2 missing</td><td>Absent</td><td class="n">4</td><td class="n">80%</td><td>Medium. Pages have no section headings that tell Google what topics they cover.</td><td><span class="chip med">Medium</span></td><td class="act">Add descriptive H2s for each section, such as product types, ordering and turnaround. These fit naturally with the content expansion in Section 6.</td></tr>
-        <tr><td class="issue">H1 not the first heading</td><td>Out of order</td><td class="n">1</td><td class="n">20%</td><td>Low–Medium. Another heading appears above the page's main heading.</td><td><span class="chip med">Medium</span></td><td class="act">Make the H1 the first heading, or change the earlier heading to a non-heading style.</td></tr>
-        <tr><td class="issue">H2 not second in order</td><td>Out of order</td><td class="n">1</td><td class="n">20%</td><td>Low. The first heading after the H1 isn't an H2.</td><td><span class="chip low">Low</span></td><td class="act">Fixed together with the level skips above.</td></tr>
+        <tr><td class="u">/</td><td class="outline"><span class="bad">H4</span><span>H1</span><span class="bad">H6</span><span>H2</span><span class="bad">H5×6</span><span class="bad">H6</span><span>H3</span><span>H3</span></td><td>H1 not first; H1 → H6 skip; H2 → H5 skip</td></tr>
+        <tr><td class="u">/about-us/</td><td class="outline"><span>H1</span><span class="bad">H6</span><span class="bad">H3</span><span class="bad">H6</span><span>H3</span><span>H3×16</span><span class="bad">H6</span><span>H4</span></td><td>No H2; H1 → H3 skip</td></tr>
+        <tr><td class="u">/what-we-print/</td><td class="outline"><span>H1</span><span class="bad">H6</span><span class="bad">H4</span><span class="bad">H6</span><span>H3</span><span class="bad">H6</span><span>H4</span></td><td>No H2; H1 → H4 skip</td></tr>
+        <tr><td class="u">/services/</td><td class="outline"><span>H1</span><span class="bad">H3</span><span class="bad">H6×2</span><span>H3</span><span class="bad">H6×2</span><span>H4</span><span>H3×4</span><span class="bad">H6</span><span>H4</span></td><td>No H2; H3 → H6 subheadings</td></tr>
+        <tr><td class="u">/contact-us/</td><td class="outline"><span>H1</span><span class="bad">H6</span><span class="bad">H3</span></td><td>No H2; H1 → H6 skip</td></tr>
       </tbody>
     </table>
   </div>
-  <details>
-    <summary>Pages where heading levels skip (site audit export, 5)</summary>
-    <div><ul>
-      <li>https://lakewood.net.au/</li>
-      <li>https://lakewood.net.au/about-us/</li>
-      <li>https://lakewood.net.au/contact-us/</li>
-      <li>https://lakewood.net.au/what-we-print/</li>
-      <li>https://lakewood.net.au/services/</li>
-    </ul></div>
-  </details>
-  <p>No missing or multiple H1s were flagged. The exports don't include the heading <em>text</em>, so whether each H1 describes its page well (for example "Business Card Printing" rather than "Services") still needs a manual review.</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Issue</th><th class="n">URLs</th><th class="n">%</th><th>Priority</th></tr></thead>
+      <tbody>
+        <tr><td class="i">Heading levels skip</td><td class="n">5</td><td class="n">100%</td><td><span class="chip med">Medium</span></td></tr>
+        <tr><td class="i">No H2 on the page</td><td class="n">4</td><td class="n">80%</td><td><span class="chip med">Medium</span></td></tr>
+        <tr><td class="i">H1 not the first heading</td><td class="n">1</td><td class="n">20%</td><td><span class="chip med">Medium</span></td></tr>
+        <tr><td class="i">H2 not second heading</td><td class="n">1</td><td class="n">20%</td><td><span class="chip low">Low</span></td></tr>
+        <tr><td class="i">Missing or multiple H1</td><td class="n">0</td><td class="n">0%</td><td><span class="chip ok">Pass</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card edge-med">
+    <div class="find-head"><h3><span class="fid">HEAD-01</span> Decorative labels are coded as headings</h3><span class="chip med">Medium</span></div>
+    <p>Labels such as "WE ARE YOUR", "LAKEWOOD PRINTING", "SOLUTIONS", "Our Services" and "GET IN TOUCH" are styled as small captions above the real heading, but coded as H4 or H6. Real section headings sit at H3 with nothing at H2 above them.</p>
+    <div class="action"><span class="t">RECOMMENDED ACTION</span><p>Change the labels to plain text with the same styling, and move section headings to H2 and subheadings to H3. Keep each heading's font, size and colour exactly as they are, so the design doesn't change.</p></div>
+  </div>
+  <div class="card edge-low">
+    <div class="find-head"><h3><span class="fid">HEAD-02</span> H1s repeat the menu labels</h3><span class="chip low">Low</span></div>
+    <p>Four of five H1s are "About Us", "what we Print", "Services" and "Contact Us". They're structurally correct but say nothing about printing or Melbourne. They're pulled from the page title, so changing them also changes the menu labels.</p>
+    <div class="action"><span class="t">RECOMMENDED ACTION</span><p>Leave them for now. Revisit once the keyword targets are agreed.</p></div>
+  </div>
 </section>
 
-<!-- 9 -->
-<section id="urls">
-  <div class="eyebrow">URL &amp; Canonical Analysis</div>
-  <h2>Web addresses and canonical tags</h2>
-  <p>A <strong>canonical tag</strong> tells Google which version of a page is the "real" one when the same content can be reached at more than one address. The site handles this correctly in the one case the crawl found.</p>
-  <div class="tbl wide">
-    <table>
-      <thead><tr><th>Check</th><th>Current status</th><th>URLs</th><th>SEO impact</th><th>Priority</th><th>Recommended action</th></tr></thead>
-      <tbody>
-        <tr><td class="issue">URL format</td><td><span class="chip good">Good</span></td><td class="n">5 main pages</td><td>Short, lowercase and hyphenated, such as <code>/what-we-print/</code> and <code>/about-us/</code>. No URL issues were flagged.</td><td><span class="chip good">No action</span></td><td class="act">Keep the current URLs. Changing working URLs costs ranking history.</td></tr>
-        <tr><td class="issue">Canonicalised URL</td><td><span class="chip good">Correct</span></td><td class="n">1</td><td><code>/hello-world/?replytocom=1</code> points to <code>/hello-world/</code>, as it should.</td><td><span class="chip good">No action</span></td><td class="act">None. It is removed along with the Hello World post.</td></tr>
-        <tr><td class="issue">Placeholder URL</td><td><span class="chip high">Fix</span></td><td class="n">1</td><td><code>/hello-world/</code> is the slug WordPress gives its default sample post.</td><td><span class="chip high">High</span></td><td class="act">Confirm it is the sample post, then delete it, or redirect it if anything links to it.</td></tr>
-      </tbody>
-    </table>
+<!-- 09 -->
+<section class="s" id="s9">
+  <div class="label">09 — URL &amp; canonical analysis</div>
+  <h2>URLs and canonicals are clean</h2>
+  <div class="rows">
+    <div class="row"><span class="n">HTTPS on every page</span><span class="v">5 of 5</span><span class="chip ok">Pass</span></div>
+    <div class="row"><span class="n">Lowercase, hyphenated</span><span class="v">No mixed case or underscores</span><span class="chip ok">Pass</span></div>
+    <div class="row"><span class="n">No query parameters on pages</span><span class="v">Only on the noindexed comment-reply URL</span><span class="chip ok">Pass</span></div>
+    <div class="row"><span class="n">Consistent trailing slash</span><span class="v">All page URLs end in /</span><span class="chip ok">Pass</span></div>
+    <div class="row"><span class="n">Self-referencing canonical</span><span class="v">5 of 5 pages</span><span class="chip ok">Pass</span></div>
+    <div class="row"><span class="n">Canonicalised URL</span><span class="v"><code>/hello-world/?replytocom=1</code> → <code>/hello-world/</code>, correctly</span><span class="chip ok">Pass</span></div>
+    <div class="row"><span class="n">Placeholder slug</span><span class="v"><code>/hello-world/</code> is WordPress's sample post</span><span class="chip high">Remove</span></div>
   </div>
-  <p>Not measured: whether <code>http://</code> and <code>www.</code> versions redirect to <code>https://lakewood.net.au</code>. Needed: a redirect check on those four host variations.</p>
 </section>
 
 <!-- 10 -->
-<section id="status">
-  <div class="eyebrow">Redirects &amp; HTTP Status Codes</div>
-  <h2>Every crawled URL responded cleanly</h2>
-  <p>Each time a browser or search engine requests a page, the server answers with a status code: 200 (OK), 301 (moved), 404 (not found) or 500 (server error). Broken pages and long redirect chains waste search engines' time and frustrate visitors.</p>
+<section class="s" id="s10">
+  <div class="label">10 — Redirects &amp; HTTP status codes</div>
+  <h2>A clean bill of health</h2>
   <div class="tbl">
     <table>
-      <thead><tr><th>Check</th><th>Flagged URLs</th><th>Status</th></tr></thead>
+      <thead><tr><th>Status code</th><th>Meaning</th><th class="n">URLs flagged</th><th>Assessment</th></tr></thead>
       <tbody>
-        <tr><td class="issue">Client errors (4xx, e.g. 404 Not Found)</td><td class="n">0</td><td><span class="chip good">Good</span></td></tr>
-        <tr><td class="issue">Server errors (5xx)</td><td class="n">0</td><td><span class="chip good">Good</span></td></tr>
-        <tr><td class="issue">Internal redirects (3xx)</td><td class="n">0</td><td><span class="chip good">Good</span></td></tr>
-        <tr><td class="issue">Redirect chains / loops</td><td class="n">0</td><td><span class="chip good">Good</span></td></tr>
+        <tr><td class="i">301 / 302 redirects</td><td>Page has moved</td><td class="n">0</td><td><span class="chip ok">None found</span></td></tr>
+        <tr><td class="i">404 not found</td><td>Broken link</td><td class="n">0</td><td><span class="chip ok">None found</span></td></tr>
+        <tr><td class="i">5xx server errors</td><td>Server failure</td><td class="n">0</td><td><span class="chip ok">None found</span></td></tr>
+        <tr><td class="i">Redirect chains or loops</td><td>Multiple hops</td><td class="n">0</td><td><span class="chip ok">None found</span></td></tr>
       </tbody>
     </table>
   </div>
-  <p>"0" means the Screaming Frog Issues Overview listed no issue of that kind for the 86 URLs crawled. Keep it at zero when the Hello World post and the archives are removed. Redirect any removed URL that has links pointing to it.</p>
+  <div class="card edge-ok">
+    <span class="tag ok">SCOPE NOTE</span>
+    <h3>This covers what the crawler could reach</h3>
+    <p>Server-level redirects such as http → https or www → non-www only show up if something links to them. Google Search Console coverage is the right place to confirm those.</p>
+  </div>
 </section>
 
 <!-- 11 -->
-<section id="links">
-  <div class="eyebrow">Internal Linking Analysis</div>
-  <h2>How pages link to each other</h2>
-  <p>Internal links help visitors move around the site, and they tell Google which pages matter and what each one is about. The visible, clickable words of a link are its <strong>anchor text</strong>. "Business card printing" tells Google far more about the destination than "click here" does.</p>
-  <div class="tbl wide">
+<section class="s" id="s11">
+  <div class="label">11 — Internal linking analysis</div>
+  <h2>Well connected, poorly labelled</h2>
+  <p class="section-lede">Every page links to every other page through the header, footer and mobile menu: 11 internal links on each. The problem is the labels on those links.</p>
+  <div class="tbl">
     <table>
-      <thead><tr><th>SEO issue</th><th>Current status</th><th>URLs</th><th>%</th><th>SEO impact</th><th>Priority</th><th>Recommended action</th></tr></thead>
+      <thead><tr><th>Page</th><th class="n">Internal links</th><th class="n">External links</th><th>Position</th></tr></thead>
       <tbody>
-        <tr><td class="issue">Internal links with no anchor text</td><td>Present</td><td class="n">5</td><td class="n">100%</td><td>Medium. Links with no text, and image links with no alt text, give no clue about the page they lead to. This is usually the logo or icon links in the header and footer, which repeat on every page.</td><td><span class="chip med">Medium</span></td><td class="act">Give linked images alt text that names the destination (for example the logo: "Lakewood Printing home"), and add text or <code>aria-label</code> to icon links.</td></tr>
-        <tr><td class="issue">Non-descriptive anchor text</td><td>Present</td><td class="n">2</td><td class="n">40%</td><td>Low–Medium. Text such as "learn more" or "click here" wastes the chance to describe the target page.</td><td><span class="chip med">Medium</span></td><td class="act">Reword these links to name the service, for example "See our flyer printing options".</td></tr>
-        <tr><td class="issue">Links not crawlable (PageSpeed)</td><td>Failed audit</td><td class="n">Not listed</td><td class="n">n/a</td><td>Medium–High. See Section 5.</td><td><span class="chip high">High</span></td><td class="act">Identify the links in PageSpeed's detail view and fix them.</td></tr>
-        <tr><td class="issue">Orphan pages</td><td>Present</td><td class="n">2</td><td class="n">22.2% of 9</td><td>Low. These are the author and category archives.</td><td><span class="chip med">Medium</span></td><td class="act">Remove them from indexing (Section 5).</td></tr>
+        <tr><td class="u">/</td><td class="n">11</td><td class="n">4</td><td><span class="chip ok">Strong</span></td></tr>
+        <tr><td class="u">/about-us/</td><td class="n">11</td><td class="n">4</td><td><span class="chip ok">Strong</span></td></tr>
+        <tr><td class="u">/what-we-print/</td><td class="n">11</td><td class="n">5</td><td><span class="chip ok">Strong</span></td></tr>
+        <tr><td class="u">/services/</td><td class="n">11</td><td class="n">4</td><td><span class="chip ok">Strong</span></td></tr>
+        <tr><td class="u">/contact-us/</td><td class="n">11</td><td class="n">4</td><td><span class="chip ok">Strong</span></td></tr>
       </tbody>
     </table>
   </div>
-  <p>Not measured: the number of internal links pointing to each page ("inlinks") and the click depth from the homepage. Needed: the Screaming Frog <em>Internal → HTML</em> export, which includes both columns.</p>
+  <p class="note">Link counts from the Atarim page audit. External links are mostly the placeholder social links and the flipbook.</p>
+  <div class="card edge-med">
+    <div class="find-head"><h3><span class="fid">LINK-01</span> Every page has links with no text</h3><span class="chip med">Medium</span></div>
+    <p>The header and footer logos are image links with no alt text, and the mobile menu button is an icon with no label. All three repeat on every page, which is why Screaming Frog flags 5 of 5 pages.</p>
+    <div class="action"><span class="t">RECOMMENDED ACTION</span><p>Give both logo images the alt text "Lakewood Printing", and give the menu button a hidden "Menu" label that screen readers can announce.</p></div>
+  </div>
+  <div class="card edge-med">
+    <div class="find-head"><h3><span class="fid">LINK-02</span> "find out more" buttons on Home and About</h3><span class="chip med">Medium</span></div>
+    <p>Both link to Services. The wording tells Google nothing about the page it leads to.</p>
+    <div class="action"><span class="t">RECOMMENDED ACTION</span><p>Relabel the buttons as "Explore our services".</p></div>
+  </div>
 </section>
 
 <!-- 12 -->
-<section id="images">
-  <div class="eyebrow">Image SEO</div>
-  <h2>Images are invisible to search</h2>
-  <p><strong>Alt text</strong> is a short written description of an image. Screen readers read it aloud, and Google uses it to understand the image and the page around it. For a printing business whose work is visual, good alt text can also bring visits from Google Images.</p>
-  <div class="tbl wide">
+<section class="s" id="s12">
+  <div class="label">12 — Image SEO</div>
+  <h2>23 of 24 images are invisible to search</h2>
+  <p class="section-lede">Alt text describes an image to search engines and to people using screen readers. For a printer whose products are visual, it is also a route into Google Images.</p>
+  <div class="tbl">
     <table>
-      <thead><tr><th>SEO issue</th><th>Current status</th><th>Images</th><th>%</th><th>SEO impact</th><th>Priority</th><th>Recommended action</th></tr></thead>
+      <thead><tr><th>Page</th><th class="n">Image tags</th><th>Alt text</th></tr></thead>
       <tbody>
-        <tr><td class="issue">Images missing alt text</td><td>Empty alt</td><td class="n">23 of 24</td><td class="n">95.83%</td><td>Medium. Images can't rank in image search, pages lose context, and visitors who use screen readers miss content. It is also an accessibility issue.</td><td><span class="chip med">Medium</span></td><td class="act">Open each image and write a specific description of what it shows. Don't work from file names. Leave purely decorative images with an empty alt (<code>alt=""</code>) on purpose.</td></tr>
+        <tr><td class="u">/about-us/</td><td class="n">20</td><td><span class="chip crit">Missing</span></td></tr>
+        <tr><td class="u">/services/</td><td class="n">9</td><td><span class="chip crit">Missing</span></td></tr>
+        <tr><td class="u">/</td><td class="n">4</td><td><span class="chip crit">Missing</span></td></tr>
+        <tr><td class="u">/what-we-print/</td><td class="n">4</td><td><span class="chip crit">Missing</span></td></tr>
+        <tr><td class="u">/contact-us/</td><td class="n">4</td><td><span class="chip crit">Missing</span></td></tr>
       </tbody>
     </table>
   </div>
-  <p>Not measured: image file sizes, image formats (such as WebP), and whether every image file loads. Needed: the Screaming Frog <em>Images</em> export (size column) and PageSpeed Insights' Performance category.</p>
+  <p class="note">Image tags counted per page (shared logos repeat). Screaming Frog counts 24 unique images, 23 without alt. In the media library, all 32 items have empty alt fields.</p>
+  <div class="card edge-med">
+    <div class="find-head"><h3><span class="fid">IMG-01</span> Alt text missing on 95.83% of images</h3><span class="chip med">Medium</span></div>
+    <p>Every image, from the logo to the 16 product cards on About Us, has an empty alt attribute.</p>
+    <div class="action"><span class="t">RECOMMENDED ACTION</span><p>Write alt text after looking at each image, not from its file name, and add it in the media library so it appears wherever the image is used. Leave purely decorative icons empty on purpose.</p></div>
+  </div>
+  <div class="card edge-low">
+    <div class="find-head"><h3><span class="fid">IMG-02</span> Image file names are stock-library numbers</h3><span class="chip low">Low</span></div>
+    <p>Most product images are named like <code>18726.webp</code>, <code>16110.webp</code> and <code>2148771737.webp</code>, and the hero banner is <code>Screenshot-2025-09-30-at-23.10.14.png</code>. Descriptive file names are a small image-search signal.</p>
+    <div class="action"><span class="t">RECOMMENDED ACTION</span><p>Name new uploads descriptively. Renaming existing files isn't worth the risk of broken references.</p></div>
+  </div>
+  <div class="card edge-high">
+    <span class="tag high">DATA GAP</span>
+    <h3>Image file sizes aren't in this export</h3>
+    <p>The Issues Overview export doesn't include image weights, so no claim is made about compression. Export Images → All from the same crawl, or run PageSpeed Insights' Performance category.</p>
+  </div>
 </section>
 
 <!-- 13 -->
-<section id="thin">
-  <div class="eyebrow">Duplicate &amp; Thin Content</div>
-  <h2>Low-value pages created by WordPress</h2>
-  <p>WordPress creates some pages automatically: a page for each author, a page for each category and a sample "Hello World" post. On a business site these pages usually hold little or nothing of use, and they repeat content that exists elsewhere.</p>
+<section class="s" id="s13">
+  <div class="label">13 — Duplicate &amp; thin content</div>
+  <h2>No duplicates. Thin pages are the real issue.</h2>
   <div class="tbl wide">
     <table>
-      <thead><tr><th>URL</th><th>What it is</th><th>Words</th><th>Flags</th><th>Priority</th><th>Recommended action</th></tr></thead>
+      <thead><tr><th>Check</th><th>Result</th><th class="n">URLs</th><th>Assessment</th></tr></thead>
       <tbody>
-        <tr><td class="mono">/author/lakewood/</td><td>Author archive</td><td class="n">97</td><td>Thin, orphan, no meta description</td><td><span class="chip high">High</span></td><td class="act">Disable author archives (a single-author site doesn't need them), or set them to <code>noindex</code>.</td></tr>
-        <tr><td class="mono">/category/uncategorized/</td><td>Default category archive</td><td class="n">96</td><td>Thin, orphan, no meta description</td><td><span class="chip high">High</span></td><td class="act">Set it to <code>noindex</code> and remove it from the sitemap. Rename or remove the category if it is unused.</td></tr>
-        <tr><td class="mono">/hello-world/</td><td>WordPress sample post</td><td class="n">n/a</td><td>No meta description</td><td><span class="chip high">High</span></td><td class="act">Delete it. Its comment-reply URL goes with it.</td></tr>
-        <tr><td class="mono">3 main pages</td><td>Pages under 200 words</td><td class="n">&lt; 200</td><td>Low content</td><td><span class="chip high">High</span></td><td class="act">Expand them (Section 6).</td></tr>
+        <tr><td class="i">Duplicate title tags</td><td>All 5 titles unique</td><td class="n">0</td><td><span class="chip ok">Pass</span></td></tr>
+        <tr><td class="i">Duplicate H1 across pages</td><td>All 5 H1s unique</td><td class="n">0</td><td><span class="chip ok">Pass</span></td></tr>
+        <tr><td class="i">Main pages under 200 words</td><td>Contact, About, What We Print</td><td class="n">3</td><td><span class="chip high">High</span></td></tr>
+        <tr><td class="i">Thin archive pages</td><td>Author (97 words), Uncategorized (96 words)</td><td class="n">2</td><td><span class="chip high">High</span></td></tr>
+        <tr><td class="i">Sample content live</td><td>"Hello world!" post</td><td class="n">1</td><td><span class="chip high">High</span></td></tr>
+        <tr><td class="i">Near-duplicate detection</td><td>Not recorded in the export</td><td class="n">—</td><td><span class="chip na">No data</span></td></tr>
       </tbody>
     </table>
   </div>
-  <p>No duplicate titles, duplicate meta descriptions or exact duplicate pages were flagged. Near-duplicate detection depends on a Screaming Frog setting that the export doesn't record, so near-duplicates are <span class="chip none">Not measured</span>.</p>
 </section>
 
 <!-- 14 -->
-<section id="priorities">
-  <div class="eyebrow">Priority Issues &amp; Recommendations</div>
-  <h2>Every issue, ranked</h2>
-  <p>Priority combines likely SEO impact with how urgent the fix is. On a five-page site, an issue that affects three pages affects most of the site. We have ranked the issues on that basis, so some differ from Screaming Frog's generic default ratings.</p>
+<section class="s" id="s14">
+  <div class="label">14 — Priority issues &amp; recommendations</div>
+  <h2>Everything found, in the order it should be fixed</h2>
+  <p class="section-lede">Priority combines how much the issue costs in search visibility with how quickly it can be fixed.</p>
+  <div class="card edge-ok"><span class="tag ok">CRITICAL · NONE FOUND</span><p>Nothing in the data stops the main pages from being crawled or indexed. The work ahead is improvement, not emergency repair.</p></div>
 
-  <div class="callout good">
-    <h3>Critical: none found</h3>
-    <p>No issue in the data blocks the site from being crawled or indexed. There are no broken pages, no server errors, no noindexed main pages and no canonical conflicts. The work ahead is improvement, not emergency repair.</p>
-  </div>
+  <h3>High priority <span class="chip high">Weeks 1–2</span></h3>
+  <div class="tbl wide"><table>
+    <thead><tr><th>SEO issue</th><th>Current status</th><th class="n">URLs</th><th class="n">%</th><th>SEO impact</th><th>Recommended action</th></tr></thead>
+    <tbody>
+      <tr><td class="i">Missing meta descriptions</td><td>No SEO plugin</td><td class="n">5</td><td class="n">100%</td><td>No control of snippets</td><td class="a">Install Yoast SEO and write 145–155 character descriptions.</td></tr>
+      <tr><td class="i">Short titles</td><td>17–33 characters</td><td class="n">5</td><td class="n">100%</td><td>Weak relevance</td><td class="a">Rewrite to 50–60 characters naming the service and area.</td></tr>
+      <tr><td class="i">Thin key pages</td><td>88–137 words</td><td class="n">3</td><td class="n">60%</td><td>Too little to rank</td><td class="a">Add factual copy to About, What We Print and Contact.</td></tr>
+      <tr><td class="i">Default WordPress pages</td><td>Indexable</td><td class="n">3</td><td class="n">33% of 9</td><td>Thin pages indexed</td><td class="a">Unpublish Hello World, disable author archives, noindex Uncategorized.</td></tr>
+      <tr><td class="i">Links not crawlable</td><td>Empty social links</td><td class="n">5</td><td class="n">100%</td><td>PageSpeed fail</td><td class="a">Link to real profiles or render them as plain icons.</td></tr>
+      <tr><td class="i">Staging-server images</td><td>45 references</td><td class="n">5</td><td class="n">100%</td><td>Breakage risk</td><td class="a">Search and replace to lakewood.net.au.</td></tr>
+    </tbody></table></div>
 
-  <h3><span class="chip high">High priority</span> Fix first</h3>
-  <div class="tbl wide">
-    <table>
-      <thead><tr><th>SEO issue</th><th>Current status</th><th>URLs</th><th>%</th><th>SEO impact</th><th>Recommended action</th></tr></thead>
-      <tbody>
-        <tr><td class="issue">Meta descriptions missing</td><td>Absent</td><td class="n">5</td><td class="n">100%</td><td>Click-through rate; PageSpeed fail</td><td class="act">Write unique descriptions of 140–155 characters.</td></tr>
-        <tr><td class="issue">Default WordPress content indexable</td><td>Live</td><td class="n">3</td><td class="n">33.3% of 9</td><td>Index quality; first impression</td><td class="act">Delete Hello World; noindex or disable the author and category archives.</td></tr>
-        <tr><td class="issue">Thin main pages</td><td>&lt; 200 words</td><td class="n">3</td><td class="n">60%</td><td>Ranking ability</td><td class="act">Add useful service content.</td></tr>
-        <tr><td class="issue">Short page titles</td><td>&lt; 30 chars</td><td class="n">3</td><td class="n">60%</td><td>Relevance and click-through rate</td><td class="act">Rewrite to 50–60 characters with service and area.</td></tr>
-        <tr><td class="issue">Links not crawlable</td><td>Failed audit</td><td class="n">n/a</td><td class="n">n/a</td><td>Crawl paths; PageSpeed fail</td><td class="act">Give each link a real URL.</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <h3>Medium priority <span class="chip med">Weeks 2–4</span></h3>
+  <div class="tbl wide"><table>
+    <thead><tr><th>SEO issue</th><th>Current status</th><th class="n">URLs</th><th class="n">%</th><th>SEO impact</th><th>Recommended action</th></tr></thead>
+    <tbody>
+      <tr><td class="i">Images missing alt</td><td>Empty alt</td><td class="n">23</td><td class="n">95.8% of images</td><td>Image search, accessibility</td><td class="a">Describe each image in the media library.</td></tr>
+      <tr><td class="i">Heading order</td><td>Skips on every page</td><td class="n">5</td><td class="n">100%</td><td>Unclear outline</td><td class="a">Labels become text; H2 for sections, H3 for subsections, same styling.</td></tr>
+      <tr><td class="i">No H2</td><td>4 pages</td><td class="n">4</td><td class="n">80%</td><td>Weak topic signals</td><td class="a">Covered by the heading fix.</td></tr>
+      <tr><td class="i">Links with no anchor text</td><td>Logos and menu button</td><td class="n">5</td><td class="n">100%</td><td>No link context</td><td class="a">Alt text on logos, hidden label on the menu button.</td></tr>
+      <tr><td class="i">"find out more"</td><td>Home, About</td><td class="n">2</td><td class="n">40%</td><td>Wasted context</td><td class="a">"Explore our services".</td></tr>
+      <tr><td class="i">Hard-to-read copy</td><td>Flesch 23–40</td><td class="n">3</td><td class="n">60%</td><td>Visitors skim</td><td class="a">Short sentences in new copy.</td></tr>
+    </tbody></table></div>
 
-  <h3><span class="chip med">Medium priority</span> Fix during the project</h3>
-  <div class="tbl wide">
-    <table>
-      <thead><tr><th>SEO issue</th><th>Current status</th><th>URLs</th><th>%</th><th>SEO impact</th><th>Recommended action</th></tr></thead>
-      <tbody>
-        <tr><td class="issue">Images missing alt text</td><td>Empty alt</td><td class="n">23</td><td class="n">95.83%</td><td>Image search; accessibility</td><td class="act">Write a descriptive alt for every content image.</td></tr>
-        <tr><td class="issue">Heading levels skip</td><td>Out of order</td><td class="n">5</td><td class="n">100%</td><td>Page understanding</td><td class="act">Put headings in H1 → H2 → H3 order.</td></tr>
-        <tr><td class="issue">H2 missing</td><td>Absent</td><td class="n">4</td><td class="n">80%</td><td>Topic signals</td><td class="act">Add section headings.</td></tr>
-        <tr><td class="issue">H1 not first heading</td><td>Out of order</td><td class="n">1</td><td class="n">20%</td><td>Page understanding</td><td class="act">Move the H1 to the top of the outline.</td></tr>
-        <tr><td class="issue">Links with no anchor text</td><td>Present</td><td class="n">5</td><td class="n">100%</td><td>Link context</td><td class="act">Add alt text or labels to linked images and icons.</td></tr>
-        <tr><td class="issue">Non-descriptive anchor text</td><td>Present</td><td class="n">2</td><td class="n">40%</td><td>Link context</td><td class="act">Rewrite the link wording.</td></tr>
-        <tr><td class="issue">Orphan pages</td><td>No inlinks</td><td class="n">2</td><td class="n">22.2% of 9</td><td>Crawl efficiency</td><td class="act">Resolved by the noindex above.</td></tr>
-        <tr><td class="issue">Crawl coverage mismatch</td><td>5 vs 9 URLs</td><td class="n">n/a</td><td class="n">n/a</td><td>Measurement accuracy</td><td class="act">Re-crawl with sitemap crawling enabled.</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3><span class="chip low">Low priority</span> Technical hardening</h3>
-  <div class="tbl wide">
-    <table>
-      <thead><tr><th>SEO issue</th><th>Current status</th><th>URLs</th><th>%</th><th>SEO impact</th><th>Recommended action</th></tr></thead>
-      <tbody>
-        <tr><td class="issue">5 security headers missing</td><td>Not set</td><td class="n">86</td><td class="n">100%</td><td>Trust and security; minimal ranking effect</td><td class="act">Ask the host to add HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy and CSP.</td></tr>
-        <tr><td class="issue">Bad content type</td><td>Mismatched</td><td class="n">26</td><td class="n">30.23%</td><td>Robustness</td><td class="act">Correct the server MIME types.</td></tr>
-        <tr><td class="issue">Unsafe cross-origin links</td><td>Present</td><td class="n">5</td><td class="n">5.81%</td><td>Legacy-browser security</td><td class="act">Add <code>rel="noopener"</code>.</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <h3>Low priority <span class="chip low">As capacity allows</span></h3>
+  <div class="tbl wide"><table>
+    <thead><tr><th>SEO issue</th><th>Current status</th><th class="n">URLs</th><th class="n">%</th><th>SEO impact</th><th>Recommended action</th></tr></thead>
+    <tbody>
+      <tr><td class="i">Security headers</td><td>0 of 5</td><td class="n">86</td><td class="n">100% of URLs</td><td>Trust</td><td class="a">One marked block in .htaccess.</td></tr>
+      <tr><td class="i">JavaScript content type</td><td><code>application/x-javascript</code></td><td class="n">26</td><td class="n">30.2% of URLs</td><td>Robustness</td><td class="a">Set <code>application/javascript</code> before enabling nosniff.</td></tr>
+      <tr><td class="i">Unsafe cross-origin links</td><td>Mobile menu placeholders</td><td class="n">5</td><td class="n">5.8% of URLs</td><td>Legacy risk</td><td class="a">Resolved with the social-icon fix.</td></tr>
+      <tr><td class="i">"Calanders" typo</td><td>About Us card</td><td class="n">1</td><td class="n">20%</td><td>Credibility</td><td class="a">Correct to "Calendars".</td></tr>
+      <tr><td class="i">Plugin updates</td><td>4 pending</td><td class="n">—</td><td class="n">—</td><td>Maintenance</td><td class="a">Update on a staging copy first.</td></tr>
+    </tbody></table></div>
 </section>
 
 <!-- 15 -->
-<section id="plan">
-  <div class="eyebrow">SEO Action Plan</div>
-  <h2>Four phases, in order of impact</h2>
-  <p>The phases run in order because each one builds on the last. Measurement setup appears last in the list but should start on day one, so that data begins collecting straight away. Timings are a guide and depend on how quickly content is approved.</p>
+<section class="s" id="s15">
+  <div class="label">15 — SEO action plan</div>
+  <h2>A four-week sequence, ordered by dependency</h2>
+  <p class="section-lede">The SEO plugin comes first, because most of the metadata work depends on it. Take a full backup before any change.</p>
   <div class="phases">
-    <div class="phase">
-      <span class="when">Phase 1 · Weeks 1–2</span>
-      <h3>Clean up and quick wins</h3>
-      <ul>
-        <li>Delete the Hello World post</li>
-        <li>Noindex or disable the author and Uncategorized archives</li>
-        <li>Fix the non-crawlable links</li>
-        <li>New titles (50–60 characters) on all 5 pages</li>
-        <li>New meta descriptions on all 5 pages</li>
-      </ul>
-    </div>
-    <div class="phase">
-      <span class="when">Phase 2 · Weeks 2–5</span>
-      <h3>Content and structure</h3>
-      <ul>
-        <li>Expand the 3 thin pages</li>
-        <li>Rebuild the heading outlines on all 5 pages</li>
-        <li>Descriptive anchor text and labelled image links</li>
-        <li>Alt text for the 23 images</li>
-      </ul>
-    </div>
-    <div class="phase">
-      <span class="when">Phase 3 · With the host</span>
-      <h3>Technical hardening</h3>
-      <ul>
-        <li>Add the 5 security headers</li>
-        <li>Correct the 26 MIME types</li>
-        <li>Add <code>rel="noopener"</code> to 5 links</li>
-      </ul>
-    </div>
-    <div class="phase">
-      <span class="when">Start in week 1 · Ongoing</span>
-      <h3>Measurement</h3>
-      <ul>
-        <li>Connect Google Search Console and submit the sitemap</li>
-        <li>Confirm GA4 is collecting data</li>
-        <li>Record PageSpeed Performance, Accessibility and Best Practices scores, mobile and desktop</li>
-        <li>Review robots.txt and the sitemap's contents</li>
-        <li>Re-crawl with the same settings and compare against Section 16</li>
-      </ul>
-    </div>
+    <div class="card phase"><span class="t">WEEK 1 · FOUNDATIONS</span><h3>Put the tools and the safety net in place</h3><ul>
+      <li>Full database backup and before screenshots of every page</li>
+      <li>Install and configure Yoast SEO; turn off unneeded archives</li>
+      <li>Unpublish the Hello World post</li>
+      <li>Replace the 45 staging-server references</li>
+    </ul></div>
+    <div class="card phase"><span class="t">WEEKS 1–2 · SIGNALS</span><h3>Tell Google what each page is</h3><ul>
+      <li>New titles and meta descriptions on all 5 pages</li>
+      <li>Fix heading order without changing the design</li>
+      <li>Alt text for every image</li>
+      <li>Descriptive anchor text and labelled icon links</li>
+    </ul></div>
+    <div class="card phase"><span class="t">WEEKS 2–3 · CONTENT &amp; SERVER</span><h3>Add substance and harden delivery</h3><ul>
+      <li>Expand About, What We Print and Contact with factual copy</li>
+      <li>Resolve the social icons</li>
+      <li>Correct the JavaScript content type, then add security headers</li>
+    </ul></div>
+    <div class="card phase"><span class="t">WEEK 4 · MEASURE</span><h3>Prove the work landed</h3><ul>
+      <li>Re-crawl with identical Screaming Frog settings, sitemap crawling on</li>
+      <li>Re-run page audits and Lighthouse; compare with section 16</li>
+      <li>Connect Search Console and submit the sitemap</li>
+    </ul></div>
   </div>
-  <div class="callout info">
-    <h3>Information we need from Lakewood Printing</h3>
-    <ul class="plain">
-      <li>Which products and services matter most, and which areas you serve. The new titles, headings and content will name only what you confirm.</li>
-      <li>Whether anything links to <code>/hello-world/</code>, so we know whether a redirect is needed when it is deleted.</li>
-      <li>Who manages hosting, so the server header changes can be requested.</li>
-      <li>Access to Google Search Console and Google Analytics, if they already exist.</li>
-    </ul>
-  </div>
-  <p>Rankings and traffic normally take several weeks to respond after changes are indexed. We will set the date for the first before-and-after comparison once Search Console is collecting data.</p>
 </section>
 
 <!-- 16 -->
-<section id="baseline">
-  <div class="eyebrow">Before-SEO Baseline Summary</div>
-  <h2>The numbers we will measure against</h2>
-  <p>These are the starting values. After the project, the same crawl and the same checks will fill in the "After" column.</p>
+<section class="s" id="s16">
+  <div class="label">16 — Before-SEO baseline summary</div>
+  <h2>The numbers to measure against</h2>
   <div class="tbl wide">
     <table>
-      <thead><tr><th>Metric</th><th>Baseline (before)</th><th>Target</th><th>After</th><th>Source</th></tr></thead>
+      <thead><tr><th>Metric</th><th class="n">Baseline · 7 Oct 2026</th><th class="n">Target</th><th>Why it matters</th></tr></thead>
       <tbody>
-        <tr><td class="issue">PageSpeed SEO score (mobile)</td><td class="n">85</td><td class="n">95–100</td><td class="n">—</td><td>PageSpeed Insights</td></tr>
-        <tr><td class="issue">PageSpeed SEO failed audits</td><td class="n">2</td><td class="n">0</td><td class="n">—</td><td>PageSpeed Insights</td></tr>
-        <tr><td class="issue">Pages with a meta description</td><td class="n">0 / 5 (0%)</td><td class="n">5 / 5</td><td class="n">—</td><td>Screaming Frog</td></tr>
-        <tr><td class="issue">Titles of 30+ characters</td><td class="n">2 / 5 (40%)</td><td class="n">5 / 5</td><td class="n">—</td><td>Screaming Frog</td></tr>
-        <tr><td class="issue">Pages with 200+ words</td><td class="n">2 / 5 (40%)</td><td class="n">5 / 5</td><td class="n">—</td><td>Screaming Frog</td></tr>
-        <tr><td class="issue">Pages with an H2</td><td class="n">1 / 5 (20%)</td><td class="n">5 / 5</td><td class="n">—</td><td>Screaming Frog</td></tr>
-        <tr><td class="issue">Pages with headings in order</td><td class="n">0 / 5 (0%)</td><td class="n">5 / 5</td><td class="n">—</td><td>Site audit</td></tr>
-        <tr><td class="issue">Images with alt text</td><td class="n">1 / 24 (4.17%)</td><td class="n">All content images</td><td class="n">—</td><td>Screaming Frog</td></tr>
-        <tr><td class="issue">Pages with no-anchor-text links</td><td class="n">5 / 5 (100%)</td><td class="n">0</td><td class="n">—</td><td>Screaming Frog</td></tr>
-        <tr><td class="issue">Pages with non-descriptive anchors</td><td class="n">2 / 5 (40%)</td><td class="n">0</td><td class="n">—</td><td>Screaming Frog</td></tr>
-        <tr><td class="issue">Indexable default WordPress URLs</td><td class="n">3</td><td class="n">0</td><td class="n">—</td><td>Site audit</td></tr>
-        <tr><td class="issue">Thin archive pages (&lt; 100 words)</td><td class="n">2</td><td class="n">0</td><td class="n">—</td><td>Site audit</td></tr>
-        <tr><td class="issue">Orphan URLs</td><td class="n">2</td><td class="n">0</td><td class="n">—</td><td>Site audit</td></tr>
-        <tr><td class="issue">Security headers in place</td><td class="n">0 of 5</td><td class="n">5 of 5</td><td class="n">—</td><td>Screaming Frog</td></tr>
-        <tr><td class="issue">URLs with a bad content type</td><td class="n">26 / 86 (30.23%)</td><td class="n">0</td><td class="n">—</td><td>Screaming Frog</td></tr>
-        <tr><td class="issue">Unsafe cross-origin links</td><td class="n">5 / 86 (5.81%)</td><td class="n">0</td><td class="n">—</td><td>Screaming Frog</td></tr>
-        <tr><td class="issue">4xx / 5xx / redirect issues</td><td class="n">0</td><td class="n">0</td><td class="n">—</td><td>Screaming Frog</td></tr>
-        <tr><td class="issue">URLs crawled (all types)</td><td class="n">86</td><td class="n">Reference</td><td class="n">—</td><td>Screaming Frog</td></tr>
+        <tr><td class="i">PageSpeed SEO score (mobile)</td><td class="n">85</td><td class="n">95–100</td><td>Google's own checklist</td></tr>
+        <tr><td class="i">PageSpeed SEO failed checks</td><td class="n">2</td><td class="n">0</td><td>Each one is a clear fix</td></tr>
+        <tr><td class="i">On-page audit score</td><td class="n">90.49–92.32</td><td class="n">95+</td><td>Overall on-page health</td></tr>
+        <tr><td class="i">Pages with a meta description</td><td class="n">0 / 5 (0%)</td><td class="n">5 / 5</td><td>Controls the snippet</td></tr>
+        <tr><td class="i">Titles 50–60 characters</td><td class="n">0 / 5</td><td class="n">5 / 5</td><td>Relevance and click-through rate</td></tr>
+        <tr><td class="i">Titles under 30 characters</td><td class="n">3 / 5 (60%)</td><td class="n">0</td><td>Screaming Frog flag</td></tr>
+        <tr><td class="i">Pages with 200+ words</td><td class="n">2 / 5 (40%)</td><td class="n">5 / 5</td><td>Enough to rank</td></tr>
+        <tr><td class="i">Pages with an H2</td><td class="n">1 / 5 (20%)</td><td class="n">5 / 5</td><td>Topic structure</td></tr>
+        <tr><td class="i">Pages with headings in order</td><td class="n">0 / 5 (0%)</td><td class="n">5 / 5</td><td>Clear outline</td></tr>
+        <tr><td class="i">Images with alt text</td><td class="n">1 / 24 (4.17%)</td><td class="n">All content images</td><td>Image search, accessibility</td></tr>
+        <tr><td class="i">Pages with no-text links</td><td class="n">5 / 5</td><td class="n">0</td><td>Link context</td></tr>
+        <tr><td class="i">Pages with "find out more" links</td><td class="n">2 / 5</td><td class="n">0</td><td>Link context</td></tr>
+        <tr><td class="i">Indexable default WordPress URLs</td><td class="n">3</td><td class="n">0</td><td>Index hygiene</td></tr>
+        <tr><td class="i">Orphan URLs</td><td class="n">2</td><td class="n">0</td><td>Crawl efficiency</td></tr>
+        <tr><td class="i">Staging-domain references</td><td class="n">45</td><td class="n">0</td><td>Breakage risk</td></tr>
+        <tr><td class="i">Security headers present</td><td class="n">0 of 5</td><td class="n">5 of 5</td><td>Trust</td></tr>
+        <tr><td class="i">URLs with bad content type</td><td class="n">26 / 86 (30.23%)</td><td class="n">0</td><td>Robustness</td></tr>
+        <tr><td class="i">Unsafe cross-origin links</td><td class="n">5 / 86 (5.81%)</td><td class="n">0</td><td>Security</td></tr>
+        <tr><td class="i">4xx / 5xx / redirect issues</td><td class="n">0</td><td class="n">0</td><td>Already ideal; protect it</td></tr>
+        <tr><td class="i">URLs crawled</td><td class="n">86</td><td class="n">—</td><td>Crawl scope; keep settings identical</td></tr>
       </tbody>
     </table>
   </div>
+  <p class="note">For repeat runs, use the same Screaming Frog configuration with XML sitemap crawling enabled, and re-run the Atarim page audit on the same five URLs.</p>
 
-  <h3>Not yet in the baseline</h3>
-  <div class="tbl wide">
-    <table>
-      <thead><tr><th>Measure</th><th>Why it matters</th><th>How to capture it</th></tr></thead>
-      <tbody>
-        <tr><td class="issue">Core Web Vitals and Performance score</td><td>Page speed is a ranking factor and affects enquiries</td><td>PageSpeed Insights, Performance category, mobile and desktop</td></tr>
-        <tr><td class="issue">Accessibility and Best Practices scores</td><td>Completes the PageSpeed picture</td><td>PageSpeed Insights</td></tr>
-        <tr><td class="issue">PageSpeed SEO score (desktop)</td><td>Only the mobile score was supplied</td><td>PageSpeed Insights, Desktop tab</td></tr>
-        <tr><td class="issue">Indexed pages, impressions, clicks, average position</td><td>The real measure of search visibility</td><td>Google Search Console</td></tr>
-        <tr><td class="issue">Organic visits and enquiries</td><td>The business outcome</td><td>Google Analytics 4</td></tr>
-        <tr><td class="issue">Keyword rankings</td><td>Shows progress on target searches</td><td>Rank tracking for the agreed keyword set</td></tr>
-        <tr><td class="issue">Backlinks and referring domains</td><td>Measures authority from other sites</td><td>A backlink tool</td></tr>
-        <tr><td class="issue">XML sitemap and robots.txt contents</td><td>Confirms that only the right pages are submitted</td><td>Manual review, or Screaming Frog with sitemap crawling</td></tr>
-        <tr><td class="issue">Per-page word counts, titles and inlinks</td><td>Page-level before-and-after detail</td><td>Screaming Frog <em>Internal → HTML</em> export</td></tr>
-        <tr><td class="issue">Structured data and social tags</td><td>Rich results and link previews</td><td>Rich Results Test, Screaming Frog structured data</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="callout info">
-    <h3>Keeping the comparison fair</h3>
-    <p>To measure progress accurately, the "after" crawl must use the same Screaming Frog configuration as this one. Save the configuration file and the crawl itself with this report. Run PageSpeed Insights on the same URL and device each time. Note that PageSpeed scores can vary a few points between runs.</p>
+  <div class="card">
+    <h3>What this audit could not measure</h3>
+    <p>These are standard parts of a full SEO audit, but none of them appears in the data. No findings are claimed about them in either direction.</p>
+    <div class="tbl wide" style="box-shadow:none;border:1px solid var(--rule)">
+      <table>
+        <thead><tr><th>Not assessed</th><th>Why it is missing</th><th>What would be needed</th></tr></thead>
+        <tbody>
+          <tr><td class="i">Core Web Vitals and performance</td><td>Only the SEO category was captured</td><td>PageSpeed Insights, Performance category, mobile and desktop</td></tr>
+          <tr><td class="i">XML sitemap contents</td><td>The sitemap's URL list was not crawled</td><td>Crawl with "Crawl linked XML sitemaps" enabled</td></tr>
+          <tr><td class="i">Image file sizes</td><td>Not in the Issues Overview export</td><td>Images → All export from the same crawl</td></tr>
+          <tr><td class="i">Structured data</td><td>Extraction not enabled</td><td>Rich Results Test, or Screaming Frog structured data</td></tr>
+          <tr><td class="i">Near-duplicate content</td><td>Not recorded</td><td>Enable Near Duplicates and run Crawl Analysis</td></tr>
+          <tr><td class="i">Keyword rankings and traffic</td><td>Outside the scope of a crawler</td><td>Google Search Console and Google Analytics</td></tr>
+          <tr><td class="i">Backlinks</td><td>Outside the scope of a crawler</td><td>Ahrefs, Semrush or Majestic</td></tr>
+          <tr><td class="i">Index coverage as Google sees it</td><td>A crawler reports what it can reach, not what Google indexed</td><td>Search Console Pages report</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
 
-</main>
-
 <footer>
-  <div class="colourbar" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-  <p>Prepared for Lakewood Printing · lakewood.net.au · Baseline dated 7 October 2026.</p>
-  <p>Sources: Screaming Frog SEO Spider Issues Overview (86 URLs), site audit issues export (9 URLs), and Google PageSpeed Insights mobile SEO screenshot. Figures are reported as exported. Percentages for page-level issues are of the 5 HTML pages Screaming Frog crawled unless stated otherwise.</p>
+  <span>SEO baseline audit · lakewood.net.au · Lakewood Printing</span>
+  <span>Source data: Screaming Frog Issues Overview (86 URLs), site audit export (9 URLs), PageSpeed Insights mobile SEO screenshot, plus Atarim page audits and WordPress configuration checks taken on 7 October 2026 before any change was made.</span>
+  <span>Items the data doesn't cover are listed in section 16 and are not estimated.</span>
+  <span>Prepared by Atarim.</span>
 </footer>
+
 </div>
